@@ -1,6 +1,23 @@
+import { useState } from 'react'
+
+import { Modal } from '../../context/Modal'
+
+import FormNewHabit from '../FormNewHabit'
+
 function ButtonNewHabit() {
+  const [ showNewHabitForm, setShowNewHabitForm ] = useState(false)
+
   return (
-    <div>Hello from ButtonNewHabit</div>
+    <div>
+      <button
+        onClick={() => setShowNewHabitForm(true)}
+      >Add a Habit</button>
+      {showNewHabitForm && (
+        <Modal onClose={() => setShowNewHabitForm(false)}>
+          <FormNewHabit setShowNewHabitForm={setShowNewHabitForm} />
+        </Modal>
+      )}
+    </div>
   )
 }
 
