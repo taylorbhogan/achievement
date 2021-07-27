@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ButtonAddHabit from '../ButtonAddHabit'
 import styles from './FormNewHabit.module.css'
+import { createHabit } from '../../store/habit'
 
 function FormNewHabit({ setShowNewHabitForm }) {
   const [ name, setName ] = useState('name')
@@ -9,6 +10,7 @@ function FormNewHabit({ setShowNewHabitForm }) {
   const [ stellarBlurb, setStellarBlurb ] = useState('stellarBlurb')
   const [ target, setTarget ] = useState('stellarBlurb')
 
+  const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
   const handleSubmit = async (e) => {
@@ -21,6 +23,9 @@ function FormNewHabit({ setShowNewHabitForm }) {
       target: +target,
     }
     console.log('------habit', habit);
+    const createdHabit = dispatch(createHabit(habit))
+    console.log('-------createdHabit',createdHabit);
+
   }
 
   return (
