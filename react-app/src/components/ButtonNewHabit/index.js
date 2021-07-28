@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Modal } from '../../context/Modal'
 
-import FormNewHabit from '../FormNewHabit'
+import CreateHabitForm from '../CreateHabitForm'
 
 function ButtonNewHabit() {
   const [ showNewHabitForm, setShowNewHabitForm ] = useState(false)
@@ -14,7 +14,7 @@ function ButtonNewHabit() {
       >Add a Habit</button>
       {showNewHabitForm && (
         <Modal onClose={() => setShowNewHabitForm(false)}>
-          <FormNewHabit setShowNewHabitForm={setShowNewHabitForm} />
+          <CreateHabitForm setShowNewHabitForm={setShowNewHabitForm} />
         </Modal>
       )}
     </div>

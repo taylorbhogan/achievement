@@ -14,7 +14,7 @@ export const createHabit = (habit) => async (dispatch) => {
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify({habit})
+      body: JSON.stringify(habit)
     });
     if (!res.ok) throw res;
     const data = await res.json();

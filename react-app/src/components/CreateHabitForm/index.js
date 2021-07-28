@@ -6,7 +6,7 @@ import InputField from '../parts/InputField'
 import styles from './CreateHabitForm.module.css'
 import { createHabit } from '../../store/habit'
 
-function FormNewHabit({ setShowNewHabitForm }) {
+function CreateHabitForm({ setShowNewHabitForm }) {
   const [name, setName] = useState('')
   const [blurb, setBlurb] = useState('')
   const [stellarBlurb, setStellarBlurb] = useState('')
@@ -40,7 +40,7 @@ function FormNewHabit({ setShowNewHabitForm }) {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <div>Hello from FormNewHabit</div>
+        <div>Hello from CreateHabitForm</div>
         <button
           onClick={() => setShowNewHabitForm(false)}
         >Close</button>
@@ -95,4 +95,4 @@ function FormNewHabit({ setShowNewHabitForm }) {
   )
 }
 
-export default FormNewHabit
+export default CreateHabitForm
