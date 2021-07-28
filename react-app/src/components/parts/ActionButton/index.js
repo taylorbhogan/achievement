@@ -1,4 +1,4 @@
-function ButtonAddHabit() {
+function ActionButton() {
   return (
     <div>
       <button
@@ -8,4 +8,4 @@ function ButtonAddHabit() {
   )
 }
 
-export default ButtonAddHabit
+export default ActionButton

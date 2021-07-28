@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import ButtonAddHabit from '../ButtonAddHabit'
-import styles from './FormNewHabit.module.css'
+import ActionButton from '../parts/ActionButton'
+import FormErrors from '../parts/FormErrors'
+import InputField from '../parts/InputField'
+import styles from './CreateHabitForm.module.css'
 import { createHabit } from '../../store/habit'
 
 function FormNewHabit({ setShowNewHabitForm }) {
-  const [ name, setName ] = useState('name')
-  const [ blurb, setBlurb ] = useState('blurb')
-  const [ stellarBlurb, setStellarBlurb ] = useState('stellarBlurb')
-  const [ target, setTarget ] = useState('stellarBlurb')
+  const [name, setName] = useState('')
+  const [blurb, setBlurb] = useState('')
+  const [stellarBlurb, setStellarBlurb] = useState('')
+  const [target, setTarget] = useState('')
+  const [errors, setErrors] = useState([])
 
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
@@ -16,16 +19,22 @@ function FormNewHabit({ setShowNewHabitForm }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const habit = {
-      userId: user.id,
+      user_id: user.id,
       name,
       blurb,
-      stellarBlurb,
+      stellar_blurb: stellarBlurb,
       target: +target,
     }
     console.log('------habit', habit);
-    const createdHabit = dispatch(createHabit(habit))
-    console.log('-------createdHabit',createdHabit);
 
+
+
+    const dbHabit = await dispatch(createHabit(habit))
+    if (dbHabit.errors) {
+      setErrors(dbHabit.errors)
+    } else {
+      setShowNewHabitForm(false)
+    }
   }
 
   return (
@@ -34,41 +43,52 @@ function FormNewHabit({ setShowNewHabitForm }) {
         <div>Hello from FormNewHabit</div>
         <button
           onClick={() => setShowNewHabitForm(false)}
-          >Close</button>
+        >Close</button>
         <form
           onSubmit={handleSubmit}
-          >
+        >
+          <FormErrors errors={errors} />
           <div>
             <div>Habit name</div>
-            <input
+            <InputField
+              name='name'
               type='text'
+              placeholder='Pushups'
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div>
             <div>What does achievement look like?</div>
-            <textarea
+            <InputField
+              name='blurb'
+              type='textarea'
+              placeholder='15x 3/day'
               value={blurb}
               onChange={(e) => setBlurb(e.target.value)}
-              />
+            />
           </div>
           <div>
             <div>What does stellar achievement look like?</div>
-            <textarea
+            <InputField
+              name='stellar_blurb'
+              type='textarea'
+              placeholder='100 in one day'
               value={stellarBlurb}
               onChange={(e) => setStellarBlurb(e.target.value)}
-              />
+            />
           </div>
           <div>
             <div>How many days per week do you want to achieve this goal?</div>
-            <input
+            <InputField
+              name='target'
               type='number'
+              placeholder='7'
               value={target}
               onChange={(e) => setTarget(e.target.value)}
-              />
+            />
           </div>
-          <ButtonAddHabit />
+          <ActionButton />
         </form>
       </div>
     </div>

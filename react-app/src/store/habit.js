@@ -1,33 +1,29 @@
-
 const ADD_HABIT = 'habit/ADD_HABIT'
 
-const addHabitToStore = (habit) => ({
+
+const habitToStore = (habit) => ({
   type: ADD_HABIT,
-  action: habit
+  habit
 })
 
+
 export const createHabit = (habit) => async (dispatch) => {
-  const response = await fetch('api/habits', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json'
-    },
-    body: JSON.stringify({habit})
-  })
-
-  if (response.ok) {
-    const data = await response.json()
-    const newHabit = data.newHabit
-
-    dispatch(addHabitToStore(newHabit))
-    return newHabit;
-  } else if (response.status < 500){
-    const data = await response.json()
-    if (data.errors){
-      return data.errors
+  try {
+    const res = await fetch('api/habits',{
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({habit})
+    });
+    if (!res.ok) throw res;
+    const data = await res.json();
+    if (!data.errors) {
+      dispatch(habitToStore(data));
     }
-  } else {
-    return ['an error occurred. please try again']
+    return data;
+  } catch (error) {
+    return error;
   }
 }
 
