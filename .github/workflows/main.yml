@@ -1,0 +1,19 @@
+name: Python application
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+        HEROKU_API_KEY: ${{ secrets.ire18734902133ds9jsdkflja484892au90853030lkasjdf099 }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to Heroku Container registry
+      run: heroku container:login
+    - name: Build and push
+      run: heroku container:push -a achievement-by-taylorbhogan web
+    - name: Release
+      run: heroku container:release -a achievement-by-taylorbhogan web
