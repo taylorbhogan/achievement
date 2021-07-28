@@ -1,3 +1,5 @@
+import EditHabitButton from "../EditHabitButton"
+
 const HabitDashCard = ({habit, isLoaded}) => {
 
   if (!isLoaded){
@@ -8,6 +10,7 @@ const HabitDashCard = ({habit, isLoaded}) => {
     <div>
       <div> hello from HabitDashCard</div>
       <div>{habit.name}</div>
+      <EditHabitButton habit={habit}/>
     </div>
   )
 }

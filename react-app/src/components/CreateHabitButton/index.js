@@ -4,7 +4,7 @@ import { Modal } from '../../context/Modal'
 
 import CreateHabitForm from '../CreateHabitForm'
 
-function ButtonNewHabit() {
+function CreateHabitButton() {
   const [ showNewHabitForm, setShowNewHabitForm ] = useState(false)
 
   return (
@@ -21,4 +21,4 @@ function ButtonNewHabit() {
   )
 }
 
-export default ButtonNewHabit
+export default CreateHabitButton
