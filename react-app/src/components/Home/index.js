@@ -1,8 +1,8 @@
-import DashHome from "../DashHome"
+import HabitDash from "../HabitDash"
 
 function Home() {
   return (
-    <DashHome />
+    <HabitDash />
   )
 }
 
