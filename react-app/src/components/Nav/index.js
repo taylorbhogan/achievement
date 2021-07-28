@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
 
-const NavBar = () => {
+const Nav = () => {
   return (
     <nav>
       <ul>
@@ -35,4 +35,4 @@ const NavBar = () => {
   );
 }
 
-export default NavBar;
+export default Nav;
