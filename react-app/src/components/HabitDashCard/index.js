@@ -1,6 +1,14 @@
-const HabitDashCard = () => {
+const HabitDashCard = ({habit, isLoaded}) => {
+
+  if (!isLoaded){
+    return null
+  }
+
   return (
-    <div> hello from HabitDashCard</div>
+    <div>
+      <div> hello from HabitDashCard</div>
+      <div>{habit.name}</div>
+    </div>
   )
 }
 

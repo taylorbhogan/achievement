@@ -45,25 +45,16 @@ export const createHabit = (habit) => async (dispatch) => {
 }
 
 
-const initialState = {}
+const initialState = {
+  habits: {},
+}
 
 export default function reducer(state = initialState, action) {
-  let newState;
-
   switch (action.type) {
     case SET_HABITS:
-
-      return {
-        ...state,
-        ...action.habits
-      }
+      return { ...state, habits: { ...state.habits, ...action.habits} }
     case SET_HABIT:
-      newState = {}
-      newState[action.habit.id] = action.habit
-      return {
-        ...state,
-        ...newState
-      };
+      return { ...state, habits: { ...state.habits, [action.habit.id]: action.habit}}
     default:
       return state;
   }
