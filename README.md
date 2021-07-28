@@ -1,6 +1,6 @@
 # Flask React Project
 
-This is the starter for the Flask React project. Test 10:09. Newtest
+This is the starter for the Flask React project. 10:04
 
 ## Getting started
 
