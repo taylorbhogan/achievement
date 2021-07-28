@@ -1,20 +1,15 @@
 from flask import Blueprint, request
 from app.forms import HabitForm
 from app.models import db, Habit
+from app.helpers import validation_errors_to_error_messages
 
 
 habit_routes = Blueprint('habits', __name__)
 
-def validation_errors_to_error_messages(validation_errors):
-    """
-    Transforms the WTForms validation errors into a list
-    """
-    errorMessages = []
-    for field in validation_errors:
-        for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
-    return errorMessages
-
+@habit_routes.route('users/<int:id>')
+def get_habits(id):
+    habits = Habit.query.filter(Habit.user_id == id).all()
+    return {habit.id: habit.to_dict() for habit in habits}
 
 @habit_routes.route('', methods=['POST'])
 def create_habit():

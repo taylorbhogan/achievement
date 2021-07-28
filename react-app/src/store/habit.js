@@ -1,10 +1,17 @@
-const ADD_HABIT = 'habit/ADD_HABIT'
+const SET_HABIT = 'habits/SET_HABIT'
+const SET_HABITS = 'habits/SET_HABITS'
 
-
-const habitToStore = (habit) => ({
-  type: ADD_HABIT,
+const setHabit = (habit) => ({
+  type: SET_HABIT,
   habit
 })
+
+const setHabits = (habits) => ({
+  type: SET_HABITS,
+  habits
+})
+
+
 
 
 export const createHabit = (habit) => async (dispatch) => {
@@ -19,7 +26,7 @@ export const createHabit = (habit) => async (dispatch) => {
     if (!res.ok) throw res;
     const data = await res.json();
     if (!data.errors) {
-      dispatch(habitToStore(data));
+      dispatch(setHabit(data));
     }
     return data;
   } catch (error) {
@@ -34,7 +41,7 @@ export default function reducer(state = initialState, action) {
   let newState;
 
   switch (action.type) {
-    case ADD_HABIT:
+    case SET_HABIT:
       newState = {}
       newState[action.habit.id] = action.habit
       return {
