@@ -12,7 +12,17 @@ const setHabits = (habits) => ({
 })
 
 
-
+export const getHabits = (userId) => async (dispatch) => {
+  try {
+    const res = await fetch(`api/habits/users/${userId}`)
+    if (!res.ok) throw res;
+    const habits = await res.json()
+    dispatch(setHabits(habits))
+    return habits;
+  } catch (resError) {
+    return resError
+  }
+}
 
 export const createHabit = (habit) => async (dispatch) => {
   try {
@@ -29,8 +39,8 @@ export const createHabit = (habit) => async (dispatch) => {
       dispatch(setHabit(data));
     }
     return data;
-  } catch (error) {
-    return error;
+  } catch (resError) {
+    return resError;
   }
 }
 
@@ -41,6 +51,12 @@ export default function reducer(state = initialState, action) {
   let newState;
 
   switch (action.type) {
+    case SET_HABITS:
+
+      return {
+        ...state,
+        ...action.habits
+      }
     case SET_HABIT:
       newState = {}
       newState[action.habit.id] = action.habit
