@@ -1,14 +1,28 @@
 @import '../../../vars.css';
 
 .dropdown{
-  z-index: -10;
+  z-index: -1;
   position: absolute;
   top: 40px;
   right: 0px;
   width: 200px;
   height: 200px;
-  background-color: var(--backgroundTertiary);
+  background-color: var(--gray3);
   border: 1px solid rgb(155, 158, 158);
-  padding: 10px;
   color: rgb(40, 40, 40);
+}
+
+.navLink{
+  text-decoration: none;
+  color: var(--textPrimary);
+}
+.active{
+  color: red;
+}
+.linkDiv{
+  background-color: var(--gray2);
+  padding: 20px;
+}
+.linkDiv:hover{
+  background-color: var(--gray1);
 }
