@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { FaEdit } from 'react-icons/fa'
+import { IconContext } from "react-icons";
 
 import { Modal } from '../../context/Modal'
-
 import EditHabitForm from '../EditHabitForm'
+import styles from './EditHabitButton.module.css'
 
 function EditHabitButton({habit}) {
   const [ showEditHabitForm, setShowEditHabitForm ] = useState(false)
@@ -10,8 +12,13 @@ function EditHabitButton({habit}) {
   return (
     <div>
       <button
+        className={styles.button}
         onClick={() => setShowEditHabitForm(true)}
-      >Edit this Habit</button>
+      >
+        <IconContext.Provider value={{ className: "react-icons" }}>
+          <FaEdit />
+        </IconContext.Provider>
+      </button>
       {showEditHabitForm && (
         <Modal onClose={() => setShowEditHabitForm(false)}>
           <EditHabitForm habit={habit} setShowEditHabitForm={setShowEditHabitForm} />

@@ -51,7 +51,7 @@ const HabitDashWelcome = () => {
 
   return (
     <div className={styles.container}>
-      <div>{greeting}</div>
+      {greeting}
     </div>
   )
 }

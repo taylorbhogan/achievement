@@ -15,9 +15,12 @@ const HabitDashCardDetails = ({ habit, handleDelete }) => {
         <div>{habit.stellar_blurb}</div>
         <button>I earned this</button>
       </div>
-      <div>
-        <EditHabitButton habit={habit}/>
-        <DeleteButton handleDelete={handleDelete}/>
+      <div className={styles.right}>
+        <div>Things</div>
+        <div className={styles.buttonContainer}>
+          <EditHabitButton habit={habit}/>
+          <DeleteButton handleDelete={handleDelete}/>
+        </div>
       </div>
     </div>
   )
