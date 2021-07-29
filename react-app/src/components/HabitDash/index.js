@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getHabits } from "../../store/habit"
 import HabitDashWelcome from "../HabitDashWelcome"
 import HabitDashCard from "../HabitDashCard"
-import ButtonNewHabit from "../ButtonNewHabit"
+import CreateHabitButton from "../CreateHabitButton"
 
 function HabitDash() {
   const dispatch = useDispatch()
@@ -36,11 +36,15 @@ function HabitDash() {
     <div>
       <HabitDashWelcome />
       <div>
-        <ButtonNewHabit />
+        <CreateHabitButton />
       </div>
       <div>
         {habits && habits.map(habit => (
-          <HabitDashCard key={habit.id} habit={habit} isLoaded={isLoaded}/> ))}
+          <HabitDashCard
+            key={habit.id}
+            habit={habit}
+            isLoaded={isLoaded}
+          /> ))}
       </div>
 
     </div>

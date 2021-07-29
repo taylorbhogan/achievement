@@ -8,13 +8,51 @@ habit_routes = Blueprint('habits', __name__)
 
 @habit_routes.route('users/<int:id>')
 def get_habits(id):
+    """
+    Retrieves all of a user's habits
+    """
     habits = Habit.query.filter(Habit.user_id == id).all()
     return {habit.id: habit.to_dict() for habit in habits}
+
+
+
+
+@habit_routes.route('/<int:habit_id>', methods=['GET', 'PUT', 'DELETE'])
+def habit_by_id(habit_id):
+    """
+    Interact with a single existing habit
+    """
+    habit = Habit.query.get(habit_id)
+    if request.method =='GET':
+        return habit.to_dict()
+    elif request.method == 'PUT':
+        form = HabitForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            form.populate_obj(habit)
+            db.session.commit()
+            return habit.to_dict()
+        return {'errors': validation_errors_to_error_messages(form.errors)}
+    elif request. method == 'DELETE':
+        habit.name = 'DELETED'
+        habit.blurb = 'DELETED'
+        habit.stellar_blurb = 'DELETED'
+        habit.target = 0
+        db.session.commit()
+
+        return habit.to_dict()
+    return habit.to_dict()
+
+
+
+
+
+
 
 @habit_routes.route('', methods=['POST'])
 def create_habit():
     """
-    Creates a habit in the database
+    Creates a new habit
     """
     form = HabitForm()
     form['csrf_token'].data = request.cookies['csrf_token']

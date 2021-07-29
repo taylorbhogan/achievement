@@ -44,6 +44,43 @@ export const createHabit = (habit) => async (dispatch) => {
   }
 }
 
+export const editHabit = (habit) => async (dispatch) => {
+  try {
+  const res = await fetch (`api/habits/${habit.id}`,{
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(habit)
+  });
+  if (!res.ok) throw res;
+  const data = await res.json();
+  if (!data.errors) {
+    dispatch(setHabit(data));
+  }
+  return data;
+  } catch (resError) {
+  return resError;
+  }
+
+}
+
+export const deleteHabit = (habitId) => async (dispatch) => {
+  try {
+    const res = await fetch (`api/habits/${habitId}`, {
+      method: 'DELETE',
+    });
+    if (!res.ok) throw res;
+    const data = await res.json();
+    if (!data.errors) {
+      dispatch(setHabit(data));
+    }
+    return data;
+    } catch (resError) {
+    return resError;
+    }
+
+}
 
 const initialState = {
   habits: {},
