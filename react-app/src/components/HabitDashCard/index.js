@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 
-import EditHabitButton from "../EditHabitButton"
-import DeleteButton from "../parts/DeleteButton"
+// perhaps I'll move these back here and render them if the user toggles on edit mode
+// import EditHabitButton from "../EditHabitButton"
+// import DeleteButton from "../parts/DeleteButton"
 import LoadingContent from "../LoadingContent"
+import HabitDashCardDetails from "../HabitDashCardDetails"
 
 import { deleteHabit } from "../../store/habit"
 
@@ -26,15 +28,18 @@ const HabitDashCard = ({ habit, isLoaded }) => {
     <div
       className={styles.container}
       id={habit.id}
-      onClick={(e) => console.log(e.target.id)}
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
       >
-      <div> hello from HabitDashCard</div>
-      <div>{habit.name}</div>
-      <EditHabitButton habit={habit}/>
-      <DeleteButton handleDelete={handleDelete}/>
-      {isShown && <div>hello</div> }
+      <div>
+        <div>{habit.name}</div>
+        <div className={styles.cubeContainer}>
+          
+        </div>
+      </div>
+      {/* <EditHabitButton habit={habit}/>
+      <DeleteButton handleDelete={handleDelete}/> */}
+      {isShown && <HabitDashCardDetails handleDelete={handleDelete} habit={habit} /> }
     </div>
   )
 }
