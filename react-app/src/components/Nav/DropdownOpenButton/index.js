@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import Dropdown from '../Dropdown'
+import styles from './DropdownOpenButton.module.css'
 
 const DropdownOpenButton = () => {
   const [ showMenu, setShowMenu ] = useState(false)
@@ -23,6 +24,7 @@ const DropdownOpenButton = () => {
   return (
     <>
       <button
+        className={styles.openButton}
         onClick={openMenu}
       >Hello</button>
       {showMenu &&
