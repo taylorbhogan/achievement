@@ -12,6 +12,10 @@
   --gray4: #444444;
 
 
+  /* -------------MENUS------------- */
+
+  --borderRadiusMenu: 10px;
+
   /* -------------CONTAINERS------------- */
   --containerBoxShadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
   --containerWidth: 60%;
@@ -19,4 +23,8 @@
 
   /* -------------CUBE CONTAINER------------- */
   --cubeContainerWidth: 75%;
+
+
+  /* -------------CUBES------------- */
+  --dashCubeDimension: 20px;
 }

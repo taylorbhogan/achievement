@@ -6,5 +6,20 @@
   justify-content: space-between;
   background-color: var(--backgroundTertiary);
   padding: 30px;
+  min-height: 150px;
+}
 
+.center{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.buttonContainer{
+  display: flex;
 }

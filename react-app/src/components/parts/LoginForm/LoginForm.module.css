@@ -1,0 +1,28 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form{
+  margin-top: 150px;
+  padding: 60px;
+  height: 300px;
+  background-color: var(--gray2);
+  width: 30%;
+}
+
+.buttonDiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.button{
+  background: none;
+  background-color: var(--gray3);
+  border: none;
+  margin-top: 20px;
+  padding: 1rem;
+  cursor: pointer;
+}

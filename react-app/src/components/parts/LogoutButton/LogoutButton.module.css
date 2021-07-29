@@ -1,0 +1,16 @@
+@import '../../../vars.css';
+
+.logout{
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--textPrimary);
+  font-size: 1rem;
+  padding: 20px;
+  width: 100%;
+  text-align: right;
+  border-radius: 0 0 var(--borderRadiusMenu) var(--borderRadiusMenu);
+}
+.logout:hover{
+  background-color: var(--gray1);
+}
