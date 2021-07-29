@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 // import EditHabitButton from "../EditHabitButton"
 // import DeleteButton from "../parts/DeleteButton"
 import LoadingContent from "../LoadingContent"
+import HabitCube from "../HabitCube"
 import HabitDashCardDetails from "../HabitDashCardDetails"
 
 import { deleteHabit } from "../../store/habit"
@@ -31,10 +32,16 @@ const HabitDashCard = ({ habit, isLoaded }) => {
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
       >
-      <div>
+      <div className={styles.bar}>
         <div>{habit.name}</div>
         <div className={styles.cubeContainer}>
-          
+          <HabitCube />
+          <HabitCube />
+          <HabitCube />
+          <HabitCube />
+          <HabitCube />
+          <HabitCube />
+          <HabitCube />
         </div>
       </div>
       {/* <EditHabitButton habit={habit}/>
