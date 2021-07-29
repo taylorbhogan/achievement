@@ -23,4 +23,8 @@
 
   /* -------------CUBE CONTAINER------------- */
   --cubeContainerWidth: 75%;
+
+
+  /* -------------CUBES------------- */
+  --dashCubeDimension: 20px;
 }

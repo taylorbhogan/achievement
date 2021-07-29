@@ -1,13 +1,14 @@
-.achieve{
-  width: 13px;
-  height: 13px;
+.cubeWrapper{
+  width: var(--dashCubeDimension);
+  height: var(--dashCubeDimension);
 }
 
-.invisibleButton{
+.achieveCube{
   border: none;
-  background-color: gold;
+  background-color: #CCC;
   color: none;
   padding: 0;
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }
