@@ -13,12 +13,14 @@
 .dashCardContainer{
   width: var(--containerWidth);
   box-shadow: var(--containerBoxShadow);
+  background-color: var(--backgroundSecondary);
+
 }
 
 .cubeContainerHeadersWrapper{
   display: flex;
   justify-content: flex-end;
-  padding: 0px 30px 5px 30px;
+  padding: 5px 30px 5px 30px;
 }
 
 .cubeContainerHeadersCopyCubeContainer{

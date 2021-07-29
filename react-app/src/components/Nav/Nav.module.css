@@ -1,5 +1,8 @@
+@import '../../vars.css';
+
 .navbarWrapper{
   position: relative;
+  z-index: 1;
 }
 
 .navbar{
@@ -14,7 +17,7 @@
 
 .logo{
   text-decoration: none;
-  color: white;
+  color: var(--logoPrimary);
   font-size: 2rem;
 }
 
