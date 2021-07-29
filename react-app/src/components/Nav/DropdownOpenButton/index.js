@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { FaCog } from 'react-icons/fa'
 
 import Dropdown from '../Dropdown'
 import styles from './DropdownOpenButton.module.css'
@@ -26,7 +27,7 @@ const DropdownOpenButton = () => {
       <button
         className={styles.openButton}
         onClick={openMenu}
-      >Hello</button>
+      ><FaCog /></button>
       {showMenu &&
       <Dropdown />}
     </>
