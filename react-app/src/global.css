@@ -1,7 +1,6 @@
 @import './vars.css';
 
 :root{
-  font-family:Arial, Helvetica, sans-serif;
   background-color: var(--backgroundPrimary);
   color: var(--textPrimary);
 }

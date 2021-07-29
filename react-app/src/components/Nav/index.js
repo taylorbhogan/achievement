@@ -12,8 +12,8 @@ const Nav = () => {
 
 
   return (
-    <div className={styles.navWrapper}>
-      <nav className={styles.nav}>
+    <div className={styles.navbarWrapper}>
+      <nav className={styles.navbar}>
         <div>Views</div>
         <NavLink to='/' exact={true} activeClassName='active'>
           <div className={styles.logo}>Achievement.</div>

@@ -26,7 +26,7 @@ class Habit(db.Model):
             'blurb': self.blurb,
             'stellar_blurb': self.stellar_blurb,
             'target': self.target,
-            'color': self.color,
+            'color': self.color.to_dict(),
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'user_id': self.user_id,
