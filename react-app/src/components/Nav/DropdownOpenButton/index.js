@@ -22,12 +22,19 @@ const DropdownOpenButton = () => {
     return () => document.removeEventListener('click',closeMenu)
   }, [showMenu])
 
+  const gearStyle = {
+    backgroundColor: 'white',
+    color: 'red',
+    width: '20px',
+    height: '20px',
+  }
+
   return (
     <>
       <button
         className={styles.openButton}
         onClick={openMenu}
-      ><FaCog /></button>
+      ><FaCog style={gearStyle}/></button>
       {showMenu &&
       <Dropdown />}
     </>
