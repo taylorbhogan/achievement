@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux"
 // import DeleteButton from "../parts/DeleteButton"
 import LoadingContent from "../LoadingContent"
 import HabitCube from "../HabitCube"
+import CreateAchievementButton from "../CreateAchievementButton"
 import HabitDashCardDetails from "../HabitDashCardDetails"
 
 import { deleteHabit } from "../../store/habit"
@@ -41,7 +42,7 @@ const HabitDashCard = ({ habit, isLoaded }) => {
           <HabitCube />
           <HabitCube />
           <HabitCube />
-          <HabitCube />
+          <CreateAchievementButton />
         </div>
       </div>
       {/* <EditHabitButton habit={habit}/>

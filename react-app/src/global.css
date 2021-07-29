@@ -1,7 +1,9 @@
+@import './vars.css';
+
 :root{
   font-family:Arial, Helvetica, sans-serif;
-  background-color: #232323;
-  color: #aaaaaa;
+  background-color: var(--backgroundPrimary);
+  color: var(--textPrimary);
 }
 
 /* remove the underline from NavLinks */
