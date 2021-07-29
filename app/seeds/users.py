@@ -1,7 +1,6 @@
 from app.models import db, User
 
 
-# Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
         first_name='Taylor', last_name='Hogan', email='taylorb.hogan@gmail.com', password='password', profile_img_url='image@google.com', birthday='1993-07-21 19:09:38')
