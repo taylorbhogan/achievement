@@ -6,7 +6,6 @@ const HabitDashWelcome = () => {
 
   const user = useSelector(state => state.session.user)
   const date = new Date()
-  // const todaysDate = new Intl.DateTimeFormat('en-US', { dateStyle: 'full' }).format(date)
   const todaysDate = new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).format(date)
   const thisYear = new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(date)
   const currentHour = date.getHours()
