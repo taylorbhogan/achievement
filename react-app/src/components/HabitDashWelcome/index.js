@@ -1,6 +1,11 @@
-function HabitDashWelcome() {
+import styles from './HabitDashWelcome.module.css'
+
+const HabitDashWelcome = () => {
   return (
-    <div>Welcome from HabitDashWelcome</div>
+    <div className={styles.container}>
+      <div>Welcome from HabitDashWelcome</div>
+      <div></div>
+    </div>
   )
 }
 

@@ -1,0 +1,14 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.makeMeRight{
+  padding-left: 1200px;
+}
+
+.dashCardContainer{
+  width: 60%;
+  border: 1px solid white;
+}

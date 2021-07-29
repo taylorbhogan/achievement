@@ -6,6 +6,8 @@ import LoadingContent from "../LoadingContent"
 
 import { deleteHabit } from "../../store/habit"
 
+import styles from './HabitDashCard.module.css'
+
 const HabitDashCard = ({habit, isLoaded}) => {
   const dispatch = useDispatch()
 
@@ -18,7 +20,7 @@ const HabitDashCard = ({habit, isLoaded}) => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <div> hello from HabitDashCard</div>
       <div>{habit.name}</div>
       <EditHabitButton habit={habit}/>
