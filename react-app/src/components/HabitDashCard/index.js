@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux"
 
 import EditHabitButton from "../EditHabitButton"
 import DeleteButton from "../parts/DeleteButton"
+import LoadingContent from "../LoadingContent"
 
 import { deleteHabit } from "../../store/habit"
 
@@ -13,7 +14,7 @@ const HabitDashCard = ({habit, isLoaded}) => {
   }
 
   if (!isLoaded){
-    return null
+    return <LoadingContent />
   }
 
   return (
