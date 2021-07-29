@@ -6,21 +6,22 @@
   top: 40px;
   right: 0px;
   width: 200px;
-  height: 200px;
-  background-color: var(--gray3);
-  border: 1px solid rgb(155, 158, 158);
+  background-color: var(--gray2);
+  box-shadow: var(--containerBoxShadow);
   color: rgb(40, 40, 40);
+  border-radius: 0 0 var(--borderRadiusMenu) var(--borderRadiusMenu);
+  padding: 3px;
 }
 
 .navLink{
   text-decoration: none;
   color: var(--textPrimary);
+  font-size: 1rem;
 }
 .active{
   color: red;
 }
 .linkDiv{
-  background-color: var(--gray2);
   padding: 20px;
 }
 .linkDiv:hover{
