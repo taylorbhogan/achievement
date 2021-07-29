@@ -14,7 +14,9 @@ const Nav = () => {
   return (
     <div className={styles.navbarWrapper}>
       <nav className={styles.navbar}>
-        <div>Views</div>
+        <NavLink to='/reflect' exact={true} activeClassName='active'>
+          <div className={styles.reflect}>reflect</div>
+        </NavLink>
         <NavLink to='/' exact={true} activeClassName='active'>
           <div className={styles.logo}>Achievement.</div>
         </NavLink>

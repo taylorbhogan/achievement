@@ -29,6 +29,13 @@ function HabitDash() {
   }, [reduxHabits])
 
 
+
+  const getToday = (daysAgo) => {
+    const date = new Date()
+    const thisDay = new Intl.DateTimeFormat('en-US', { weekday: 'narrow' }).format(date - (daysAgo * 86400000))
+    return thisDay
+  }
+
   if (!isLoaded){
     return <LoadingContent />
   }
@@ -40,6 +47,17 @@ function HabitDash() {
         <CreateHabitButton />
       </div>
       <div className={styles.dashCardContainer}>
+        <div className={styles.cubeContainerHeadersWrapper}>
+          <div className={styles.cubeContainerHeadersCopyCubeContainer}>
+            <div className={styles.cubeContainerHeader}>{getToday(6)}</div>
+            <div className={styles.cubeContainerHeader}>{getToday(5)}</div>
+            <div className={styles.cubeContainerHeader}>{getToday(4)}</div>
+            <div className={styles.cubeContainerHeader}>{getToday(3)}</div>
+            <div className={styles.cubeContainerHeader}>{getToday(2)}</div>
+            <div className={styles.cubeContainerHeader}>{getToday(1)}</div>
+            <div className={styles.cubeContainerHeader}>{getToday(0)}</div>
+          </div>
+        </div>
         {habits.map(habit => (
           <HabitDashCard
             key={habit.id}

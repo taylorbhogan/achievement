@@ -8,6 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import Home from './components/Home';
+import Reflect from './components/Reflect';
+import AchievementLog from './components/AchievementLog'
 import { authenticate } from './store/session';
 
 function App() {
@@ -29,6 +31,15 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Switch>
+        <ProtectedRoute path='/' exact={true} >
+          <Home />
+        </ProtectedRoute>
+        <ProtectedRoute path='/reflect' exact={true} >
+          <Reflect />
+        </ProtectedRoute>
+        <ProtectedRoute path='/achievements' exact={true} >
+          <AchievementLog />
+        </ProtectedRoute>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -40,9 +51,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <Home />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

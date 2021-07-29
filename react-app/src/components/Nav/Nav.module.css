@@ -18,6 +18,11 @@
   font-size: 2rem;
 }
 
+.reflect{
+  text-decoration: none;
+  color: white;
+}
+
 .active{
   color: red;
 }
