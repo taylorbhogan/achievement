@@ -47,7 +47,6 @@ function HabitDash() {
             isLoaded={isLoaded}
           /> ))}
       </div>
-
     </div>
   )
 }

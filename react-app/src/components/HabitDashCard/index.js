@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useDispatch } from "react-redux"
 
 import EditHabitButton from "../EditHabitButton"
@@ -8,8 +9,10 @@ import { deleteHabit } from "../../store/habit"
 
 import styles from './HabitDashCard.module.css'
 
-const HabitDashCard = ({habit, isLoaded}) => {
+const HabitDashCard = ({ habit, isLoaded }) => {
+  const [ isShown, setIsShown ] = useState(false)
   const dispatch = useDispatch()
+
 
   const handleDelete = () => {
     dispatch(deleteHabit(habit.id))
@@ -20,11 +23,18 @@ const HabitDashCard = ({habit, isLoaded}) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      id={habit.id}
+      onClick={(e) => console.log(e.target.id)}
+      onMouseEnter={() => setIsShown(true)}
+      onMouseLeave={() => setIsShown(false)}
+      >
       <div> hello from HabitDashCard</div>
       <div>{habit.name}</div>
       <EditHabitButton habit={habit}/>
       <DeleteButton handleDelete={handleDelete}/>
+      {isShown && <div>hello</div> }
     </div>
   )
 }
