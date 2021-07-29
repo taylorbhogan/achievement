@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FaCog } from 'react-icons/fa'
+import { IconContext } from "react-icons";
 
 import Dropdown from '../Dropdown'
 import styles from './DropdownOpenButton.module.css'
@@ -22,19 +23,16 @@ const DropdownOpenButton = () => {
     return () => document.removeEventListener('click',closeMenu)
   }, [showMenu])
 
-  const gearStyle = {
-    backgroundColor: 'white',
-    color: 'red',
-    width: '20px',
-    height: '20px',
-  }
-
   return (
     <>
       <button
         className={styles.openButton}
         onClick={openMenu}
-      ><FaCog style={gearStyle}/></button>
+      >
+        <IconContext.Provider value={{ className: "react-icons" }}>
+          <FaCog />
+        </IconContext.Provider>
+      </button>
       {showMenu &&
       <Dropdown />}
     </>

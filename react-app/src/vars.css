@@ -1,8 +1,11 @@
 :root{
   /* -------------COLORS------------- */
-  --backgroundPrimary: #232323;
+  /* --backgroundPrimary: #232323; */
+  --backgroundPrimary: #36454F;
   --backgroundSecondary: #191919;
+  --backgroundTertiary: #222222;
   --textPrimary: #aaaaaa;
+  --logoPrimary: white;
 
 
   /* -------------CONTAINERS------------- */

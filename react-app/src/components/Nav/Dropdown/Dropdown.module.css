@@ -1,10 +1,14 @@
+@import '../../../vars.css';
+
 .dropdown{
-  background-color: white;
+  z-index: -10;
+  position: absolute;
+  top: 40px;
+  right: 0px;
   width: 200px;
   height: 200px;
+  background-color: var(--backgroundTertiary);
   border: 1px solid rgb(155, 158, 158);
-  position: absolute;
-  top: 78px;
-  right: 20px;
+  padding: 10px;
   color: rgb(40, 40, 40);
 }
