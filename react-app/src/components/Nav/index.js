@@ -1,37 +1,31 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
+import { useSelector } from 'react-redux';
+import NavPublic from '../parts/NavPublic';
+
+import DropdownOpenButton from './DropdownOpenButton';
+import styles from './Nav.module.css'
 
 const Nav = () => {
+  const user = useSelector(state => state.session.user)
+
+
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-      </ul>
-    </nav>
+    <div className={styles.navWrapper}>
+      <nav className={styles.nav}>
+        <div>Views</div>
+        <NavLink to='/' exact={true} activeClassName='active'>
+          <div className={styles.logo}>Achievement.</div>
+        </NavLink>
+        <div>
+          {!user ? <NavPublic /> :
+            <div>
+              <DropdownOpenButton />
+            </div>}
+        </div>
+      </nav>
+    </div>
   );
 }
 

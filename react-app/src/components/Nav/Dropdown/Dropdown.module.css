@@ -1,0 +1,10 @@
+.dropdown{
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgb(155, 158, 158);
+  position: absolute;
+  top: 78px;
+  right: 20px;
+  color: rgb(40, 40, 40);
+}

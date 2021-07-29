@@ -1,0 +1,17 @@
+.container{
+  border: 1px solid black;
+}
+
+.bar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+
+.cubeContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+}

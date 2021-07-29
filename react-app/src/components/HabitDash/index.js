@@ -5,6 +5,8 @@ import { getHabits } from "../../store/habit"
 import HabitDashWelcome from "../HabitDashWelcome"
 import HabitDashCard from "../HabitDashCard"
 import CreateHabitButton from "../CreateHabitButton"
+import LoadingContent from "../LoadingContent"
+import styles from './HabitDash.module.css'
 
 function HabitDash() {
   const dispatch = useDispatch()
@@ -20,7 +22,6 @@ function HabitDash() {
   }, [dispatch, user.id])
 
   useEffect(() => {
-    console.log('Object.keys(reduxHabits)----',Object.keys(reduxHabits));
     if (Object.keys(reduxHabits).length > 0) {
       setIsLoaded(true)
       setHabits(Object.values(reduxHabits))
@@ -29,24 +30,23 @@ function HabitDash() {
 
 
   if (!isLoaded){
-    return null
+    return <LoadingContent />
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <HabitDashWelcome />
-      <div>
+      <div className={styles.makeMeRight}>
         <CreateHabitButton />
       </div>
-      <div>
-        {habits && habits.map(habit => (
+      <div className={styles.dashCardContainer}>
+        {habits.map(habit => (
           <HabitDashCard
             key={habit.id}
             habit={habit}
             isLoaded={isLoaded}
           /> ))}
       </div>
-
     </div>
   )
 }
