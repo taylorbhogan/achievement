@@ -14,13 +14,18 @@ def get_habits(id):
     habits = Habit.query.filter(Habit.user_id == id).all()
     return {habit.id: habit.to_dict() for habit in habits}
 
-@habit_routes.route('/<int:id>', methods=['PUT'])
+
+
+
+@habit_routes.route('/<int:habit_id>', methods=['GET', 'PUT', 'DELETE'])
 def habit_by_id(habit_id):
     """
     Interact with a single existing habit
     """
     habit = Habit.query.get(habit_id)
-    if request.method == 'PUT':
+    if request.method =='GET':
+        return habit.to_dict()
+    elif request.method == 'PUT':
         form = HabitForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
@@ -28,6 +33,20 @@ def habit_by_id(habit_id):
             db.session.commit()
             return habit.to_dict()
         return {'errors': validation_errors_to_error_messages(form.errors)}
+    elif request. method == 'DELETE':
+        habit.name = 'DELETED'
+        habit.blurb = 'DELETED'
+        habit.stellar_blurb = 'DELETED'
+        habit.target = 0
+        db.session.commit()
+
+        return habit.to_dict()
+    return habit.to_dict()
+
+
+
+
+
 
 
 @habit_routes.route('', methods=['POST'])

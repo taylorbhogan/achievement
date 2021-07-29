@@ -4,7 +4,7 @@ import { Modal } from '../../context/Modal'
 
 import EditHabitForm from '../EditHabitForm'
 
-function EditHabitButton() {
+function EditHabitButton({habit}) {
   const [ showEditHabitForm, setShowEditHabitForm ] = useState(false)
 
   return (
@@ -14,7 +14,7 @@ function EditHabitButton() {
       >Edit this Habit</button>
       {showEditHabitForm && (
         <Modal onClose={() => setShowEditHabitForm(false)}>
-          <EditHabitForm setShowEditHabitForm={setShowEditHabitForm} />
+          <EditHabitForm habit={habit} setShowEditHabitForm={setShowEditHabitForm} />
         </Modal>
       )}
     </div>

@@ -4,13 +4,13 @@ import ActionButton from '../parts/ActionButton'
 import FormErrors from '../parts/FormErrors'
 import InputField from '../parts/InputField'
 import styles from './EditHabitForm.module.css'
-import { createHabit } from '../../store/habit'
+import { editHabit } from '../../store/habit'
 
-function EditHabitForm({ setShowEditHabitForm }) {
-  const [name, setName] = useState('')
-  const [blurb, setBlurb] = useState('')
-  const [stellarBlurb, setStellarBlurb] = useState('')
-  const [target, setTarget] = useState('')
+function EditHabitForm({ habit, setShowEditHabitForm }) {
+  const [name, setName] = useState(habit.name)
+  const [blurb, setBlurb] = useState(habit.blurb)
+  const [stellarBlurb, setStellarBlurb] = useState(habit.stellar_blurb)
+  const [target, setTarget] = useState(habit.target)
   const [errors, setErrors] = useState([])
 
   const dispatch = useDispatch()
@@ -18,18 +18,19 @@ function EditHabitForm({ setShowEditHabitForm }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const habit = {
+    const updatedHabit = {
+      id: habit.id,
       user_id: user.id,
       name,
       blurb,
       stellar_blurb: stellarBlurb,
       target: +target,
     }
-    console.log('------habit', habit);
+    console.log('------updatedHabit', updatedHabit);
 
 
 
-    const dbHabit = await dispatch(createHabit(habit))
+    const dbHabit = await dispatch(editHabit(updatedHabit))
     if (dbHabit.errors) {
       setErrors(dbHabit.errors)
     } else {

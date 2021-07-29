@@ -65,6 +65,22 @@ export const editHabit = (habit) => async (dispatch) => {
 
 }
 
+export const deleteHabit = (habitId) => async (dispatch) => {
+  try {
+    const res = await fetch (`api/habits/${habitId}`, {
+      method: 'DELETE',
+    });
+    if (!res.ok) throw res;
+    const data = await res.json();
+    if (!data.errors) {
+      dispatch(setHabit(data));
+    }
+    return data;
+    } catch (resError) {
+    return resError;
+    }
+
+}
 
 const initialState = {
   habits: {},
