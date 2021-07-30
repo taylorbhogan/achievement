@@ -1,4 +1,4 @@
-// import { useState } from "react"
+import { useState } from "react"
 // import { useDispatch } from "react-redux"
 
 import LoadingContent from "../LoadingContent"
@@ -12,6 +12,7 @@ import styles from './HabitDashCard.module.css'
 
 const HabitDashCard = ({ habit, isLoaded }) => {
   // const [ isShown, setIsShown ] = useState(false)
+  const [ errors, setErrors ] = useState([])
   // const dispatch = useDispatch()
 
 
@@ -39,7 +40,7 @@ const HabitDashCard = ({ habit, isLoaded }) => {
           <HabitCube />
           <HabitCube />
           <HabitCube />
-          <CreateAchievementButton />
+          <CreateAchievementButton habit={habit} setErrors={setErrors}/>
         </div>
       </div>
       {/* {isShown && <HabitDashCardDetails handleDelete={handleDelete} habit={habit} /> } */}
