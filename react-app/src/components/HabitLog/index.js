@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getHabits } from "../../store/habit"
 import LoadingContent from "../LoadingContent"
 import HabitLogCard from "../HabitLogCard"
+import CreateHabitButton from "../CreateHabitButton"
 import styles from './HabitLog.module.css'
 
 const HabitLog = () => {
@@ -32,6 +33,9 @@ const HabitLog = () => {
   return (
     <div className={styles.container}>
       <div className={styles.welcome}>Welcome</div>
+      <div className={styles.makeMeRight}>
+        <CreateHabitButton />
+      </div>
       <div className={styles.habitContainer}>
       {habits.map(habit => (
           <HabitLogCard

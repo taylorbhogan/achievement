@@ -1,9 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-// perhaps I'll move these back here and render them if the user toggles on edit mode
-// import EditHabitButton from "../EditHabitButton"
-// import DeleteButton from "../parts/DeleteButton"
 import LoadingContent from "../LoadingContent"
 import HabitCube from "../HabitCube"
 import CreateAchievementButton from "../CreateAchievementButton"
@@ -16,7 +13,6 @@ import { deleteHabit } from "../../store/habit"
 import { editHabit } from "../../store/habit"
 
 import styles from './HabitLogCard.module.css'
-import ActionButton from "../parts/ActionButton"
 
 const HabitLogCard = ({ habit, isLoaded }) => {
   const dispatch = useDispatch()
@@ -102,7 +98,6 @@ const HabitLogCard = ({ habit, isLoaded }) => {
           setStellarBlurb={setStellarBlurb}
           target={target}
           setTarget={setTarget}/>}
-        {/* {isEditable && <ActionButton buttonText={'save'} />} */}
       </form>
     </div>
   )
