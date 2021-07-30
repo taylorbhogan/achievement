@@ -1,0 +1,62 @@
+@import '../../vars.css';
+
+.container{
+  background-color: var(--backgroundTertiary);
+  padding: 6px 30px 30px 30px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.close{
+  height: var(--closeHeight);
+  margin-bottom: 5px;
+}
+
+.info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header{
+  margin-bottom: 10px;
+}
+
+.bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+}
+.left{
+  width: 20%;
+}
+.center{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+}
+.right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.contents{
+  /* padding: var(--inputPadding); */
+  line-height: var(--inputLineHeight);
+}
+
+.buttonContainer{
+  display: flex;
+}

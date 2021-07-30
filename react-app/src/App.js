@@ -10,6 +10,8 @@ import User from './components/User';
 import Home from './components/Home';
 import Reflect from './components/Reflect';
 import AchievementLog from './components/AchievementLog'
+import HabitLog from './components/HabitLog';
+import DeveloperLinks from './components/parts/DeveloperLinks';
 import { authenticate } from './store/session';
 
 function App() {
@@ -30,12 +32,16 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
+      <DeveloperLinks />
       <Switch>
         <ProtectedRoute path='/' exact={true} >
           <Home />
         </ProtectedRoute>
         <ProtectedRoute path='/reflect' exact={true} >
           <Reflect />
+        </ProtectedRoute>
+        <ProtectedRoute path='/habits' exact={true} >
+          <HabitLog />
         </ProtectedRoute>
         <ProtectedRoute path='/achievements' exact={true} >
           <AchievementLog />

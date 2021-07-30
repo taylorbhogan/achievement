@@ -10,7 +10,7 @@ const InputField = ({ name, type, placeholder, value, onChange, setFunction }) =
             placeholder={placeholder}
             value={value}
             onChange={onChange}
-            rows='4'
+            // rows='4'
             className={styles.textAreaInput}
             />
         </div>

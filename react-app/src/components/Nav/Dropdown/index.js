@@ -9,6 +9,9 @@ const Dropdown = () => {
       <NavLink to='/achievements' exact={true} activeClassName={styles.active} className={styles.navLink}>
         <div className={styles.linkDiv}>Achievement Log</div>
       </NavLink>
+      <NavLink to='/habits' exact={true} activeClassName={styles.active} className={styles.navLink}>
+        <div className={styles.linkDiv}>Habit Log</div>
+      </NavLink>
       <LogoutButton />
     </div>
   )

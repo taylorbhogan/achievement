@@ -1,7 +1,7 @@
 :root{
   /* -------------COLORS------------- */
   /* --backgroundPrimary: #232323; */
-  --backgroundPrimary: #36454F;
+  --backgroundPrimary: rgb(42	43 42);
   --backgroundSecondary: #191919;
   --backgroundTertiary: #222222;
   --textPrimary: #aaaaaa;
@@ -10,6 +10,8 @@
   --gray2: #222222;
   --gray3: #333333;
   --gray4: #444444;
+  --red1: #743e3e;
+  --green1: #396e42;
 
 
   /* -------------MENUS------------- */
@@ -17,7 +19,7 @@
   --borderRadiusMenu: 10px;
 
   /* -------------CONTAINERS------------- */
-  --containerBoxShadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
+  --containerBoxShadow: 0px 1px 2px 2px rgba(0,0,0,0.2);
   --containerWidth: 60%;
 
 
@@ -31,4 +33,16 @@
   /* -------------FORMS------------- */
   --formWidth: 25%;
 
+
+  /* -------------INPUTS------------- */
+  --inputWidth: 100%;
+  --inputLineHeight: 2rem;
+  --inputBoxSizing: border-box;
+  --inputPadding: .4rem .4rem;
+  --inputBoxShadow: none;
+  --inputBorder: none;
+
+
+  /* -------------BUTTONS------------- */
+  --closeHeight: 24px;
 }

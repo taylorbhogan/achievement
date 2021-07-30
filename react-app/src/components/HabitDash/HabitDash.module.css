@@ -7,13 +7,13 @@
 }
 
 .makeMeRight{
-  padding-left: 1200px;
+  padding-left: 70%;
 }
 
 .dashCardContainer{
   width: var(--containerWidth);
   box-shadow: var(--containerBoxShadow);
-  background-color: var(--backgroundSecondary);
+  /* background-color: var(--backgroundSecondary); */
 
 }
 
