@@ -1,6 +1,6 @@
 import styles from './InputField.module.css'
 
-const InputField = ({ name, type, placeholder, value, onChange }) => {
+const InputField = ({ name, type, placeholder, value, onChange, setFunction }) => {
   if (type === 'textarea'){
     return (
         <div>
@@ -25,6 +25,7 @@ const InputField = ({ name, type, placeholder, value, onChange }) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onFocus={setFunction}
         className={styles.textInput}
       />
     </div>

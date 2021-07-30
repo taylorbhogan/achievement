@@ -24,10 +24,8 @@ function CreateHabitForm({ setShowNewHabitForm }) {
       blurb,
       stellar_blurb: stellarBlurb,
       target: +target,
+      color_id: 1
     }
-    console.log('------habit', habit);
-
-
 
     const dbHabit = await dispatch(createHabit(habit))
     if (dbHabit.errors) {
@@ -88,7 +86,7 @@ function CreateHabitForm({ setShowNewHabitForm }) {
               onChange={(e) => setTarget(e.target.value)}
             />
           </div>
-          <ActionButton />
+          <ActionButton buttonText={'Add a habit'}/>
         </form>
       </div>
     </div>

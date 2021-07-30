@@ -1,9 +1,12 @@
-function ActionButton() {
+import styles from './ActionButton.module.css'
+
+function ActionButton({ buttonText }) {
   return (
     <div>
       <button
+        className={styles.button}
         type='submit'
-        >Add Habit</button>
+        >{buttonText}</button>
     </div>
   )
 }
