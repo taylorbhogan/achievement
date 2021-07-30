@@ -55,9 +55,9 @@ const HabitLogCardDetailsEdit = ({
       </div>
       <div className={styles.bottom}>
         <div className={styles.buttonContainer}>
-          <button onClick={() => setIsEditable(false)}></button>
+          <button onClick={() => setIsEditable(false)}>Cancel</button>
           <ActionButton buttonText={'save changes'}/>
-          <EditHabitButton habit={habit}/>
+          {/* <EditHabitButton habit={habit}/> */}
           <DeleteButton handleDelete={handleDelete}/>
         </div>
       </div>

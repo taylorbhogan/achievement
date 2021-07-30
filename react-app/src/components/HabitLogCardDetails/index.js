@@ -22,8 +22,8 @@ const HabitLogCardDetails = ({ habit, handleDelete, setIsEditable }) => {
       </div>
       <div className={styles.bottom}>
         <div className={styles.buttonContainer}>
-          <button onClick={() => setIsEditable(true)}></button>
-          <EditHabitButton habit={habit}/>
+          {/* <button onClick={() => setIsEditable(true)}></button> */}
+          <EditHabitButton habit={habit} setIsEditable={setIsEditable}/>
           <DeleteButton handleDelete={handleDelete}/>
         </div>
       </div>

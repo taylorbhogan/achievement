@@ -69,16 +69,17 @@ const HabitLogCard = ({ habit, isLoaded }) => {
       <form onSubmit={handleSubmit}>
       <FormErrors errors={errors} />
         <div className={styles.bar}>
-          {!isEditable && <div>{habit.name}</div>}
-          {isEditable &&
-            <InputField
-            name='name'
-            type='text'
-            placeholder='Pushups'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          }
+          <div className={styles.nameWrapper}>
+            {!isEditable && <div>{habit.name}</div>}
+            {isEditable &&
+              <InputField
+              name='name'
+              type='text'
+              placeholder='Pushups'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />}
+          </div>
           <div className={styles.cubeContainer}>
             <HabitCube />
             <HabitCube />

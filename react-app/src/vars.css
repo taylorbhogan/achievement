@@ -31,4 +31,12 @@
   /* -------------FORMS------------- */
   --formWidth: 25%;
 
+
+  /* -------------INPUTS------------- */
+  --inputWidth: 100%;
+  --inputLineHeight: 2rem;
+  --inputBoxSizing: border-box;
+  --inputPadding: .4rem .4rem;
+  --inputBoxShadow: none;
+  --inputBorder: none;
 }

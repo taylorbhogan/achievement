@@ -11,3 +11,7 @@
   align-items: center;
   width: var(--cubeContainerWidth);
 }
+
+.nameWrapper{
+  padding-right: 30px;
+}

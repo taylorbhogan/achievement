@@ -1,15 +1,17 @@
 .textInput{
-  border: none;
-  box-shadow: none;
-  line-height: 2rem;
-  padding: .4rem .4rem;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 1.3rem;
+  border: var(--inputBorder);
+  box-shadow: var(--inputBoxShadow);
+  line-height: var(--inputLineHeight);
+  padding: var(--inputPadding);
+  width: var(--inputWidth);
+  box-sizing: var(--inputBoxSizing);
+  /* margin-top: 1.3rem; */
+  background-color: var(--gray3);
 }
 
 .textAreaInput{
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 1.3rem;
+  width: var(--inputWidth);
+  box-sizing: var(--inputBoxSizing);
+  background-color: var(--gray3);
+  /* margin-top: 1.3rem; */
 }
