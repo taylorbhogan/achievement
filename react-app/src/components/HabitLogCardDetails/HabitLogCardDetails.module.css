@@ -1,0 +1,37 @@
+@import '../../vars.css';
+
+.container{
+  background-color: var(--backgroundTertiary);
+  padding: 30px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+}
+
+.center{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.buttonContainer{
+  display: flex;
+}

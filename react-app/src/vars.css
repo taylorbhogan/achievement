@@ -1,7 +1,7 @@
 :root{
   /* -------------COLORS------------- */
   /* --backgroundPrimary: #232323; */
-  --backgroundPrimary: #36454F;
+  --backgroundPrimary: rgb(42	43 42);
   --backgroundSecondary: #191919;
   --backgroundTertiary: #222222;
   --textPrimary: #aaaaaa;
@@ -17,7 +17,7 @@
   --borderRadiusMenu: 10px;
 
   /* -------------CONTAINERS------------- */
-  --containerBoxShadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
+  --containerBoxShadow: 0px 1px 2px 2px rgba(0,0,0,0.2);
   --containerWidth: 60%;
 
 
