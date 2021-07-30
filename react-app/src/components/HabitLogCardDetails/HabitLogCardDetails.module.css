@@ -17,6 +17,7 @@
 
 .close{
   height: var(--closeHeight);
+  margin-bottom: 5px;
 }
 
 .info{
@@ -49,6 +50,11 @@
   flex-direction: column;
   justify-content: space-between;
   width: 20%;
+}
+
+.contents{
+  /* padding: var(--inputPadding); */
+  line-height: var(--inputLineHeight);
 }
 
 .buttonContainer{

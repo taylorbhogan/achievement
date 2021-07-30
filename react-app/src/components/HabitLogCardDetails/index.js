@@ -11,15 +11,15 @@ const HabitLogCardDetails = ({ habit, handleDelete, setIsEditable }) => {
         <div className={styles.info}>
           <div className={styles.left}>
             <div className={styles.header}>Achievement:</div>
-            <div>{habit.blurb}</div>
+            <div className={styles.contents}>{habit.blurb}</div>
           </div>
           <div className={styles.center}>
             <div className={styles.header}>Stellar Achievement:</div>
-            <div>{habit.stellar_blurb}</div>
+            <div className={styles.contents}>{habit.stellar_blurb}</div>
           </div>
           <div className={styles.right}>
             <div className={styles.header}>Weekly Target</div>
-            <div>{habit.target}</div>
+            <div className={styles.contents}>{habit.target}</div>
           </div>
         </div>
       </div>

@@ -8,9 +8,12 @@
   /* margin-top: 1.3rem; */
   background-color: var(--gray3);
   color: var(--textPrimary);
+  font-size: 1rem;
 }
 
 .textAreaInput{
+  font-size: 1rem;
+  padding: var(--inputPadding);
   border: var(--inputBorder);
   color: var(--textPrimary);
   width: var(--inputWidth);
