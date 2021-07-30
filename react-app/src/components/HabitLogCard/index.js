@@ -105,7 +105,7 @@ const HabitLogCard = ({ habit, isLoaded }) => {
           setStellarBlurb={setStellarBlurb}
           target={target}
           setTarget={setTarget}/>}
-        {isEditable && <ActionButton buttonText={'save'} />}
+        {/* {isEditable && <ActionButton buttonText={'save'} />} */}
       </form>
     </div>
   )

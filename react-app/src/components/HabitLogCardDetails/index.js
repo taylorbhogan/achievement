@@ -1,11 +1,12 @@
 import EditHabitButton from '../EditHabitButton'
-import DeleteButton from '../parts/DeleteButton'
+// import DeleteButton from '../parts/DeleteButton'
 import styles from './HabitLogCardDetails.module.css'
 
 
 const HabitLogCardDetails = ({ habit, handleDelete, setIsEditable }) => {
   return (
     <div className={styles.container}>
+      <div className={styles.close}></div>
       <div className={styles.top}>
         <div className={styles.left}>
           <div>Achievement:</div>
@@ -23,7 +24,11 @@ const HabitLogCardDetails = ({ habit, handleDelete, setIsEditable }) => {
       <div className={styles.bottom}>
         <div className={styles.buttonContainer}>
           {/* <button onClick={() => setIsEditable(true)}></button> */}
-          <EditHabitButton habit={habit} setIsEditable={setIsEditable}/>
+          <EditHabitButton
+            // habit={habit}
+            setIsEditable={setIsEditable}
+            // handleDelete={handleDelete}
+            />
           {/* <DeleteButton handleDelete={handleDelete}/> */}
         </div>
       </div>

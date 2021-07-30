@@ -41,4 +41,8 @@
   --inputPadding: .4rem .4rem;
   --inputBoxShadow: none;
   --inputBorder: none;
+
+
+  /* -------------BUTTONS------------- */
+  --closeHeight: 20px;
 }
