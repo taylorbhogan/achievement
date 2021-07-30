@@ -3,7 +3,7 @@ import DeleteButton from '../parts/DeleteButton'
 import styles from './HabitLogCardDetails.module.css'
 
 
-const HabitLogCardDetails = ({ habit, handleDelete }) => {
+const HabitLogCardDetails = ({ habit, handleDelete, setIsEditable }) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -22,6 +22,7 @@ const HabitLogCardDetails = ({ habit, handleDelete }) => {
       </div>
       <div className={styles.bottom}>
         <div className={styles.buttonContainer}>
+          <button onClick={() => setIsEditable(true)}></button>
           <EditHabitButton habit={habit}/>
           <DeleteButton handleDelete={handleDelete}/>
         </div>
