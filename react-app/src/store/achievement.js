@@ -1,14 +1,15 @@
-const SET_ACHIEVEMENT = 'habits/SET_ACHIEVEMENT'
+const SET_ACHIEVEMENT = 'achievements/SET_ACHIEVEMENT'
 
 
 
-const setAchievement = (habit) => ({
+const setAchievement = (achievement) => ({
   type: SET_ACHIEVEMENT,
-  habit
+  achievement
 })
 
 export const createAchievement = (achievement) => async (dispatch) => {
   try {
+    console.log('----------store achievement---------',achievement);
     const res = await fetch('api/achievements',{
       method: 'POST',
       headers: {
@@ -16,6 +17,7 @@ export const createAchievement = (achievement) => async (dispatch) => {
       },
       body: JSON.stringify(achievement)
     });
+    console.log(res);
     if (!res.ok) throw res;
     const data = await res.json();
     if (!data.errors) {
@@ -34,7 +36,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_ACHIEVEMENT:
-      return { ...state, achievements: { ...state.achievements, [action.achievement.id]: action.achievement}}
+      return {...state, achievements: { ...state.achievements, [action.achievement.id]: action.achievement}}
     default:
       return state;
   }

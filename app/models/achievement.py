@@ -16,7 +16,7 @@ class Achievement(db.Model):
     def to_dict(self):
         return {
         'id': self.id,
-        'habit': self.habit,
+        # 'habit': self.habit,
         'habit_id': self.habit_id,
         'is_stellar': self.is_stellar,
         'note': self.note,

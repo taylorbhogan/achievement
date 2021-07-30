@@ -14,7 +14,7 @@ const CreateAchievementButton = ({habit, setErrors}) => {
       habit_id: habit.id,
       is_stellar: false,
     }
-
+    console.log('----------component achievement---------',achievement);
     const dbAchievement = await dispatch(createAchievement(achievement))
     if (dbAchievement.errors) {
       setErrors(dbAchievement.errors)
@@ -25,11 +25,11 @@ const CreateAchievementButton = ({habit, setErrors}) => {
   }
 
   return (
-    <div className={styles.cubeWrapper}>
       <form onSubmit={handleSubmit}>
+    <div className={styles.cubeWrapper}>
         <button className={styles.achieveCube}></button>
-      </form>
     </div>
+      </form>
   )
 }
 
