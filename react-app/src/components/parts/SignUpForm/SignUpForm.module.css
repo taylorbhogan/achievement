@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
 }
-
 .form{
   margin-top: 150px;
   padding: 60px;
@@ -22,19 +21,6 @@
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
-}
-
-.demoButton{
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--textPrimary);
-  font-size: 1rem;
-  padding: 0;
-  text-decoration: underline;
-}
-.demoButton:hover{
-  color: var(--gray3);
 }
 
 .lastLine{

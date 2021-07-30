@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 import InputField from '../InputField';
+import ActionButton from '../ActionButton';
 import styles from './LoginForm.module.css'
 
 const LoginForm = () => {
@@ -19,14 +20,14 @@ const LoginForm = () => {
       setErrors(data);
     }
   };
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login('taylorb.hogan@gmail.com', 'password'));
+    if (data) {
+      setErrors(data);
+    }
   };
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
 
   if (user) {
     return <Redirect to='/' />;
@@ -39,36 +40,37 @@ const LoginForm = () => {
         className={styles.form}
         >
         <div>Welcome back.</div>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
-        <div>
-          <InputField
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-          />
-        </div>
-        <div>
-          <InputField
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-          />
-        </div>
+        {errors.length > 0 && <div>Please try again. We didn't find an account with that info.</div>}
+        <InputField
+          name='email'
+          type='text'
+          placeholder='Email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <InputField
+          name='password'
+          type='password'
+          placeholder='Password'
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <div className={styles.buttonDiv}>
-          <button
-            className={styles.button}
-            type='submit'>Login</button>
+          <ActionButton buttonText={'Login'}/>
+        </div>
+        <div className={styles.linkContainer}>
+          <div>
+            <span>Or </span>
+            <span><Link to='/sign-up'>sign up</Link></span>
+            <span> if you're new.</span>
+          </div>
+          <div className={styles.lastLine}>
+            <span>Or </span>
+            <button
+              onClick={demoLogin}
+              className={styles.demoButton}>try Achievement as a demo user.</button></div>
         </div>
       </form>
-
     </div>
   );
 };

@@ -1,93 +1,103 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
+import InputField from '../InputField';
+import FormErrors from '../FormErrors';
+import ActionButton from '../ActionButton';
+
+import styles from './SignUpForm.module.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [openConfirmPasswordInput, setOpenConfirmPasswordInput] = useState(false);
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
+    if (password === repeatPassword === ''){
+      setErrors(['password_match: Enter a password.'])
+    } else if (password === repeatPassword) {
+        const data = await dispatch(signUp(firstName, lastName, email, password));
+        if (data) {
+          setErrors(data)
+        }
+      } else {
+        setErrors(['password_match: Make sure your passwords match.'])
       }
-    }
-  };
-
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
   };
 
   if (user) {
     return <Redirect to='/' />;
   }
 
+  const openPasswordConfirm = () => {
+    setOpenConfirmPasswordInput(true)
+  }
+
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label>User Name</label>
-        <input
+    <div className={styles.container}>
+      <form
+        className={styles.form}
+        onSubmit={onSignUp}
+      >
+        <FormErrors errors={errors} />
+        <InputField
           type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
+          placeholder='first name'
+          name='firstName'
+          onChange={(e) => setFirstName(e.target.value)}
+          value={firstName}
+        />
+        <InputField
+          type='text'
+          placeholder='last name'
+          name='lastName'
+          onChange={(e) => setLastName(e.target.value)}
+          value={lastName}
+        />
+        <InputField
           type='text'
           name='email'
-          onChange={updateEmail}
+          placeholder='email'
+          onChange={(e) => setEmail(e.target.value)}
           value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
+        />
+        <InputField
           type='password'
           name='password'
-          onChange={updatePassword}
+          placeholder='password'
+          onChange={(e) => setPassword(e.target.value)}
+          setFunction={openPasswordConfirm}
           value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
+          />
+        {openConfirmPasswordInput && <InputField
           type='password'
           name='repeat_password'
-          onChange={updateRepeatPassword}
+          placeholder='repeat password'
+          onChange={(e) => setRepeatPassword(e.target.value)}
           value={repeatPassword}
           required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+        />}
+        <div className={styles.buttonDiv}>
+          <ActionButton buttonText={'Sign Up'}/>
+        </div>
+        <div className={styles.linkContainer}>
+          <div>Already have an account?</div>
+          <div className={styles.lastLine}>
+            <span><Link to='/login' exact={true} activeClassName='active'>Log in</Link></span>
+            <span> instead.</span>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 

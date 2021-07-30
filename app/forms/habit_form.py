@@ -8,3 +8,4 @@ class HabitForm(FlaskForm):
     blurb = StringField('blurb')
     stellar_blurb = StringField('stellar_blurb')
     target = StringField('target', validators=[DataRequired()])
+    color_id = StringField('color_id')

@@ -2,13 +2,14 @@
   border: none;
   box-shadow: none;
   line-height: 2rem;
-  padding: .2rem .4rem;
+  padding: .4rem .4rem;
   width: 100%;
-  margin-top: 1rem;
+  box-sizing: border-box;
+  margin-top: 1.3rem;
 }
 
 .textAreaInput{
   width: 100%;
-  margin-top: 1rem;
-
+  box-sizing: border-box;
+  margin-top: 1.3rem;
 }

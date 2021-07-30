@@ -88,7 +88,7 @@ function EditHabitForm({ habit, setShowEditHabitForm }) {
             onChange={(e) => setTarget(e.target.value)}
           />
         </div>
-        <ActionButton />
+        <ActionButton buttonText={'save changes'}/>
       </form>
     </div>
   )
