@@ -25,7 +25,7 @@ const HabitLogCard = ({ habit, isLoaded }) => {
   const [isEditable, setIsEditable] = useState(false)
   const [name, setName] = useState(habit.name)
   const [blurb, setBlurb] = useState(habit.blurb)
-  const [stellarBlurb, setStellarBlurb] = useState(habit.blurb)
+  const [stellarBlurb, setStellarBlurb] = useState(habit.stellar_blurb)
   const [target, setTarget] = useState(habit.target)
   const [errors, setErrors] = useState([])
 
@@ -45,9 +45,6 @@ const HabitLogCard = ({ habit, isLoaded }) => {
       target: +target,
       color_id: 1
     }
-    console.log('------updatedHabit', updatedHabit);
-
-
 
     const dbHabit = await dispatch(editHabit(updatedHabit))
     if (dbHabit.errors) {
