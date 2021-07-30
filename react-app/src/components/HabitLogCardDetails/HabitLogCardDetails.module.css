@@ -2,22 +2,33 @@
 
 .container{
   background-color: var(--backgroundTertiary);
-  padding: 30px;
+  padding: 6px 30px 30px 30px;
   min-height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+.top{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .close{
   height: var(--closeHeight);
 }
 
-.top{
+.info{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
+.header{
+  margin-bottom: 10px;
+}
+
 .bottom{
   display: flex;
   flex-direction: row;

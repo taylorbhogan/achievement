@@ -6,19 +6,21 @@ import styles from './HabitLogCardDetails.module.css'
 const HabitLogCardDetails = ({ habit, handleDelete, setIsEditable }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.close}></div>
       <div className={styles.top}>
-        <div className={styles.left}>
-          <div>Achievement:</div>
-          <div>{habit.blurb}</div>
-        </div>
-        <div className={styles.center}>
-          <div>Stellar Achievement:</div>
-          <div>{habit.stellar_blurb}</div>
-        </div>
-        <div className={styles.right}>
-          <div>Weekly Target</div>
-          <div>{habit.target}</div>
+        <div className={styles.close}></div>
+        <div className={styles.info}>
+          <div className={styles.left}>
+            <div className={styles.header}>Achievement:</div>
+            <div>{habit.blurb}</div>
+          </div>
+          <div className={styles.center}>
+            <div className={styles.header}>Stellar Achievement:</div>
+            <div>{habit.stellar_blurb}</div>
+          </div>
+          <div className={styles.right}>
+            <div className={styles.header}>Weekly Target</div>
+            <div>{habit.target}</div>
+          </div>
         </div>
       </div>
       <div className={styles.bottom}>

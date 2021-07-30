@@ -4,7 +4,7 @@ import styles from './CloseButton.module.css'
 
 function CloseButton() {
   return (
-    <div>
+    <div className={styles.div}>
       <button className={styles.button}>
         <IconContext.Provider value={{ className: "react-icons" }}>
           <FaRegWindowClose />
