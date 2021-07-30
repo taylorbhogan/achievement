@@ -7,9 +7,12 @@
   box-sizing: var(--inputBoxSizing);
   /* margin-top: 1.3rem; */
   background-color: var(--gray3);
+  color: var(--textPrimary);
 }
 
 .textAreaInput{
+  border: var(--inputBorder);
+  color: var(--textPrimary);
   width: var(--inputWidth);
   box-sizing: var(--inputBoxSizing);
   background-color: var(--gray3);

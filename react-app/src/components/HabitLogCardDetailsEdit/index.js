@@ -3,6 +3,7 @@ import EditHabitButton from '../EditHabitButton'
 import DeleteButton from '../parts/DeleteButton'
 import InputField from '../parts/InputField'
 import ActionButton from '../parts/ActionButton'
+import CloseButton from '../parts/CloseButton'
 
 import styles from './HabitLogCardDetailsEdit.module.css'
 
@@ -23,9 +24,12 @@ const HabitLogCardDetailsEdit = ({
 
   return (
     <div className={styles.container}>
+      <div className={styles.close}>
+        <CloseButton onClick={() => setIsEditable(false)}/>
+      </div>
       <div className={styles.top}>
         <div className={styles.left}>
-          <div>Big Achievement:</div>
+          <div>Achievement:</div>
           <InputField
             name='blurb'
             type='textarea'
@@ -55,10 +59,10 @@ const HabitLogCardDetailsEdit = ({
       </div>
       <div className={styles.bottom}>
         <div className={styles.buttonContainer}>
-          <button onClick={() => setIsEditable(false)}>Cancel</button>
-          <ActionButton buttonText={'save changes'}/>
+          {/* <button onClick={() => setIsEditable(false)}>Cancel</button> */}
           {/* <EditHabitButton habit={habit}/> */}
           <DeleteButton handleDelete={handleDelete}/>
+          <ActionButton buttonText={'save changes'}/>
         </div>
       </div>
     </div>

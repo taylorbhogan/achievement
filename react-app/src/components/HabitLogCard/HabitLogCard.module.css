@@ -15,3 +15,10 @@
 .nameWrapper{
   padding-right: 30px;
 }
+.name{
+  line-height: var(--inputLineHeight);
+  padding: var(--inputPadding);
+  width: var(--inputWidth);
+  box-sizing: var(--inputBoxSizing);
+  /* margin-top: 1.3rem; */
+}

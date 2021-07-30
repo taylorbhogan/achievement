@@ -70,7 +70,7 @@ const HabitLogCard = ({ habit, isLoaded }) => {
       <FormErrors errors={errors} />
         <div className={styles.bar}>
           <div className={styles.nameWrapper}>
-            {!isEditable && <div>{habit.name}</div>}
+            {!isEditable && <div className={styles.name}>{habit.name}</div>}
             {isEditable &&
               <InputField
               name='name'
