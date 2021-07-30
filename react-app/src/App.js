@@ -10,6 +10,7 @@ import User from './components/User';
 import Home from './components/Home';
 import Reflect from './components/Reflect';
 import AchievementLog from './components/AchievementLog'
+import DeveloperLinks from './components/parts/DeveloperLinks';
 import { authenticate } from './store/session';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
+      <DeveloperLinks />
       <Switch>
         <ProtectedRoute path='/' exact={true} >
           <Home />

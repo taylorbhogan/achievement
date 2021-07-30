@@ -1,0 +1,13 @@
+.container{
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  padding: 20px;
+  background-color: var(--gray3);
+}
+
+.openContainer{
+  padding: 10px 20px;
+  bottom: 60px;
+  right: 40px;
+}
