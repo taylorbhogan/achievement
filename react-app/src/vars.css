@@ -32,6 +32,7 @@
 
   /* -------------FORMS------------- */
   --formWidth: 25%;
+  --formMinWidth: 400px;
 
 
   /* -------------INPUTS------------- */
@@ -41,6 +42,7 @@
   --inputPadding: .4rem .4rem;
   --inputBoxShadow: none;
   --inputBorder: none;
+  --inputTopMargin: 20px;
 
 
   /* -------------BUTTONS------------- */

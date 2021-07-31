@@ -41,20 +41,24 @@ const LoginForm = () => {
         >
         <div>Welcome back.</div>
         {errors.length > 0 && <div>Please try again. We didn't find an account with that info.</div>}
-        <InputField
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <InputField
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className={styles.input}>
+          <InputField
+            name='email'
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className={styles.input}>
+          <InputField
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <div className={styles.buttonDiv}>
           <ActionButton buttonText={'Login'}/>
         </div>

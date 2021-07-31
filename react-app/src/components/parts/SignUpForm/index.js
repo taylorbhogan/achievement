@@ -49,35 +49,43 @@ const SignUpForm = () => {
         onSubmit={onSignUp}
       >
         <FormErrors errors={errors} />
-        <InputField
-          type='text'
-          placeholder='first name'
-          name='firstName'
-          onChange={(e) => setFirstName(e.target.value)}
-          value={firstName}
-        />
-        <InputField
-          type='text'
-          placeholder='last name'
-          name='lastName'
-          onChange={(e) => setLastName(e.target.value)}
-          value={lastName}
-        />
-        <InputField
-          type='text'
-          name='email'
-          placeholder='email'
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <InputField
-          type='password'
-          name='password'
-          placeholder='password'
-          onChange={(e) => setPassword(e.target.value)}
-          setFunction={openPasswordConfirm}
-          value={password}
+        <div className={styles.input}>
+          <InputField
+            type='text'
+            placeholder='first name'
+            name='firstName'
+            onChange={(e) => setFirstName(e.target.value)}
+            value={firstName}
           />
+        </div>
+        <div className={styles.input}>
+          <InputField
+            type='text'
+            placeholder='last name'
+            name='lastName'
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
+          />
+        </div>
+        <div className={styles.input}>
+          <InputField
+            type='text'
+            name='email'
+            placeholder='email'
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+        </div>
+        <div className={styles.input}>
+          <InputField
+            type='password'
+            name='password'
+            placeholder='password'
+            onChange={(e) => setPassword(e.target.value)}
+            setFunction={openPasswordConfirm}
+            value={password}
+            />
+        </div>
         {openConfirmPasswordInput && <InputField
           type='password'
           name='repeat_password'
