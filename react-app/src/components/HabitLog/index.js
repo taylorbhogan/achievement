@@ -37,12 +37,12 @@ const HabitLog = () => {
         <CreateHabitButton />
       </div>
       <div className={styles.habitContainer}>
-      {habits.map(habit => (
-          <HabitLogCard
-            key={habit.id}
+      {habits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => {
+          return <HabitLogCard
+            key={idx}
             habit={habit}
             isLoaded={isLoaded}
-          /> ))}
+          /> })}
       </div>
     </div>
   )

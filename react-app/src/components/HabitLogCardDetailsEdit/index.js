@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import EditHabitButton from '../EditHabitButton'
 import DeleteButton from '../parts/DeleteButton'
 import InputField from '../parts/InputField'
 import ActionButton from '../parts/ActionButton'

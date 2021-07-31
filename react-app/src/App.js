@@ -9,7 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Home from './components/Home';
 import Reflect from './components/Reflect';
-import AchievementLog from './components/AchievementLog'
+import AchievementLog from './components/AchievementLogComponents/AchievementLog'
 import HabitLog from './components/HabitLog';
 import DeveloperLinks from './components/parts/DeveloperLinks';
 import { authenticate } from './store/session';

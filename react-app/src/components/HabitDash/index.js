@@ -58,9 +58,9 @@ function HabitDash() {
             <div className={styles.cubeContainerHeader}>{getToday(0)}</div>
           </div>
         </div>
-        {habits.map(habit => (
+        {habits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => (
           <HabitDashCard
-            key={habit.id}
+            key={idx}
             habit={habit}
             isLoaded={isLoaded}
           /> ))}

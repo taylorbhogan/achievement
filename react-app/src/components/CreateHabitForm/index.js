@@ -5,6 +5,8 @@ import FormErrors from '../parts/FormErrors'
 import InputField from '../parts/InputField'
 import styles from './CreateHabitForm.module.css'
 import { createHabit } from '../../store/habit'
+import CloseButton from '../parts/CloseButton'
+
 
 function CreateHabitForm({ setShowNewHabitForm }) {
   const [name, setName] = useState('')
@@ -38,55 +40,60 @@ function CreateHabitForm({ setShowNewHabitForm }) {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <div>Hello from CreateHabitForm</div>
-        <button
-          onClick={() => setShowNewHabitForm(false)}
-        >Close</button>
         <form
           onSubmit={handleSubmit}
         >
-          <FormErrors errors={errors} />
-          <div>
-            <div>Habit name</div>
-            <InputField
-              name='name'
-              type='text'
-              placeholder='Pushups'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+          <div className={styles.top}>
+            <div onClick={() => setShowNewHabitForm(false)} className={styles.close}><CloseButton /></div>
+            <FormErrors errors={errors} />
+            <div className={styles.name}>
+              <InputField
+                name='name'
+                type='text'
+                placeholder='Pushups'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className={styles.info}>
+              <div className={styles.left}>
+                <div className={styles.header}>What does achievement look like?</div>
+
+                <InputField
+                  name='blurb'
+                  type='textarea'
+                  placeholder='15x 3/day'
+                  value={blurb}
+                  onChange={(e) => setBlurb(e.target.value)}
+                />
+              </div>
+              <div className={styles.center}>
+                <div className={styles.header}>What does stellar achievement look like?</div>
+                <InputField
+                  name='stellar_blurb'
+                  type='textarea'
+                  placeholder='100 in one day'
+                  value={stellarBlurb}
+                  onChange={(e) => setStellarBlurb(e.target.value)}
+                />
+              </div>
+              <div className={styles.right}>
+                <div className={styles.header}>Weekly Target:</div>
+                <div className={styles.target}>
+                  <InputField
+                    name='target'
+                    type='number'
+                    placeholder='7'
+                    value={target}
+                    onChange={(e) => setTarget(e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <div>What does achievement look like?</div>
-            <InputField
-              name='blurb'
-              type='textarea'
-              placeholder='15x 3/day'
-              value={blurb}
-              onChange={(e) => setBlurb(e.target.value)}
-            />
+          <div className={styles.bottom}>
+            <ActionButton buttonText={'save changes'} />
           </div>
-          <div>
-            <div>What does stellar achievement look like?</div>
-            <InputField
-              name='stellar_blurb'
-              type='textarea'
-              placeholder='100 in one day'
-              value={stellarBlurb}
-              onChange={(e) => setStellarBlurb(e.target.value)}
-            />
-          </div>
-          <div>
-            <div>How many days per week do you want to achieve this goal?</div>
-            <InputField
-              name='target'
-              type='number'
-              placeholder='7'
-              value={target}
-              onChange={(e) => setTarget(e.target.value)}
-            />
-          </div>
-          <ActionButton buttonText={'Add a habit'}/>
         </form>
       </div>
     </div>

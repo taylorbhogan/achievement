@@ -1,13 +1,12 @@
-import EditHabitButton from '../EditHabitButton'
-// import DeleteButton from '../parts/DeleteButton'
+import EditButton from '../parts/EditButton'
 import styles from './HabitLogCardDetails.module.css'
 
 
-const HabitLogCardDetails = ({ habit, handleDelete, setIsEditable }) => {
+const HabitLogCardDetails = ({ habit, setIsEditable }) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <div className={styles.close}></div>
+        <div className={styles.close} />
         <div className={styles.info}>
           <div className={styles.left}>
             <div className={styles.header}>Achievement:</div>
@@ -25,13 +24,9 @@ const HabitLogCardDetails = ({ habit, handleDelete, setIsEditable }) => {
       </div>
       <div className={styles.bottom}>
         <div className={styles.buttonContainer}>
-          {/* <button onClick={() => setIsEditable(true)}></button> */}
-          <EditHabitButton
-            // habit={habit}
+          <EditButton
             setIsEditable={setIsEditable}
-            // handleDelete={handleDelete}
-            />
-          {/* <DeleteButton handleDelete={handleDelete}/> */}
+          />
         </div>
       </div>
     </div>

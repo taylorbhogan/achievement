@@ -12,7 +12,7 @@
 
 .dashCardContainer{
   width: var(--containerWidth);
-  box-shadow: var(--containerBoxShadow);
+  /* box-shadow: var(--containerBoxShadow); */
   /* background-color: var(--backgroundSecondary); */
 
 }
