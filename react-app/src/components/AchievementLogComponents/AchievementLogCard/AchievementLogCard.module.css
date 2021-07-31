@@ -18,6 +18,12 @@
   background-color: brown;
 }
 
+.close{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+}
 
 .bar{
   display: flex;

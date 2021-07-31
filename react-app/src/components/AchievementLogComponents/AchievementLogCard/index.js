@@ -12,6 +12,7 @@ import EditButton from "../../parts/EditButton"
 import { deleteHabit } from "../../../store/habit"
 import { editHabit } from "../../../store/habit"
 import AchievementEdit from "../AchievementEdit"
+import CloseButton from "../../parts/CloseButton"
 
 import styles from './AchievementLogCard.module.css'
 
@@ -67,6 +68,10 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
     return formattedDate
   }
 
+  const closeForm = () => {
+    setIsEditable(false)
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.nameWrapper}>{achievement.habit_name}</div>
@@ -78,7 +83,11 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
       <div className={styles.buttonDiv}>
         <EditButton setIsEditable={setIsEditable}/>
       </div>
-      {(isEditable && <div className={styles.edit}><AchievementEdit /></div>)}
+      {(isEditable && <div className={styles.edit}>
+        <CloseButton closeForm={closeForm}/>
+        <AchievementEdit
+          closeForm={closeForm}
+        /></div>)}
     </div>
   )
 }

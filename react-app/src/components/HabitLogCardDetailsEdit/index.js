@@ -9,7 +9,7 @@ import styles from './HabitLogCardDetailsEdit.module.css'
 const HabitLogCardDetailsEdit = ({
   habit,
   handleDelete,
-  setIsEditable,
+  closeForm,
   blurb,
   setBlurb,
   stellarBlurb,
@@ -20,7 +20,7 @@ const HabitLogCardDetailsEdit = ({
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <div className={styles.close}><CloseButton onClick={() => setIsEditable(false)}/></div>
+        <div className={styles.close}><CloseButton closeForm={closeForm}/></div>
         <div className={styles.info}>
           <div className={styles.left}>
             <div className={styles.header}>Achievement:</div>

@@ -30,6 +30,10 @@ const HabitLogCard = ({ habit, isLoaded }) => {
     dispatch(deleteHabit(habit.id))
   }
 
+  const closeForm = () => {
+    setIsEditable(false)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const updatedHabit = {
@@ -91,7 +95,7 @@ const HabitLogCard = ({ habit, isLoaded }) => {
         {isEditable && <HabitLogCardDetailsEdit
           handleDelete={handleDelete}
           habit={habit}
-          setIsEditable={setIsEditable}
+          closeForm={closeForm}
           blurb={blurb}
           setBlurb={setBlurb}
           stellarBlurb={stellarBlurb}
