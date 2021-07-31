@@ -1,4 +1,4 @@
-import EditHabitButton from '../EditHabitButton'
+import EditButton from '../parts/EditButton'
 import styles from './HabitLogCardDetails.module.css'
 
 
@@ -24,7 +24,7 @@ const HabitLogCardDetails = ({ habit, setIsEditable }) => {
       </div>
       <div className={styles.bottom}>
         <div className={styles.buttonContainer}>
-          <EditHabitButton
+          <EditButton
             setIsEditable={setIsEditable}
           />
         </div>

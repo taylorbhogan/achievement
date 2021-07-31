@@ -1,9 +1,21 @@
 from flask import Blueprint, request
 from app.forms import AchievementForm
-from app.models import db, Achievement
+from app.models import db, Achievement, Habit
 from app.helpers import validation_errors_to_error_messages
 
 achievement_routes = Blueprint('achievements', __name__)
+
+# @achievement_routes.route('users/<int:id>')
+# def get_achievements(id):
+#     """
+#     Retrieves all of a user's achievements
+#     """
+#     habits = Habit.query.filter(Habit.user_id == id).all()
+#     collector = []
+#     for habit in habits:
+#         achievements = Achievement.query.filter(Achievement.habit_id == habit.id).all()
+
+#         return {achievement.id: achievement.to_dict() for achievement in achievements}
 
 @achievement_routes.route('', methods=['POST'])
 def create_achievement():

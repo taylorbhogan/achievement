@@ -1,9 +1,9 @@
 import { FaEdit } from 'react-icons/fa'
 import { IconContext } from "react-icons";
 
-import styles from './EditHabitButton.module.css'
+import styles from './EditButton.module.css'
 
-function EditHabitButton({setIsEditable}) {
+function EditButton({setIsEditable}) {
 
   return (
     <div>
@@ -19,4 +19,4 @@ function EditHabitButton({setIsEditable}) {
   )
 }
 
-export default EditHabitButton
+export default EditButton
