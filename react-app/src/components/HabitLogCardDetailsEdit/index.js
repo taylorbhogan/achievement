@@ -1,4 +1,4 @@
-import DeleteButton from '../parts/DeleteButton'
+import DeleteConfirmationButton from '../parts/DeleteConfirmationButton'
 import InputField from '../parts/InputField'
 import ActionButton from '../parts/ActionButton'
 import CloseButton from '../parts/CloseButton'
@@ -58,7 +58,7 @@ const HabitLogCardDetailsEdit = ({
       </div>
       <div className={styles.bottom}>
         <div className={styles.buttonContainer}>
-          <DeleteButton handleDelete={handleDelete}/>
+          <DeleteConfirmationButton handleDelete={handleDelete}/>
           <ActionButton buttonText={'save changes'}/>
         </div>
       </div>

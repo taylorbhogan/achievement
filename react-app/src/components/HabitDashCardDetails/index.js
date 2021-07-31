@@ -1,5 +1,5 @@
 import EditButton from '../parts/EditButton'
-import DeleteButton from '../parts/DeleteButton'
+import DeleteConfirmationButton from '../parts/DeleteConfirmationButton'
 import styles from './HabitDashCardDetails.module.css'
 
 
@@ -19,7 +19,7 @@ const HabitDashCardDetails = ({ habit, handleDelete }) => {
         <div>Things</div>
         <div className={styles.buttonContainer}>
           <EditButton habit={habit}/>
-          <DeleteButton handleDelete={handleDelete}/>
+          <DeleteConfirmationButton handleDelete={handleDelete}/>
         </div>
       </div>
     </div>

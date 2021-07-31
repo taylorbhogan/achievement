@@ -1,9 +1,9 @@
 import { FaTrashAlt } from 'react-icons/fa'
 import { IconContext } from "react-icons";
 
-import styles from './DeleteButton.module.css'
+import styles from './DeleteConfirmationButton.module.css'
 
-const DeleteButton = ({ handleDelete }) => {
+const DeleteConfirmationButton = ({ handleDelete }) => {
   return (
     <div>
       <button
@@ -18,4 +18,4 @@ const DeleteButton = ({ handleDelete }) => {
   )
 }
 
-export default DeleteButton
+export default DeleteConfirmationButton

@@ -13,11 +13,14 @@ import { deleteHabit } from "../../../store/habit"
 import { editHabit } from "../../../store/habit"
 import AchievementEdit from "../AchievementEdit"
 import CloseButton from "../../parts/CloseButton"
+import DeleteConfirmationButton from "../../parts/DeleteConfirmationButton"
+import DeleteConfirmation from "../../parts/DeleteConfirmation"
 
 import styles from './AchievementLogCard.module.css'
 
 const AchievementLogCard = ({ achievement, isLoaded }) => {
   const [isEditable, setIsEditable] = useState(false)
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
 
   // const dispatch = useDispatch()
   // const user = useSelector(state => state.session.user)
@@ -71,23 +74,36 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   const closeForm = () => {
     setIsEditable(false)
   }
+  const closeDeleteConfirmation = () => {
+    setShowDeleteConfirmation(false)
+  }
 
   return (
     <div className={styles.container}>
-      <div className={styles.nameWrapper}>{achievement.habit_name}</div>
-      {/* <div>{achievement.created_at}</div> */}
-      <div className={styles.dateContainer}>
-        <div>{formattedTime(achievement.created_at)}</div>
-        <div>{formattedDate(achievement.created_at)}</div>
+      <div className={styles.contents}>
+        <div className={styles.nameWrapper}>
+          {achievement.habit_name}</div>
+        <div className={styles.dateContainer}>
+          <div>{formattedTime(achievement.created_at)}</div>
+          <div>{formattedDate(achievement.created_at)}</div>
+        </div>
+        <div className={styles.buttonDiv}>
+          <EditButton setIsEditable={setIsEditable}/>
+          <DeleteConfirmationButton handleDelete={() => setShowDeleteConfirmation(true)}/>
+          {/* {showDeleteConfirmation && <div className={styles.deleteConfirmation}></div>} */}
+          {showDeleteConfirmation &&
+          <>
+          <CloseButton closeForm={closeDeleteConfirmation}/>
+          <DeleteConfirmation />
+          </>
+          }
+        </div>
       </div>
-      <div className={styles.buttonDiv}>
-        <EditButton setIsEditable={setIsEditable}/>
-      </div>
-      {(isEditable && <div className={styles.edit}>
-        <CloseButton closeForm={closeForm}/>
-        <AchievementEdit
-          closeForm={closeForm}
-        /></div>)}
+      {(isEditable &&
+      <div className={styles.edit}>
+        <div className={styles.close}><CloseButton closeForm={closeForm}/></div>
+        <AchievementEdit/>
+      </div>)}
     </div>
   )
 }
