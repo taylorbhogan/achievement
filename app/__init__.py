@@ -10,6 +10,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.habit_routes import habit_routes
 from .api.achievement_routes import achievement_routes
+from .api.color_routes import color_routes
 
 from .seeds import seed_commands
 
@@ -35,6 +36,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(habit_routes, url_prefix='/api/habits')
 app.register_blueprint(achievement_routes, url_prefix='/api/achievements')
+app.register_blueprint(color_routes, url_prefix='/api/colors')
 db.init_app(app)
 Migrate(app, db)
 
