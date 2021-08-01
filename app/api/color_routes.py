@@ -18,6 +18,7 @@ def create_color():
     """
     Creates a new color in the db
     """
+    print('------------made it ----------')
     form = ColorForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

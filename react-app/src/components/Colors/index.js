@@ -22,6 +22,7 @@ const Colors = ({setHue}) => {
   const handleColorChange = (color) => {
     console.log(color.hsl);
     setColor(color)
+    setHue(color.hsl.h)
   }
 
   return (

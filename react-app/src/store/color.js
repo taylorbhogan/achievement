@@ -16,7 +16,6 @@ export const getColors = () => async (dispatch) => {
     const res = await fetch('api/colors')
     if (!res.ok) throw res;
     const colors = await res.json()
-    console.log('-------colors back in the front end', colors);
     dispatch(setColors(colors))
     return colors;
   } catch (resError) {
@@ -26,7 +25,7 @@ export const getColors = () => async (dispatch) => {
 
 export const createColor = (color) => async (dispatch) => {
   try {
-    const res = await fetch('api/color', {
+    const res = await fetch('api/colors', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
