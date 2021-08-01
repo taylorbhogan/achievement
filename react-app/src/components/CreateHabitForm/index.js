@@ -5,7 +5,9 @@ import FormErrors from '../parts/FormErrors'
 import InputField from '../parts/InputField'
 import styles from './CreateHabitForm.module.css'
 import { createHabit } from '../../store/habit'
+import { createColor } from '../../store/color'
 import CloseButton from '../parts/CloseButton'
+import Colors from '../Colors'
 
 
 function CreateHabitForm({ setShowNewHabitForm }) {
@@ -13,6 +15,7 @@ function CreateHabitForm({ setShowNewHabitForm }) {
   const [blurb, setBlurb] = useState('')
   const [stellarBlurb, setStellarBlurb] = useState('')
   const [target, setTarget] = useState('')
+  const [hue, setHue] = useState('')
   const [errors, setErrors] = useState([])
 
   const dispatch = useDispatch()
@@ -20,20 +23,28 @@ function CreateHabitForm({ setShowNewHabitForm }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const habit = {
-      user_id: user.id,
-      name,
-      blurb,
-      stellar_blurb: stellarBlurb,
-      target: +target,
-      color_id: 1
-    }
 
-    const dbHabit = await dispatch(createHabit(habit))
-    if (dbHabit.errors) {
-      setErrors(dbHabit.errors)
+    const color = {
+      hue: hue.toFixed(2),
+    }
+    const dbColor = await dispatch(createColor(color))
+    if (dbColor.errors) {
+      setErrors(dbColor.errors)
     } else {
-      setShowNewHabitForm(false)
+      const habit = {
+        user_id: user.id,
+        name,
+        blurb,
+        stellar_blurb: stellarBlurb,
+        target: +target,
+        color_id: dbColor.id
+      }
+      const dbHabit = await dispatch(createHabit(habit))
+      if (dbHabit.errors) {
+        setErrors(dbHabit.errors)
+      } else {
+        setShowNewHabitForm(false)
+      }
     }
   }
 
@@ -90,6 +101,9 @@ function CreateHabitForm({ setShowNewHabitForm }) {
                 </div>
               </div>
             </div>
+          </div>
+          <div className={styles.colors}>
+            <Colors setHue={setHue} />
           </div>
           <div className={styles.bottom}>
             <ActionButton buttonText={'save changes'} />
