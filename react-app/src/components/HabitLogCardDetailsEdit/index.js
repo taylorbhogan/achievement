@@ -58,7 +58,7 @@ const HabitLogCardDetailsEdit = ({
       </div>
       <div className={styles.bottom}>
         <div className={styles.buttonContainer}>
-          <DeleteConfirmationButton handleDelete={handleDelete}/>
+          <DeleteConfirmationButton showConfirmationFunction={handleDelete}/>
           <ActionButton buttonText={'save changes'}/>
         </div>
       </div>

@@ -9,7 +9,7 @@ import InputField from "../../parts/InputField"
 import FormErrors from "../../parts/FormErrors"
 import HabitLogCardDetailsEdit from "../../HabitLogCardDetailsEdit"
 import EditButton from "../../parts/EditButton"
-import { deleteHabit } from "../../../store/habit"
+import { deleteAchievement } from "../../../store/achievement"
 import { editHabit } from "../../../store/habit"
 import AchievementEdit from "../AchievementEdit"
 import CloseButton from "../../parts/CloseButton"
@@ -22,7 +22,7 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   const [isEditable, setIsEditable] = useState(false)
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   // const user = useSelector(state => state.session.user)
 
   // const [isEditable, setIsEditable] = useState(false)
@@ -33,9 +33,9 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   // const [errors, setErrors] = useState([])
 
 
-  // const handleDelete = () => {
-  //   dispatch(deleteHabit(habit.id))
-  // }
+  const handleDelete = () => {
+    dispatch(deleteAchievement(achievement.id))
+  }
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault()
@@ -89,14 +89,11 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
         </div>
         <div className={styles.buttonDiv}>
           <EditButton setIsEditable={setIsEditable}/>
-          <DeleteConfirmationButton handleDelete={() => setShowDeleteConfirmation(true)}/>
-          {/* {showDeleteConfirmation && <div className={styles.deleteConfirmation}></div>} */}
+          <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)}/>
           {showDeleteConfirmation &&
-          <>
-          <CloseButton closeForm={closeDeleteConfirmation}/>
-          <DeleteConfirmation />
-          </>
-          }
+            <DeleteConfirmation
+              handleDelete={handleDelete}
+              closeDeleteConfirmation={closeDeleteConfirmation}/>}
         </div>
       </div>
       {(isEditable &&

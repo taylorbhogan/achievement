@@ -4,6 +4,7 @@
 }
 .contents{
   display: flex;
+  justify-content: space-between;
 }
 
 .nameWrapper{
@@ -15,7 +16,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* width: 33%; */
+  width: 33%;
 }
 .edit{
   background-color: brown;
