@@ -1,6 +1,10 @@
 .container{
-  display: flex;
+  /* display: flex; */
   margin: 10px 0;
+}
+.contents{
+  display: flex;
+  justify-content: space-between;
 }
 
 .nameWrapper{
@@ -18,25 +22,14 @@
   background-color: brown;
 }
 
-
-.bar{
+.close{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 30px 5px 30px;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 5px;
 }
 
-.cubeContainer{
+.buttonDiv{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: var(--cubeContainerWidth);
-}
-
-.name{
-  line-height: var(--inputLineHeight);
-  padding: var(--inputPadding);
-  width: var(--inputWidth);
-  box-sizing: var(--inputBoxSizing);
-  /* margin-top: 1.3rem; */
+  position: relative;
 }

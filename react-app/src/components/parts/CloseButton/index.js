@@ -2,10 +2,10 @@ import { FaRegWindowClose } from 'react-icons/fa'
 import { IconContext } from "react-icons";
 import styles from './CloseButton.module.css'
 
-function CloseButton() {
+function CloseButton({closeForm}) {
   return (
     <div className={styles.div}>
-      <button className={styles.button}>
+      <button onClick={closeForm} className={styles.button}>
         <IconContext.Provider value={{ className: "react-icons" }}>
           <FaRegWindowClose />
         </IconContext.Provider>

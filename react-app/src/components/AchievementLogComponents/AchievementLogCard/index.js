@@ -2,23 +2,20 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import LoadingContent from "../../LoadingContent"
-import HabitCube from "../../HabitCube"
-import CreateAchievementButton from "../../CreateAchievementButton"
-import HabitLogCardDetails from "../../HabitLogCardDetails"
-import InputField from "../../parts/InputField"
-import FormErrors from "../../parts/FormErrors"
-import HabitLogCardDetailsEdit from "../../HabitLogCardDetailsEdit"
 import EditButton from "../../parts/EditButton"
-import { deleteHabit } from "../../../store/habit"
-import { editHabit } from "../../../store/habit"
+import { deleteAchievement } from "../../../store/achievement"
 import AchievementEdit from "../AchievementEdit"
+import CloseButton from "../../parts/CloseButton"
+import DeleteConfirmationButton from "../../parts/DeleteConfirmationButton"
+import DeleteConfirmation from "../../parts/DeleteConfirmation"
 
 import styles from './AchievementLogCard.module.css'
 
 const AchievementLogCard = ({ achievement, isLoaded }) => {
   const [isEditable, setIsEditable] = useState(false)
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   // const user = useSelector(state => state.session.user)
 
   // const [isEditable, setIsEditable] = useState(false)
@@ -29,9 +26,9 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   // const [errors, setErrors] = useState([])
 
 
-  // const handleDelete = () => {
-  //   dispatch(deleteHabit(habit.id))
-  // }
+  const handleDelete = () => {
+    dispatch(deleteAchievement(achievement.id))
+  }
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault()
@@ -53,9 +50,9 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   //   }
   // }
 
-  // if (!isLoaded){
-  //   return <LoadingContent />
-  // }
+  if (!isLoaded){
+    return <LoadingContent />
+  }
   const formattedDate = (date) => {
     const jsDate = new Date(date)
     const formattedDate = new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).format(jsDate)
@@ -67,18 +64,36 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
     return formattedDate
   }
 
+  const closeForm = () => {
+    setIsEditable(false)
+  }
+  const closeDeleteConfirmation = () => {
+    setShowDeleteConfirmation(false)
+  }
+
   return (
     <div className={styles.container}>
-      <div className={styles.nameWrapper}>{achievement.habit_name}</div>
-      {/* <div>{achievement.created_at}</div> */}
-      <div className={styles.dateContainer}>
-        <div>{formattedTime(achievement.created_at)}</div>
-        <div>{formattedDate(achievement.created_at)}</div>
+      <div className={styles.contents}>
+        <div className={styles.nameWrapper}>
+          {achievement.habit_name}</div>
+        <div className={styles.dateContainer}>
+          <div>{formattedTime(achievement.created_at)}</div>
+          <div>{formattedDate(achievement.created_at)}</div>
+        </div>
+        <div className={styles.buttonDiv}>
+          <EditButton setIsEditable={setIsEditable} />
+          <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
+          {showDeleteConfirmation &&
+            <DeleteConfirmation
+              handleDelete={handleDelete}
+              closeDeleteConfirmation={closeDeleteConfirmation} />}
+        </div>
       </div>
-      <div className={styles.buttonDiv}>
-        <EditButton setIsEditable={setIsEditable}/>
-      </div>
-      {(isEditable && <div className={styles.edit}><AchievementEdit /></div>)}
+      {(isEditable &&
+        <div className={styles.edit}>
+          <div className={styles.close}><CloseButton closeForm={closeForm} /></div>
+          <AchievementEdit />
+        </div>)}
     </div>
   )
 }

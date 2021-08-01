@@ -11,6 +11,7 @@
   --gray3: #333333;
   --gray4: #444444;
   --red1: #743e3e;
+  --red2: #793636;
   --green1: #396e42;
 
 
@@ -47,4 +48,5 @@
 
   /* -------------BUTTONS------------- */
   --closeHeight: 24px;
+  --buttonBorderRadius: 8px;
 }

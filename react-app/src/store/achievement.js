@@ -1,5 +1,6 @@
 const SET_ACHIEVEMENT = 'achievements/SET_ACHIEVEMENT'
-// const SET_ACHIEVEMENTS = 'achievements/SET_ACHIEVEMENTS'
+const REMOVE_ACHIEVEMENT = 'achievements/REMOVE_ACHIEVEMENT'
+const SET_ACHIEVEMENTS = 'achievements/SET_ACHIEVEMENTS'
 
 
 
@@ -8,28 +9,35 @@ const setAchievement = (achievement) => ({
   achievement
 })
 
-// const setAchievements = (habits) => ({
-//   type: SET_ACHIEVEMENTS,
-//   habits
-// })
+const removeAchievement = (achievementId) => ({
+  type: REMOVE_ACHIEVEMENT,
+  achievementId
+})
 
-// export const getAchievements = (userId) => async (dispatch) => {
-//   try {
-//     const res = await fetch(`api/achievements/users/${userId}`)
-//     if (!res.ok) throw res;
-//     const achievements = await res.json()
-//     dispatch(setAchievements(achievements))
-//     return achievements;
-//   } catch (resError) {
-//     return resError
-//   }
-// }
+
+const setAchievements = (achievements) => ({
+  type: SET_ACHIEVEMENTS,
+  achievements
+})
+
+export const getAchievements = (userId) => async (dispatch) => {
+  try {
+    const res = await fetch(`api/achievements/users/${userId}`)
+    if (!res.ok) throw res;
+    const achievements = await res.json()
+    console.log('-------achievements back in the front end', achievements);
+    dispatch(setAchievements(achievements))
+    return achievements;
+  } catch (resError) {
+    return resError
+  }
+}
 
 
 export const createAchievement = (achievement) => async (dispatch) => {
   try {
-    console.log('----------store achievement---------',achievement);
-    const res = await fetch('api/achievements',{
+    console.log('----------store achievement---------', achievement);
+    const res = await fetch('api/achievements', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -48,16 +56,39 @@ export const createAchievement = (achievement) => async (dispatch) => {
   }
 }
 
+export const deleteAchievement = (achievementId) => async (dispatch) => {
+  try {
+    const res = await fetch(`api/achievements/${achievementId}`, {
+      method: 'DELETE',
+    });
+    if (!res.ok) throw res;
+    const data = await res.json();
+
+    if (!data.errors) {
+      dispatch(removeAchievement(data.id));
+    }
+    return data;
+  } catch (resError) {
+    return resError;
+  }
+
+}
+
+
 const initialState = {
   achievements: {},
 }
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    // case SET_ACHIEVEMENTS:
-    //   return { ...state, achievements: { ...state.achievements, ...action.achievements} }
+    case SET_ACHIEVEMENTS:
+      return { ...state, achievements: { ...state.achievements, ...action.achievements } }
     case SET_ACHIEVEMENT:
-      return {...state, achievements: { ...state.achievements, [action.achievement.id]: action.achievement}}
+      return { ...state, achievements: { ...state.achievements, [action.achievement.id]: action.achievement } }
+    case REMOVE_ACHIEVEMENT:
+      const newState = { ...state, achievements: { ...state.achievements } }
+      delete newState.achievements[action.achievementId]
+      return { ...newState }
     default:
       return state;
   }
