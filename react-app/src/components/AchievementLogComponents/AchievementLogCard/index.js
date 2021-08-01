@@ -2,15 +2,8 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import LoadingContent from "../../LoadingContent"
-import HabitCube from "../../HabitCube"
-import CreateAchievementButton from "../../CreateAchievementButton"
-import HabitLogCardDetails from "../../HabitLogCardDetails"
-import InputField from "../../parts/InputField"
-import FormErrors from "../../parts/FormErrors"
-import HabitLogCardDetailsEdit from "../../HabitLogCardDetailsEdit"
 import EditButton from "../../parts/EditButton"
 import { deleteAchievement } from "../../../store/achievement"
-import { editHabit } from "../../../store/habit"
 import AchievementEdit from "../AchievementEdit"
 import CloseButton from "../../parts/CloseButton"
 import DeleteConfirmationButton from "../../parts/DeleteConfirmationButton"
@@ -57,9 +50,9 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   //   }
   // }
 
-  // if (!isLoaded){
-  //   return <LoadingContent />
-  // }
+  if (!isLoaded){
+    return <LoadingContent />
+  }
   const formattedDate = (date) => {
     const jsDate = new Date(date)
     const formattedDate = new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).format(jsDate)
@@ -88,19 +81,19 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
           <div>{formattedDate(achievement.created_at)}</div>
         </div>
         <div className={styles.buttonDiv}>
-          <EditButton setIsEditable={setIsEditable}/>
-          <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)}/>
+          <EditButton setIsEditable={setIsEditable} />
+          <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
           {showDeleteConfirmation &&
             <DeleteConfirmation
               handleDelete={handleDelete}
-              closeDeleteConfirmation={closeDeleteConfirmation}/>}
+              closeDeleteConfirmation={closeDeleteConfirmation} />}
         </div>
       </div>
       {(isEditable &&
-      <div className={styles.edit}>
-        <div className={styles.close}><CloseButton closeForm={closeForm}/></div>
-        <AchievementEdit/>
-      </div>)}
+        <div className={styles.edit}>
+          <div className={styles.close}><CloseButton closeForm={closeForm} /></div>
+          <AchievementEdit />
+        </div>)}
     </div>
   )
 }

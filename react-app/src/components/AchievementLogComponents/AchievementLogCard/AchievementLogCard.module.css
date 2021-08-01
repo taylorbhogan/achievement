@@ -33,27 +33,3 @@
   display: flex;
   position: relative;
 }
-
-
-
-
-/* .bar{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 30px 5px 30px;
-} */
-
-/* .cubeContainer{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: var(--cubeContainerWidth);
-}
-
-.name{
-  line-height: var(--inputLineHeight);
-  padding: var(--inputPadding);
-  width: var(--inputWidth);
-  box-sizing: var(--inputBoxSizing);
-} */

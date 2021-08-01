@@ -36,8 +36,8 @@ export const getAchievements = (userId) => async (dispatch) => {
 
 export const createAchievement = (achievement) => async (dispatch) => {
   try {
-    console.log('----------store achievement---------',achievement);
-    const res = await fetch('api/achievements',{
+    console.log('----------store achievement---------', achievement);
+    const res = await fetch('api/achievements', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -58,7 +58,7 @@ export const createAchievement = (achievement) => async (dispatch) => {
 
 export const deleteAchievement = (achievementId) => async (dispatch) => {
   try {
-    const res = await fetch (`api/achievements/${achievementId}`, {
+    const res = await fetch(`api/achievements/${achievementId}`, {
       method: 'DELETE',
     });
     if (!res.ok) throw res;
@@ -68,9 +68,9 @@ export const deleteAchievement = (achievementId) => async (dispatch) => {
       dispatch(removeAchievement(data.id));
     }
     return data;
-    } catch (resError) {
+  } catch (resError) {
     return resError;
-    }
+  }
 
 }
 
@@ -82,13 +82,13 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_ACHIEVEMENTS:
-      return { ...state, achievements: { ...state.achievements, ...action.achievements} }
+      return { ...state, achievements: { ...state.achievements, ...action.achievements } }
     case SET_ACHIEVEMENT:
-      return {...state, achievements: { ...state.achievements, [action.achievement.id]: action.achievement}}
+      return { ...state, achievements: { ...state.achievements, [action.achievement.id]: action.achievement } }
     case REMOVE_ACHIEVEMENT:
-      const newState = {...state, achievements: {...state.achievements}}
-      delete  newState.achievements[action.achievementId]
-      return {...newState}
+      const newState = { ...state, achievements: { ...state.achievements } }
+      delete newState.achievements[action.achievementId]
+      return { ...newState }
     default:
       return state;
   }
