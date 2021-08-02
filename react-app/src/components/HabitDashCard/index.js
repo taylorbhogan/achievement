@@ -15,7 +15,13 @@ const HabitDashCard = ({ habit, isLoaded }) => {
   const [ errors, setErrors ] = useState([])
   // const dispatch = useDispatch()
 
-
+  console.log(habit.name,'--------',habit.saturday);
+  console.log(habit.name,'--------',habit.friday);
+  console.log(habit.name,'--------',habit.thursday);
+  console.log(habit.name,'--------',habit.wedneday);
+  console.log(habit.name,'--------',habit.tuesday);
+  console.log(habit.name,'--------',habit.monday);
+  console.log(habit.name,'--------',habit.sunday);
   // const handleDelete = () => {
   //   dispatch(deleteHabit(habit.id))
   // }
@@ -34,12 +40,12 @@ const HabitDashCard = ({ habit, isLoaded }) => {
       <div className={styles.bar}>
         <div>{habit.name}</div>
         <div className={styles.cubeContainer}>
-          <HabitCube />
-          <HabitCube />
-          <HabitCube />
-          <HabitCube />
-          <HabitCube />
-          <HabitCube />
+          <HabitCube isActive={habit.sunday}/>
+          <HabitCube isActive={habit.monday}/>
+          <HabitCube isActive={habit.tuesday}/>
+          <HabitCube isActive={habit.wednesday}/>
+          <HabitCube isActive={habit.thursday}/>
+          <HabitCube isActive={habit.friday}/>
           <CreateAchievementButton habit={habit} setErrors={setErrors}/>
         </div>
       </div>

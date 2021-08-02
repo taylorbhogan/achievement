@@ -5,3 +5,8 @@
   height: var(--dashCubeDimension);
   background-color: cornflowerblue;
 }
+.habitCubeInactive{
+  width: var(--dashCubeDimension);
+  height: var(--dashCubeDimension);
+  background-color: gray;
+}

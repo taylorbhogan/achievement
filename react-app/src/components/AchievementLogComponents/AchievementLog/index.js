@@ -18,11 +18,12 @@ const AchievementLog = () => {
   }, [dispatch, user.id])
 
   useEffect(() => {
-    if (Object.keys(reduxAchievements).length > 0) {
+    if (Object.keys(achievements).length > 0) {
+      console.log('reduxAchievements',reduxAchievements);
       setIsLoaded(true)
       setAchievements(Object.values(reduxAchievements))
     }
-  }, [reduxAchievements])
+  }, [])
 
   if (!isLoaded){
     return <LoadingContent />

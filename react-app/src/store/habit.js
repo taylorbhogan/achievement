@@ -14,7 +14,8 @@ const setHabits = (habits) => ({
 
 export const getHabits = (userId) => async (dispatch) => {
   try {
-    const res = await fetch(`api/habits/users/${userId}`)
+    const res = await fetch(`api/habits/users/${userId}/week`)
+    // const res = await fetch(`api/habits/users/${userId}`)
     if (!res.ok) throw res;
     const habits = await res.json()
     dispatch(setHabits(habits))
@@ -23,6 +24,20 @@ export const getHabits = (userId) => async (dispatch) => {
     return resError
   }
 }
+
+export const getAllHabitCubes = (userId) => async (dispatch) => {
+  try {
+    const res = await fetch(`api/habits/users/${userId}/all`)
+    if (!res.ok) throw res;
+    const habits = await res.json()
+    dispatch(setHabits(habits))
+    return habits;
+  } catch (resError) {
+    return resError
+  }
+}
+
+
 
 export const createHabit = (habit) => async (dispatch) => {
   try {
