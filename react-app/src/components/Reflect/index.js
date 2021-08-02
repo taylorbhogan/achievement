@@ -28,7 +28,7 @@ const Reflect = () => {
             >
               <option
                 value='all'
-              >Week</option>
+              >all</option>
             </select>
             <button>Submit</button>
           </form>

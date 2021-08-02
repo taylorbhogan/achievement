@@ -24,14 +24,14 @@ def get_all_habits(id):
     user = User.query.get(id)
     userDict = user.to_dict()
     today = datetime.today()
-    accountBirthday = datetime(2021, 7, 1)
-    [print('--------------------------------------')]
+    accountBirthday = userDict['created_at']
+    [print('-----------------START---------------------')]
     print(today)
     print(accountBirthday)
     delta = today - accountBirthday
     print(delta.days)
     print(range(delta.days))
-    print('-----------whatisthis-----------',)
+    print('-----------end-----------',)
 
 
     habits = Habit.query.filter(Habit.user_id == id).all()
