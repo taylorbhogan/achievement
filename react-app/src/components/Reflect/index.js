@@ -1,21 +1,24 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { getAllHabitCubes } from '../../store/habit'
-
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getReflections } from '../../store/reflect'
+import ReflectionBucket from './ReflectionBucket'
 import styles from './Reflect.module.css'
 
 const Reflect = () => {
   const [timeframe, setTimeframe] = useState('')
-  const [allHabitCubes, setAllHabitCubes] = useState([])
   const dispatch = useDispatch()
+
+  const user = useSelector(state => state.session.user)
+  const reduxReflections = useSelector(state => Object.values(state.reflections.reflections))
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (timeframe === 'all'){
-      const dbHabits = await dispatch(getAllHabitCubes())
-      setAllHabitCubes(dbHabits)
+      dispatch(getReflections(user.id))
     }
   }
+
 
   return (
     <div>
@@ -29,13 +32,19 @@ const Reflect = () => {
               <option
                 value='all'
               >all</option>
+              <option
+                value='other'
+              >other</option>
             </select>
             <button>Submit</button>
           </form>
         </div>
-        {allHabitCubes &&
-          allHabitCubes.map(cube => (
-            <div>Cube</div>
+        {reduxReflections.length > 0 &&
+          reduxReflections.map((reflection, idx) => (
+            <ReflectionBucket
+              reflection={reflection}
+              key={idx}
+              />
           ))
         }
       </div>
