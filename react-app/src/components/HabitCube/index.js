@@ -1,10 +1,10 @@
 import styles from './HabitCube.module.css'
 
-const HabitCube = ({ isActive }) => {
+const HabitCube = ({ wasAccomplished }) => {
   return (
     <>
-      {isActive && <div className={styles.habitCube}></div>}
-      {!isActive && <div className={styles.habitCubeInactive}></div>}
+      {wasAccomplished && <div className={styles.habitCube}></div>}
+      {!wasAccomplished && <div className={styles.habitCubeInactive}></div>}
     </>
   )
 }

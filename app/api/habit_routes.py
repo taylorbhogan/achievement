@@ -20,7 +20,7 @@ def get_habits(id):
 def test(id):
     habits = Habit.query.filter(Habit.user_id == id).all()
     # print('--------------CHECK-----------------',{habit.to_dict()['id']: habit.to_dict() for habit in habits})
-    return {habit.to_dict()['id']: habit.check_all_from_create_date() for habit in habits}
+    return {habit.to_dict()['name']: habit.check_all_from_create_date() for habit in habits}
 
 
 

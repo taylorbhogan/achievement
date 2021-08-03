@@ -10,6 +10,7 @@ const Reflect = () => {
 
   const user = useSelector(state => state.session.user)
   const reduxReflections = useSelector(state => Object.values(state.reflections.reflections))
+  const reduxReflectionKeys = useSelector(state => Object.keys(state.reflections.reflections))
 
 
   const handleSubmit = async (e) => {
@@ -42,6 +43,7 @@ const Reflect = () => {
         {reduxReflections.length > 0 &&
           reduxReflections.map((reflection, idx) => (
             <ReflectionBucket
+              habitName={reduxReflectionKeys[idx]}
               reflection={reflection}
               key={idx}
               />

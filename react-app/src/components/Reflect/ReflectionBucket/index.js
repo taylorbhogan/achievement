@@ -1,17 +1,19 @@
+import HabitCube from '../../HabitCube'
 import styles from './ReflectionBucket.module.css'
 
-const ReflectionBucket = ({reflection}) => {
-  console.log('------------reflection values start');
-  console.log();
-  console.log('------------reflection values end');
-
+const ReflectionBucket = ({reflection, habitName}) => {
+  console.log('reflection---->',reflection);
   const trueFalses = Object.values(reflection)
 
   return (
-    <div>
-      {trueFalses.map(thing => (
-        <div>thing</div>
-      ))}
+    <div className={styles.container}>
+      {habitName}
+      <div className={styles.mapBucket}>
+        {trueFalses.map(wasAccomplished => (
+          <HabitCube wasAccomplished={wasAccomplished} />
+        ))}
+
+      </div>
     </div>
   )
 }

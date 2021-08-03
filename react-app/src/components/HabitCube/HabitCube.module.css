@@ -4,9 +4,11 @@
   width: var(--dashCubeDimension);
   height: var(--dashCubeDimension);
   background-color: cornflowerblue;
+  margin: 5px;
 }
 .habitCubeInactive{
   width: var(--dashCubeDimension);
   height: var(--dashCubeDimension);
   background-color: gray;
+  margin: 5px;
 }
