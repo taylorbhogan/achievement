@@ -16,6 +16,15 @@ def get_habits(id):
     return {habit.id: habit.to_dict() for habit in habits}
 
 
+@habit_routes.route('users/<int:id>/test')
+def test(id):
+    habits = Habit.query.filter(Habit.user_id == id).all()
+    # print('--------------CHECK-----------------',{habit.to_dict()['id']: habit.to_dict() for habit in habits})
+    return {habit.to_dict()['id']: habit.check_all_from_create_date() for habit in habits}
+
+
+
+
 @habit_routes.route('users/<int:id>/all')
 def get_all_habits(id):
     """
@@ -32,6 +41,9 @@ def get_all_habits(id):
     print(delta.days)
     print(range(delta.days))
     print('-----------end-----------',)
+    # return {n: True if (-------) else False for n in range(delta.days)}
+    # that if:
+    # any of that habit's achievements has a created_at between the two midnights
 
 
     habits = Habit.query.filter(Habit.user_id == id).all()
