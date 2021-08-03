@@ -23,3 +23,10 @@
   box-sizing: var(--inputBoxSizing);
   /* margin-top: 1.3rem; */
 }
+.buttonDiv{
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--backgroundTertiary);
+  padding: 0 20px 20px 0;
+  position: relative;
+}

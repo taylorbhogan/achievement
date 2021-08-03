@@ -1,11 +1,60 @@
 import CloseButton from '../CloseButton'
 import DeleteButton from '../DeleteButton'
-import styles from './DeleteConfirmation.module.css'
 
-const DeleteConfirmation = ({closeDeleteConfirmation, handleDelete}) => {
+const DeleteConfirmation = ({closeDeleteConfirmation, handleDelete, componentLocation}) => {
+  console.log(componentLocation);
+let styles;
+  if (componentLocation === 'achievementLog'){
+    styles = {
+      div: {
+        position: 'absolute',
+        top: '-60px',
+        left: '90px',
+        minWidth: '135px',
+        fontSize: '13px',
+        padding: '10px',
+        backgroundColor: 'var(--gray3)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        borderRadius: 'var(--borderRadiusMenu)',
+      },
+      top: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        width: '100%',
+      }
+    }
+  } else if (componentLocation === 'habitLog') {
+    styles = {
+      div: {
+        position: 'absolute',
+        top: '-50px',
+        left: '102%',
+        minWidth: '135px',
+        fontSize: '13px',
+        padding: '10px',
+        backgroundColor: 'var(--gray3)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        borderRadius: 'var(--borderRadiusMenu)',
+      },
+      top: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        width: '100%',
+      }
+    }
+  }
+
   return (
-    <div className={styles.div}>
-      <div className={styles.top}>
+    <div style={styles.div}>
+      <div style={styles.top}>
         <div>
           <div>Deleting is</div>
           <div>permanent.</div>

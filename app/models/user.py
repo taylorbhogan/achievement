@@ -1,3 +1,4 @@
+from datetime import date, datetime
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -13,6 +14,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_img_url = db.Column(db.String(2000))
     birthday = db.Column(db.DateTime)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     habits = db.relationship('Habit', back_populates='owner')
 
@@ -36,4 +38,5 @@ class User(db.Model, UserMixin):
             'profile_img_url': self.profile_img_url,
             'birthday': self.birthday,
             'habits': [habit.to_dict() for habit in self.habits],
+            'created_at': self.created_at,
         }

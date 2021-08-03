@@ -17,18 +17,18 @@ const HabitLogCardDetails = ({ habit, setIsEditable }) => {
             <div className={styles.contents}>{habit.stellar_blurb}</div>
           </div>
           <div className={styles.right}>
-            <div className={styles.header}>Weekly Target</div>
+            <div className={styles.header}>Weekly Target:</div>
             <div className={styles.contents}>{habit.target}</div>
           </div>
         </div>
       </div>
-      <div className={styles.bottom}>
+      {/* <div className={styles.bottom}>
         <div className={styles.buttonContainer}>
           <EditButton
             setIsEditable={setIsEditable}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

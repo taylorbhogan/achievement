@@ -9,6 +9,7 @@ const DeleteConfirmationButton = ({ showConfirmationFunction }) => {
       <button
         className={styles.button}
         onClick={showConfirmationFunction}
+        id='deleteConfirmationButton'
       >
         <IconContext.Provider value={{ className: "react-icons" }}>
           <FaTrashAlt />

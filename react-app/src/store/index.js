@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import habits from './habit'
 import achievements from './achievement'
+import reflections from './reflect'
 
 const rootReducer = combineReducers({
   session,
   habits,
   achievements,
+  reflections,
 });
 
 

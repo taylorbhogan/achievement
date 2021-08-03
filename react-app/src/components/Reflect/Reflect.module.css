@@ -1,0 +1,13 @@
+.hello{
+  padding: 100px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

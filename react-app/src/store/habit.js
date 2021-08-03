@@ -14,7 +14,8 @@ const setHabits = (habits) => ({
 
 export const getHabits = (userId) => async (dispatch) => {
   try {
-    const res = await fetch(`api/habits/users/${userId}`)
+    const res = await fetch(`api/habits/users/${userId}/week`)
+    // const res = await fetch(`api/habits/users/${userId}`)
     if (!res.ok) throw res;
     const habits = await res.json()
     dispatch(setHabits(habits))
@@ -23,6 +24,20 @@ export const getHabits = (userId) => async (dispatch) => {
     return resError
   }
 }
+
+export const getAllHabitCubes = (userId) => async (dispatch) => {
+  try {
+    const res = await fetch(`api/habits/users/${userId}/all`)
+    if (!res.ok) throw res;
+    const habits = await res.json()
+    dispatch(setHabits(habits))
+    return habits;
+  } catch (resError) {
+    return resError
+  }
+}
+
+
 
 export const createHabit = (habit) => async (dispatch) => {
   try {
@@ -46,6 +61,7 @@ export const createHabit = (habit) => async (dispatch) => {
 
 export const editHabit = (habit) => async (dispatch) => {
   try {
+    console.log('inside the PUT thunk');
   const res = await fetch (`api/habits/${habit.id}`,{
     method: 'PUT',
     headers: {
@@ -73,6 +89,7 @@ export const deleteHabit = (habitId) => async (dispatch) => {
     if (!res.ok) throw res;
     const data = await res.json();
     if (!data.errors) {
+      console.log('---------inside of deleteHabit in store--------',data);
       dispatch(setHabit(data));
     }
     return data;
@@ -91,6 +108,7 @@ export default function reducer(state = initialState, action) {
     case SET_HABITS:
       return { ...state, habits: { ...state.habits, ...action.habits} }
     case SET_HABIT:
+      console.log('hit me twice----------');
       return { ...state, habits: { ...state.habits, [action.habit.id]: action.habit}}
     default:
       return state;

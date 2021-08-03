@@ -11,3 +11,11 @@
   bottom: 60px;
   right: 40px;
 }
+
+.linkContainer{
+  display: flex;
+  justify-content: space-between;
+}
+.header{
+  margin-bottom: 8px;
+}

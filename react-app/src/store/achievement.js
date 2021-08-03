@@ -25,7 +25,7 @@ export const getAchievements = (userId) => async (dispatch) => {
     const res = await fetch(`api/achievements/users/${userId}`)
     if (!res.ok) throw res;
     const achievements = await res.json()
-    console.log('-------achievements back in the front end', achievements);
+    // console.log('-------achievements back in the front end', achievements);
     dispatch(setAchievements(achievements))
     return achievements;
   } catch (resError) {
@@ -36,7 +36,7 @@ export const getAchievements = (userId) => async (dispatch) => {
 
 export const createAchievement = (achievement) => async (dispatch) => {
   try {
-    console.log('----------store achievement---------', achievement);
+    // console.log('----------store achievement---------', achievement);
     const res = await fetch('api/achievements', {
       method: 'POST',
       headers: {
