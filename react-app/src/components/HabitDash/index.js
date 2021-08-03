@@ -32,8 +32,9 @@ function HabitDash() {
 
   const getToday = (daysAgo) => {
     const date = new Date()
-    const thisDay = new Intl.DateTimeFormat('en-US', { weekday: 'narrow' }).format(date - (daysAgo * 86400000))
-    return thisDay
+    const thatDay = new Intl.DateTimeFormat('en-US', { weekday: 'short', day: 'numeric' }).format(date - (daysAgo * 86400000))
+    const thisDay = thatDay.slice(0, -1).toLocaleLowerCase()
+    return `${thisDay.slice(-2)} ${thisDay.slice(0,-2)}`
   }
 
   if (!isLoaded){
