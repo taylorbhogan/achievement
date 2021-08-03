@@ -8,6 +8,9 @@ import HabitLogCardDetails from "../HabitLogCardDetails"
 import InputField from "../parts/InputField"
 import FormErrors from "../parts/FormErrors"
 import HabitLogCardDetailsEdit from "../HabitLogCardDetailsEdit"
+import DeleteConfirmationButton from "../parts/DeleteConfirmationButton"
+import DeleteConfirmation from "../parts/DeleteConfirmation"
+import EditButton from "../parts/EditButton"
 
 import { deleteHabit } from "../../store/habit"
 import { editHabit } from "../../store/habit"
@@ -18,6 +21,7 @@ const HabitLogCard = ({ habit, isLoaded }) => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
   const [isEditable, setIsEditable] = useState(false)
   const [name, setName] = useState(habit.name)
   const [blurb, setBlurb] = useState(habit.blurb)
@@ -27,6 +31,9 @@ const HabitLogCard = ({ habit, isLoaded }) => {
 
 
   const handleDelete = () => {
+    console.log('--------------inside of handleDelete');
+    setShowDeleteConfirmation(false)
+
     dispatch(deleteHabit(habit.id))
   }
 
@@ -36,6 +43,11 @@ const HabitLogCard = ({ habit, isLoaded }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('------------->id',e.target.id);
+    if (e.currentTarget.id === 'deleteConfirmationButton'){
+      dispatch(deleteHabit(habit.id))
+    } else{
+
     const updatedHabit = {
       id: habit.id,
       user_id: user.id,
@@ -51,12 +63,16 @@ const HabitLogCard = ({ habit, isLoaded }) => {
       setErrors(dbHabit.errors)
     } else {
       setIsEditable(false)
-    }
+    }}
   }
 
-  if (!isLoaded){
-    return <LoadingContent />
+  const closeDeleteConfirmation = () => {
+    setShowDeleteConfirmation(false)
   }
+
+  // if (!isLoaded){
+  //   return <LoadingContent />
+  // }
 
   return (
     <div
@@ -88,12 +104,11 @@ const HabitLogCard = ({ habit, isLoaded }) => {
           </div>
         </div>
         {!isEditable && <HabitLogCardDetails
-          handleDelete={handleDelete}
           habit={habit}
           setIsEditable={setIsEditable}
           />}
         {isEditable && <HabitLogCardDetailsEdit
-          handleDelete={handleDelete}
+          // handleDelete={handleDelete}
           habit={habit}
           closeForm={closeForm}
           blurb={blurb}
@@ -103,6 +118,15 @@ const HabitLogCard = ({ habit, isLoaded }) => {
           target={target}
           setTarget={setTarget}/>}
       </form>
+      <div className={styles.buttonDiv}>
+        <EditButton setIsEditable={setIsEditable}/>
+        <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)}/>
+        {showDeleteConfirmation &&
+            <DeleteConfirmation
+              handleDelete={handleDelete}
+              closeDeleteConfirmation={closeDeleteConfirmation}
+              componentLocation={'habitLog'} />}
+      </div>
     </div>
   )
 }

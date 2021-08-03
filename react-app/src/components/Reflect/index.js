@@ -20,6 +20,10 @@ const Reflect = () => {
     }
   }
 
+  useEffect(() => {
+    dispatch(getReflections(user.id))
+  }, [dispatch, user.id])
+
 
   return (
     <div>

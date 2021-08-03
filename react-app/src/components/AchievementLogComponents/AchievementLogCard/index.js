@@ -26,8 +26,8 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   // const [errors, setErrors] = useState([])
 
 
-  const handleDelete = () => {
-    dispatch(deleteAchievement(achievement.id))
+  const handleDelete = async () => {
+    await dispatch(deleteAchievement(achievement.id))
   }
 
   // const handleSubmit = async (e) => {
@@ -50,12 +50,12 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   //   }
   // }
 
-  if (!isLoaded){
-    return <LoadingContent />
-  }
+  // if (!isLoaded){
+  //   return <LoadingContent />
+  // }
   const formattedDate = (date) => {
     const jsDate = new Date(date)
-    const formattedDate = new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).format(jsDate)
+    const formattedDate = new Intl.DateTimeFormat('en-US', { weekday: 'short', month: 'long', day: 'numeric' }).format(jsDate)
     return formattedDate
   }
   const formattedTime = (date) => {
@@ -83,10 +83,14 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
         <div className={styles.buttonDiv}>
           <EditButton setIsEditable={setIsEditable} />
           <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
-          {showDeleteConfirmation &&
-            <DeleteConfirmation
-              handleDelete={handleDelete}
-              closeDeleteConfirmation={closeDeleteConfirmation} />}
+          <div className={styles.deleteConfDiv}>
+            {showDeleteConfirmation &&
+              <DeleteConfirmation
+                handleDelete={handleDelete}
+                closeDeleteConfirmation={closeDeleteConfirmation}
+                componentLocation={'achievementLog'} />}
+
+          </div>
         </div>
       </div>
       {(isEditable &&

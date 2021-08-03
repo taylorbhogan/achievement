@@ -125,11 +125,12 @@ def habit_by_id(habit_id):
             db.session.commit()
             return habit.to_dict()
         return {'errors': validation_errors_to_error_messages(form.errors)}
-    elif request. method == 'DELETE':
+    elif request.method == 'DELETE':
         habit.name = 'DELETED'
         habit.blurb = 'DELETED'
         habit.stellar_blurb = 'DELETED'
         habit.target = 0
+        db.session.add(habit)
         db.session.commit()
 
         return habit.to_dict()

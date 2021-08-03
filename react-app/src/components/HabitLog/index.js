@@ -9,26 +9,26 @@ import styles from './HabitLog.module.css'
 const HabitLog = () => {
   const dispatch = useDispatch()
 
-  const reduxHabits = useSelector(state => state.habits.habits)
+  const reduxHabits = useSelector(state => Object.values(state.habits.habits))
   const user = useSelector(state => state.session.user)
 
-  const [ habits, setHabits ] = useState([])
+  // const [ habits, setHabits ] = useState([])
   const [ isLoaded, setIsLoaded ] = useState(false)
 
   useEffect(() => {
     dispatch(getHabits(user.id))
   }, [dispatch, user.id])
 
-  useEffect(() => {
-    if (Object.keys(reduxHabits).length > 0) {
-      setIsLoaded(true)
-      setHabits(Object.values(reduxHabits))
-    }
-  }, [reduxHabits])
+  // useEffect(() => {
+  //   if (Object.keys(reduxHabits).length > 0) {
+  //     setIsLoaded(true)
+  //     setHabits(Object.values(reduxHabits))
+  //   }
+  // }, [reduxHabits])
 
-  if (!isLoaded){
-    return <LoadingContent />
-  }
+  // if (!isLoaded){
+  //   return <LoadingContent />
+  // }
 
   return (
     <div className={styles.container}>
@@ -37,7 +37,7 @@ const HabitLog = () => {
         <CreateHabitButton />
       </div>
       <div className={styles.habitContainer}>
-      {habits.map((habit, idx) => {
+      {reduxHabits && reduxHabits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => {
           return <HabitLogCard
             key={idx}
             habit={habit}
