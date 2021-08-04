@@ -29,6 +29,17 @@ function HabitDash() {
   }, [reduxHabits])
 
 
+  // useEffect(() => {
+  //   if (!user.id) {
+  //     return;
+  //   }
+  //   (async () => {
+  //     const response = await fetch(`/api/achievements/users/${user.id}/targets`);
+  //     const targetNums = await response.json();
+  //     setTargetNumerators(targetNums);
+
+  //   })();
+  // }, [user.id]);
 
   const getToday = (daysAgo) => {
     const date = new Date()

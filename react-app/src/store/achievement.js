@@ -25,7 +25,6 @@ export const getAchievements = (userId) => async (dispatch) => {
     const res = await fetch(`api/achievements/users/${userId}`)
     if (!res.ok) throw res;
     const achievements = await res.json()
-    // console.log('-------achievements back in the front end', achievements);
     dispatch(setAchievements(achievements))
     return achievements;
   } catch (resError) {
@@ -36,7 +35,6 @@ export const getAchievements = (userId) => async (dispatch) => {
 
 export const createAchievement = (achievement) => async (dispatch) => {
   try {
-    // console.log('----------store achievement---------', achievement);
     const res = await fetch('api/achievements', {
       method: 'POST',
       headers: {
@@ -82,7 +80,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_ACHIEVEMENTS:
-      return { ...state, achievements: { ...state.achievements, ...action.achievements } }
+      return { ...state, achievements: { ...state.achievements, ...action.achievements}}
     case SET_ACHIEVEMENT:
       return { ...state, achievements: { ...state.achievements, [action.achievement.id]: action.achievement } }
     case REMOVE_ACHIEVEMENT:

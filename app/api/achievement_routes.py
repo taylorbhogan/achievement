@@ -3,6 +3,7 @@ from flask import Blueprint, request
 from app.forms import AchievementForm
 from app.models import db, Achievement, Habit
 from app.helpers import validation_errors_to_error_messages
+# from sqlalchemy import desc
 
 achievement_routes = Blueprint('achievements', __name__)
 
@@ -73,14 +74,26 @@ def get_achievements(id):
     habits = Habit.query.filter(Habit.user_id == id).all()
     collector = []
     for habit in habits:
+        # achievements = Achievement.query.filter(Achievement.habit_id == habit.id).order_by(desc(Achievement.created_at)).all()
+        # achievements = Achievement.query.filter(Achievement.habit_id == habit.id).order_by(Achievement.created_at.desc()).all()
         achievements = Achievement.query.filter(Achievement.habit_id == habit.id).all()
         for a in achievements:
             achieve = a.to_dict()
+            # print('-----------IRINA--------->',achieve['created_at'])
             # a['habit_name'] = habit.name
             achieve['habit_name'] = habit.name
             collector.append(achieve)
-
+    # print('--------------OUTPUT-------->',{achievement['id']: achievement for achievement in collector})
     return {achievement['id']: achievement for achievement in collector}
+    # return {'achievements': collector}
+
+
+
+
+
+
+
+
 
 @achievement_routes.route('', methods=['POST'])
 def create_achievement():
