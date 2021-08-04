@@ -14,6 +14,15 @@
   padding-top: 12px;
 }
 
+.child{
+  flex-grow: 1;
+}
+
+.flexEnd{
+  display: flex;
+  justify-content: flex-end;
+}
+
 .logoLink{
   text-decoration: none;
 }
@@ -22,6 +31,7 @@
   text-decoration: none;
   color: var(--logoPrimary);
   font-size: 2rem;
+  text-align: center;
 }
 
 .reflect{
