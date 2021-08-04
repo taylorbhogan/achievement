@@ -1,4 +1,4 @@
-.habitCube{
+/* .habitCube{
   width: var(--dashCubeDimension);
   height: var(--dashCubeDimension);
   border-radius: var(--dashCubeBorderRadius);
@@ -8,14 +8,13 @@
 .habitCubeInactive{
   width: var(--dashCubeDimension);
   height: var(--dashCubeDimension);
-  /* border: var(--dashCubeBorder) solid gray; */
   border-radius: var(--dashCubeBorderRadius);
   background-color: gray;
   margin: 5px;
   cursor: pointer;
-}
+} */
 
-.habitCubeInactive:hover{
+.habitCube:hover{
   background-color: var(--gray4);
 
 }

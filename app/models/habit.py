@@ -60,7 +60,7 @@ class Habit(db.Model):
             'blurb': self.blurb,
             'stellar_blurb': self.stellar_blurb,
             'target': self.target,
-            # 'color': self.color.hue,
+            'color': self.color.hue,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'user_id': self.user_id,

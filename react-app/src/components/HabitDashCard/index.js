@@ -40,12 +40,12 @@ const HabitDashCard = ({ habit, isLoaded }) => {
       <div className={styles.bar}>
         <div className={styles.name}>{habit.name}</div>
         <div className={styles.cubeContainer}>
-          <HabitCube wasAccomplished={habit.sunday}/>
-          <HabitCube wasAccomplished={habit.monday}/>
-          <HabitCube wasAccomplished={habit.tuesday}/>
-          <HabitCube wasAccomplished={habit.wednesday}/>
-          <HabitCube wasAccomplished={habit.thursday}/>
-          <HabitCube wasAccomplished={habit.friday}/>
+          <HabitCube color={habit.color} wasAccomplished={habit.sunday}/>
+          <HabitCube color={habit.color} wasAccomplished={habit.monday}/>
+          <HabitCube color={habit.color} wasAccomplished={habit.tuesday}/>
+          <HabitCube color={habit.color} wasAccomplished={habit.wednesday}/>
+          <HabitCube color={habit.color} wasAccomplished={habit.thursday}/>
+          <HabitCube color={habit.color} wasAccomplished={habit.friday}/>
           <CreateAchievementButton habit={habit} setErrors={setErrors}/>
         </div>
         <div className={styles.target}>
