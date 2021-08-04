@@ -11,9 +11,19 @@
   padding: 30px;
 }
 
+.name{
+  min-width: 100px;
+}
+
 .cubeContainer{
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: var(--cubeContainerWidth);
+}
+
+.target{
+  width: 60px;
+  display: flex;
+  justify-content: flex-end;
 }

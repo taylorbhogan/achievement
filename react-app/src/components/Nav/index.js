@@ -17,7 +17,7 @@ const Nav = () => {
         <NavLink to='/reflect' exact={true} activeClassName='active'>
           <div className={styles.reflect}>reflect</div>
         </NavLink>
-        <NavLink to='/' exact={true} activeClassName='active'>
+        <NavLink to='/' exact={true} className={styles.logoLink} activeClassName='active'>
           <div className={styles.logo}>Achievement.</div>
         </NavLink>
         <div>

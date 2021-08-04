@@ -19,7 +19,8 @@
   font-size: 1rem;
 }
 .active{
-  color: red;
+  font-weight: 600;
+  text-decoration: underline;
 }
 .linkDiv{
   padding: 20px;

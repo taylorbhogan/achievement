@@ -11,7 +11,7 @@ def get_colors():
     Retrieves all of the colors from the db
     """
     colors = Color.query.all()
-    return {color.id: int(color.to_dict()['hue']) for color in colors}
+    return {color.id: float(color.to_dict()['hue']) for color in colors}
 
 @color_routes.route('', methods=['POST'])
 def create_color():

@@ -9,8 +9,11 @@ const ReflectionBucket = ({reflection, habitName}) => {
     <div className={styles.container}>
       {habitName}
       <div className={styles.mapBucket}>
-        {trueFalses.map(wasAccomplished => (
-          <HabitCube wasAccomplished={wasAccomplished} />
+        {trueFalses.map((wasAccomplished, idx) => (
+          <HabitCube
+            wasAccomplished={wasAccomplished}
+            key={idx}
+            />
         ))}
 
       </div>

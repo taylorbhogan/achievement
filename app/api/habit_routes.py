@@ -18,7 +18,7 @@ def get_habits(id):
 
 @habit_routes.route('users/<int:id>/test')
 def test(id):
-    habits = Habit.query.filter(Habit.user_id == id).all()
+    habits = Habit.query.filter(Habit.user_id == id).filter(Habit.blurb != 'DELETED').all()
     # print('--------------CHECK-----------------',{habit.to_dict()['id']: habit.to_dict() for habit in habits})
     return {habit.to_dict()['name']: habit.check_all_from_create_date() for habit in habits}
 

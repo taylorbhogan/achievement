@@ -6,6 +6,7 @@
 }
 .welcome{
   padding: 100px 0px;
+  font-size: var(--headerFontSize);
 }
 
 .makeMeRight{

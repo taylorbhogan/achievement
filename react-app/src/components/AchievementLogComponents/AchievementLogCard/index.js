@@ -27,6 +27,7 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
 
 
   const handleDelete = async () => {
+    setShowDeleteConfirmation(false)
     await dispatch(deleteAchievement(achievement.id))
   }
 
@@ -77,8 +78,8 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
         <div className={styles.nameWrapper}>
           {achievement.habit_name}</div>
         <div className={styles.dateContainer}>
-          <div>{formattedTime(achievement.created_at)}</div>
           <div>{formattedDate(achievement.created_at)}</div>
+          <div>{formattedTime(achievement.created_at)}</div>
         </div>
         <div className={styles.buttonDiv}>
           <EditButton setIsEditable={setIsEditable} />
