@@ -55,6 +55,7 @@ const CreateAchievementButton = ({habit, setErrors, wasAccomplished, id}) => {
     height: 'var(--dashCubeDimension)',
     borderRadius: 'var(--dashCubeBorderRadius)',
     backgroundColor: `hsl(${habit.color}, 100%, 50%)`,
+    cursor: 'pointer',
   }
   const jsStylesInactive = {
     margin: '0',
@@ -74,7 +75,7 @@ const CreateAchievementButton = ({habit, setErrors, wasAccomplished, id}) => {
     <div className={styles.cubeWrapper}>
         {/* {!isChecked && <button className={styles.achieveCube}></button>}
         {isChecked && <button className={styles.achieveCubeChecked}></button>} */}
-        <button style={wasAccomplished ? jsStylesActive : jsStylesInactive}></button>
+        <button style={wasAccomplished ? jsStylesActive : jsStylesInactive} className={styles.button}></button>
     </div>
       </form>
   )

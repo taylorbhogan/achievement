@@ -14,13 +14,13 @@ const Nav = () => {
   return (
     <div className={styles.navbarWrapper}>
       <nav className={styles.navbar}>
-        <NavLink to='/reflect' exact={true} activeClassName='active'>
+        <NavLink to='/reflect' exact={true} className={styles.child} activeClassName='active'>
           <div className={styles.reflect}>reflect</div>
         </NavLink>
-        <NavLink to='/' exact={true} className={styles.logoLink} activeClassName='active'>
+        <NavLink to='/' exact={true} className={`${styles.logoLink} ${styles.child}`} activeClassName='active'>
           <div className={styles.logo}>Achievement.</div>
         </NavLink>
-        <div>
+        <div className={`${styles.flexEnd} ${styles.child}`}>
           {!user ? <NavPublic /> :
             <div>
               <DropdownOpenButton />

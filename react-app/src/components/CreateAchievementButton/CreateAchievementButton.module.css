@@ -22,3 +22,7 @@
   height: 100%;
   cursor: pointer;
 }
+
+.button:hover{
+  box-shadow: 0 2px 4px 0 rgba(223, 2, 2, 0.2)
+}
