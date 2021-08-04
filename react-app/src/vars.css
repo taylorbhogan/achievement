@@ -5,18 +5,21 @@
   --backgroundSecondary: #191919;
   --backgroundTertiary: #222222;
   --textPrimary: #aaaaaa;
+  --textSecondary: #555555;
   --logoPrimary: white;
   --gray1: #111111;
   --gray2: #222222;
   --gray3: #333333;
   --gray4: #444444;
+  --gray5: #555555;
   --red1: #743e3e;
   --red2: #793636;
   --green1: #396e42;
+  --green2: #408f4d;
+  --green3: #3fa14f;
 
 
   /* -------------MENUS------------- */
-
   --borderRadiusMenu: 10px;
 
   /* -------------CONTAINERS------------- */
@@ -30,11 +33,14 @@
 
   /* -------------CUBES------------- */
   --dashCubeDimension: 20px;
+  --dashCubeDimensionInactive: 14px;
+  --dashCubeBorder: 3px;
+  --dashCubeBorderRadius: 3px;
 
   /* -------------FORMS------------- */
   --formWidth: 25%;
   --formMinWidth: 400px;
-
+  --formBorderRadius: 4px;
 
   /* -------------INPUTS------------- */
   --inputWidth: 100%;
@@ -46,7 +52,12 @@
   --inputTopMargin: 20px;
 
 
+  /* -------------HEADERS------------- */
+  --headerFontSize: 1.3rem;
+
   /* -------------BUTTONS------------- */
   --closeHeight: 24px;
   --buttonBorderRadius: 8px;
+  /* set this to 2. if we hate it, set it to 0 */
+  --buttonBorderRadius2: 2px;
 }

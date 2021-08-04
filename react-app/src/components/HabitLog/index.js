@@ -32,7 +32,7 @@ const HabitLog = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.welcome}>Welcome</div>
+      <div className={styles.welcome}>Clean house here.</div>
       <div className={styles.makeMeRight}>
         <CreateHabitButton />
       </div>

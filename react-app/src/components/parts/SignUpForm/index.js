@@ -86,6 +86,7 @@ const SignUpForm = () => {
             value={password}
             />
         </div>
+        <div className={styles.input}>
         {openConfirmPasswordInput && <InputField
           type='password'
           name='repeat_password'
@@ -94,6 +95,7 @@ const SignUpForm = () => {
           value={repeatPassword}
           required={true}
         />}
+        </div>
         <div className={styles.buttonDiv}>
           <ActionButton buttonText={'Sign Up'}/>
         </div>

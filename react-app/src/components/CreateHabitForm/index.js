@@ -15,7 +15,7 @@ function CreateHabitForm({ setShowNewHabitForm }) {
   const [blurb, setBlurb] = useState('')
   const [stellarBlurb, setStellarBlurb] = useState('')
   const [target, setTarget] = useState('')
-  const [hue, setHue] = useState('')
+  const [hue, setHue] = useState(1)
   const [errors, setErrors] = useState([])
 
   const dispatch = useDispatch()

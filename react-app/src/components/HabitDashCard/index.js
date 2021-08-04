@@ -38,7 +38,7 @@ const HabitDashCard = ({ habit, isLoaded }) => {
       // onMouseLeave={() => setIsShown(false)}
       >
       <div className={styles.bar}>
-        <div>{habit.name}</div>
+        <div className={styles.name}>{habit.name}</div>
         <div className={styles.cubeContainer}>
           <HabitCube wasAccomplished={habit.sunday}/>
           <HabitCube wasAccomplished={habit.monday}/>
@@ -47,6 +47,9 @@ const HabitDashCard = ({ habit, isLoaded }) => {
           <HabitCube wasAccomplished={habit.thursday}/>
           <HabitCube wasAccomplished={habit.friday}/>
           <CreateAchievementButton habit={habit} setErrors={setErrors}/>
+        </div>
+        <div className={styles.target}>
+          /{habit.target}
         </div>
       </div>
       {/* {isShown && <HabitDashCardDetails handleDelete={handleDelete} habit={habit} /> } */}

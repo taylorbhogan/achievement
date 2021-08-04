@@ -9,6 +9,7 @@
   background-color: var(--gray2);
   width: var(--formWidth);
   min-width: var(--formMinWidth);
+  border-radius: var(--formBorderRadius);
 }
 
 .input{

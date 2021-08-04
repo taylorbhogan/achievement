@@ -14,6 +14,10 @@
   padding-top: 12px;
 }
 
+.logoLink{
+  text-decoration: none;
+}
+
 .logo{
   text-decoration: none;
   color: var(--logoPrimary);
@@ -26,5 +30,6 @@
 }
 
 .active{
-  color: red;
+  font-weight: 600;
+
 }

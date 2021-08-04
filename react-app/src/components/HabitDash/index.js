@@ -49,6 +49,7 @@ function HabitDash() {
       </div>
       <div className={styles.dashCardContainer}>
         <div className={styles.cubeContainerHeadersWrapper}>
+          <div className={styles.name}></div>
           <div className={styles.cubeContainerHeadersCopyCubeContainer}>
             <div className={styles.cubeContainerHeader}>{getToday(6)}</div>
             <div className={styles.cubeContainerHeader}>{getToday(5)}</div>
@@ -58,6 +59,7 @@ function HabitDash() {
             <div className={styles.cubeContainerHeader}>{getToday(1)}</div>
             <div className={styles.cubeContainerHeader}>{getToday(0)}</div>
           </div>
+          <div className={styles.target}></div>
         </div>
         {/* {habits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => ( */}
         {habits.map((habit, idx) => (

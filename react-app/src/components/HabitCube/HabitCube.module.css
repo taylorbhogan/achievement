@@ -1,14 +1,21 @@
-@import '../../vars.css';
-
 .habitCube{
   width: var(--dashCubeDimension);
   height: var(--dashCubeDimension);
+  border-radius: var(--dashCubeBorderRadius);
   background-color: cornflowerblue;
   margin: 5px;
 }
 .habitCubeInactive{
   width: var(--dashCubeDimension);
   height: var(--dashCubeDimension);
+  /* border: var(--dashCubeBorder) solid gray; */
+  border-radius: var(--dashCubeBorderRadius);
   background-color: gray;
   margin: 5px;
+  cursor: pointer;
+}
+
+.habitCubeInactive:hover{
+  background-color: var(--gray4);
+
 }
