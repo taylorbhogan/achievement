@@ -12,7 +12,9 @@
 }
 
 .name{
-  min-width: 100px;
+  width: 150px;
+  line-height: 1.3rem;
+  overflow: scroll;
 }
 
 .cubeContainer{

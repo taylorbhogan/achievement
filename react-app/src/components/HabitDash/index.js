@@ -73,7 +73,7 @@ function HabitDash() {
           <div className={styles.target}></div>
         </div>
         {/* {habits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => ( */}
-        {habits.map((habit, idx) => (
+        {habits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => (
           <HabitDashCard
             key={idx}
             habit={habit}
