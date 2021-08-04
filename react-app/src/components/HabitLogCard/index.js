@@ -100,7 +100,8 @@ const HabitLogCard = ({ habit, isLoaded }) => {
             <HabitCube />
             <HabitCube />
             <HabitCube />
-            <CreateAchievementButton />
+            <HabitCube />
+            {/* <CreateAchievementButton /> */}
           </div>
         </div>
         {!isEditable && <HabitLogCardDetails

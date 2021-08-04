@@ -101,8 +101,8 @@ def create_achievement():
     Creates a new achievement
     """
     form = AchievementForm()
-    print('hello--------------------',form['habit_id'].data)
-    print('hello--------------------',form['is_stellar'].data)
+    # print('hello--------------------',form['habit_id'].data)
+    # print('hello--------------------',form['is_stellar'].data)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         achievement = Achievement()
