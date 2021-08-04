@@ -30,6 +30,16 @@ class Habit(db.Model):
         return {n: helper(n) for n in range((datetime.utcnow() + timedelta(days=1) - self.created_at).days)}
 
     def check_all_in_last_week(self):
+        def helper(n):
+            for a in self.achievements:
+                print('self.name',self.name,'n',n,'a.id',a.id,'aCreate',a.created_at,'low',datetime.combine(datetime.utcnow() + timedelta(days=n-6),time.min),'high',datetime.combine(datetime.utcnow() + timedelta(days=n-5), time.min))
+                if a.created_at > datetime.combine(datetime.utcnow() + timedelta(days=n-6),time.min) and a.created_at < datetime.combine(datetime.utcnow() + timedelta(days=n-5), time.min):
+                    return True
+            return False
+
+        return {n: helper(n) for n in range(7)}
+
+    def count_achievements_in_last_week(self):
         count = 0
         for a in self.achievements:
             if a.created_at > self.created_at - timedelta(days=7) and a.created_at < datetime.utcnow():
@@ -60,11 +70,12 @@ class Habit(db.Model):
             'blurb': self.blurb,
             'stellar_blurb': self.stellar_blurb,
             'target': self.target,
-            # 'color': self.color.hue,
+            'color': self.color.hue,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'user_id': self.user_id,
             'color_id': self.color_id,
             'achievements': [a.to_dict() for a in self.achievements],
-            'target_prog': self.check_all_in_last_week(),
+            'target_prog': self.count_achievements_in_last_week(),
+            'week': self.check_all_in_last_week()
         }

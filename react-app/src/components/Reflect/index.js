@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getReflections } from '../../store/reflect'
+import { getReflections, getWeeksReflections } from '../../store/reflect'
 import ReflectionBucket from './ReflectionBucket'
 import styles from './Reflect.module.css'
 
@@ -22,6 +22,9 @@ const Reflect = () => {
 
   useEffect(() => {
     dispatch(getReflections(user.id))
+  }, [dispatch, user.id])
+  useEffect(() => {
+    dispatch(getWeeksReflections(user.id))
   }, [dispatch, user.id])
 
 
