@@ -1,6 +1,7 @@
 .cubeWrapper{
   width: var(--dashCubeDimension);
   height: var(--dashCubeDimension);
+  margin: 0px 10px;
 }
 
 .achieveCubeChecked{
