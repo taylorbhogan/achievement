@@ -19,6 +19,8 @@ const HabitLog = () => {
     dispatch(getHabits(user.id))
   }, [dispatch, user.id])
 
+
+
   // useEffect(() => {
   //   if (Object.keys(reduxHabits).length > 0) {
   //     setIsLoaded(true)

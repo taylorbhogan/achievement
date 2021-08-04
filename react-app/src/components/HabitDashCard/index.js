@@ -49,7 +49,7 @@ const HabitDashCard = ({ habit, isLoaded }) => {
           <CreateAchievementButton habit={habit} setErrors={setErrors}/>
         </div>
         <div className={styles.target}>
-          /{habit.target}
+        {habit.target_prog}/{habit.target}
         </div>
       </div>
       {/* {isShown && <HabitDashCardDetails handleDelete={handleDelete} habit={habit} /> } */}

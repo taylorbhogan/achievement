@@ -23,16 +23,33 @@ class Habit(db.Model):
     def check_all_from_create_date(self):
         def helper(n):
             for a in self.achievements:
-                # print(a.id,'aCreate',a.created_at,'lowBounds',self.created_at + timedelta(days=n),'highBounds', self.created_at + timedelta(days=n+1))
-                # the below prints the first true; all else false
-                # if a.created_at > self.created_at + timedelta(days=n) and a.created_at < self.created_at + timedelta(days=n+1):
-                print(a.id,'aCreate',a.created_at,'low',datetime.combine(self.created_at + timedelta(days=n),time.min),'high',datetime.combine(self.created_at + timedelta(days=n+1), time.min))
                 if a.created_at > datetime.combine(self.created_at + timedelta(days=n),time.min) and a.created_at < datetime.combine(self.created_at + timedelta(days=n+1), time.min):
                     return True
-            print('false --')
             return False
 
         return {n: helper(n) for n in range((datetime.utcnow() + timedelta(days=1) - self.created_at).days)}
+
+    def check_all_in_last_week(self):
+        count = 0
+        for a in self.achievements:
+            if a.created_at > self.created_at - timedelta(days=7) and a.created_at < datetime.utcnow():
+                count += 1
+        return count
+
+
+    # def check_all_from_create_date(self):
+    #     def helper(n):
+    #         for a in self.achievements:
+    #             # print(a.id,'aCreate',a.created_at,'lowBounds',self.created_at + timedelta(days=n),'highBounds', self.created_at + timedelta(days=n+1))
+    #             # the below prints the first true; all else false
+    #             # if a.created_at > self.created_at + timedelta(days=n) and a.created_at < self.created_at + timedelta(days=n+1):
+    #             print(a.id,'aCreate',a.created_at,'low',datetime.combine(self.created_at + timedelta(days=n),time.min),'high',datetime.combine(self.created_at + timedelta(days=n+1), time.min))
+    #             if a.created_at > datetime.combine(self.created_at + timedelta(days=n),time.min) and a.created_at < datetime.combine(self.created_at + timedelta(days=n+1), time.min):
+    #                 return True
+    #         print('false --')
+    #         return False
+
+    #     return {n: helper(n) for n in range((datetime.utcnow() + timedelta(days=1) - self.created_at).days)}
 
 
 
@@ -49,4 +66,5 @@ class Habit(db.Model):
             'user_id': self.user_id,
             'color_id': self.color_id,
             'achievements': [a.to_dict() for a in self.achievements],
+            'target_prog': self.check_all_in_last_week(),
         }
