@@ -19,12 +19,12 @@ const NavPublic = () => {
   return (
     <div className={styles.container}>
       <button className={styles.button}>
-        <NavLink to='/login' exact={true} activeClassName='active'>
+        <NavLink to='/login' exact={true} activeClassName='active' className={styles.link}>
           Login
         </NavLink>
       </button>
       <button className={styles.button}>
-        <NavLink to='/sign-up' exact={true} activeClassName='active'>
+        <NavLink to='/sign-up' exact={true} activeClassName='active' className={styles.link}>
           Sign Up
         </NavLink>
       </button>
