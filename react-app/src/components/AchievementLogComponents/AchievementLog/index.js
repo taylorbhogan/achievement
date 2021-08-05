@@ -52,7 +52,7 @@ const AchievementLog = () => {
     <div className={styles.container}>
       <div className={styles.header}>Everything you've achieved.</div>
       <div className={styles.achievementContainer}>
-        {reduxAchievements.length > 0 && reduxAchievements.map((achievement, idx) => {
+        {reduxAchievements.length > 0 && reduxAchievements.filter(achievement => achievement.habit !== 'DELETED').map((achievement, idx) => {
             return <AchievementLogCard
               key={idx}
               achievement={achievement}
