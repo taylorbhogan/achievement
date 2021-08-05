@@ -23,7 +23,7 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   // const user = useSelector(state => state.session.user)
 
   // const [isEditable, setIsEditable] = useState(false)
-  const [name, setName] = useState(achievement.habit_name)
+  // const [name, setName] = useState(achievement.habit_name)
   // const [blurb, setBlurb] = useState(habit.blurb)
   // const [stellarBlurb, setStellarBlurb] = useState(habit.stellar_blurb)
   // const [target, setTarget] = useState(habit.target)
@@ -35,9 +35,9 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
     await dispatch(deleteAchievement(achievement.id))
   }
 
-  useEffect(() => {
-    setName(achievement.habit_name)
-  },[achievement.habit_name])
+  // useEffect(() => {
+  //   setName(achievement.habit_name)
+  // },[achievement.habit_name])
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault()
@@ -64,13 +64,16 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   // }
   const formattedDate = (date) => {
     const jsDate = new Date(date)
+    if (jsDate > new Date().setHours(0,0,0,0) ) {
+      return 'Today'
+    }
     const formattedDate = new Intl.DateTimeFormat('en-US', { weekday: 'short', month: 'long', day: 'numeric' }).format(jsDate)
     return formattedDate
   }
   const formattedTime = (date) => {
     const jsDate = new Date(date)
-    const formattedDate = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', timeZoneName: 'short' }).format(jsDate)
-    return formattedDate
+    const formattedTime = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', timeZoneName: 'short' }).format(jsDate)
+    return formattedTime
   }
 
   const closeForm = () => {
@@ -97,15 +100,22 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
 
   const formatInputDate = (achieveCreateDate) => {
     const jsDate = new Date(achieveCreateDate)
-    return jsDate.toISOString().slice(0,16)
+
+    const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(jsDate);
+    const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(jsDate);
+    const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(jsDate);
+    const hour = new Intl.DateTimeFormat('en', { hour: '2-digit' }).format(jsDate).slice(0,2);
+    const minute = new Intl.DateTimeFormat('en', { minute: '2-digit' }).format(jsDate);
+
+    return `${year}-${month}-${day}T${hour}:${minute}`
   }
 
   return (
     <div className={styles.container}>
       <div className={styles.contents}>
         <div className={styles.nameWrapper}>
-          {name}</div>
-        <div>Added:</div>
+          {achievement.habit}</div>
+        <div>Achieved:</div>
         {isEditable
           ?
           <div className={styles.dateContainer}>
