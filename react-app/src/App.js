@@ -13,6 +13,7 @@ import AchievementLog from './components/AchievementLogComponents/AchievementLog
 import HabitLog from './components/HabitLog';
 import DeveloperLinks from './components/parts/DeveloperLinks';
 import PageNotFound from './components/parts/PageNotFound'
+import Splash from './components/parts/Splash';
 import { authenticate } from './store/session';
 
 function App() {
@@ -59,6 +60,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path='/splash' exact={true}>
+          <Splash />
+        </Route>
         <Route>
           <PageNotFound />
         </Route>
