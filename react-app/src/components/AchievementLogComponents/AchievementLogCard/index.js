@@ -9,13 +9,17 @@ import CloseButton from "../../parts/CloseButton"
 import DeleteConfirmationButton from "../../parts/DeleteConfirmationButton"
 import DeleteConfirmation from "../../parts/DeleteConfirmation"
 import InputField from '../../parts/InputField'
+import ActionButton from "../../parts/ActionButton"
+import FormErrors from "../../parts/FormErrors"
+import { editAchievement } from "../../../store/achievement"
 
 import styles from './AchievementLogCard.module.css'
 
 const AchievementLogCard = ({ achievement, isLoaded }) => {
   const [isEditable, setIsEditable] = useState(false)
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
-
+  const [createdAt, setCreatedAt] = useState(achievement.created_at)
+  console.log('createdAt----------------------------->',createdAt);
   const dispatch = useDispatch()
   // const user = useSelector(state => state.session.user)
 
@@ -24,7 +28,7 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   // const [blurb, setBlurb] = useState(habit.blurb)
   // const [stellarBlurb, setStellarBlurb] = useState(habit.stellar_blurb)
   // const [target, setTarget] = useState(habit.target)
-  // const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([])
 
 
   const handleDelete = async () => {
@@ -72,18 +76,44 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   const closeDeleteConfirmation = () => {
     setShowDeleteConfirmation(false)
   }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const updatedAchievement = {
+      id: achievement.id,
+      habit_id: achievement.habit_id,
+      is_stellar: false,
+      created_at: createdAt
+    }
+    const dbAchievement = await dispatch(editAchievement(updatedAchievement))
+    if (dbAchievement.errors) {
+      setErrors(dbAchievement.errors)
+    } else {
+      closeForm()
+    }
+  }
+
 
   return (
     <div className={styles.container}>
       <div className={styles.contents}>
         <div className={styles.nameWrapper}>
           {achievement.habit_name}</div>
+        <div>Added:</div>
         {isEditable
           ?
           <div className={styles.dateContainer}>
-            <form>
-              <div>{formattedDate(achievement.created_at)}</div>
-              <div>{formattedTime(achievement.created_at)}</div>
+            <form className={styles.form} onSubmit={handleSubmit}>
+              {/* <div>{formattedDate(achievement.created_at)}</div>
+              <div>{formattedTime(achievement.created_at)}</div> */}
+              <FormErrors errors={errors} />
+              <InputField
+                name='name'
+                type='datetime-local'
+                // placeholder='Pushups'
+                value={createdAt}
+                onChange={(e) => setCreatedAt(e.target.value)}
+              />
+              <ActionButton buttonText='Save'/>
             </form>
           </div>
           :
@@ -93,7 +123,10 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
           </div>
           }
         <div className={styles.buttonDiv}>
-          <EditButton setIsEditable={setIsEditable} />
+          {isEditable ?
+            <CloseButton closeForm={closeForm} />
+          :
+            <EditButton setIsEditable={setIsEditable} />}
           <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
           <div className={styles.deleteConfDiv}>
             {showDeleteConfirmation &&
@@ -105,11 +138,11 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
           </div>
         </div>
       </div>
-      {(isEditable &&
+      {/* {(isEditable &&
         <div className={styles.edit}>
           <div className={styles.close}><CloseButton closeForm={closeForm} /></div>
           <AchievementEdit />
-        </div>)}
+        </div>)} */}
     </div>
   )
 }

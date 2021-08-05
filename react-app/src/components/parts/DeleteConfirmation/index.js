@@ -53,7 +53,8 @@ let styles;
   }
 
   return (
-    <div style={styles.div}>
+    <div
+    style={styles.div}>
       <div style={styles.top}>
         <div>
           <div>Deleting is</div>

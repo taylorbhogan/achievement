@@ -54,6 +54,27 @@ export const createAchievement = (achievement) => async (dispatch) => {
   }
 }
 
+export const editAchievement = (achievement) => async (dispatch) => {
+  try {
+    const res = await fetch(`api/achievements/${achievement.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(achievement)
+    });
+    console.log(res);
+    if (!res.ok) throw res;
+    const data = await res.json();
+    if (!data.errors) {
+      dispatch(setAchievement(data));
+    }
+    return data;
+  } catch (resError) {
+    return resError;
+  }
+}
+
 export const deleteAchievement = (achievementId) => async (dispatch) => {
   try {
     const res = await fetch(`api/achievements/${achievementId}`, {
