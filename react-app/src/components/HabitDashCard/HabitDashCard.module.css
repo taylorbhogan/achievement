@@ -13,8 +13,10 @@
 
 .name{
   width: 150px;
+  font-size: 1.2rem;
   line-height: 1.3rem;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .cubeContainer{

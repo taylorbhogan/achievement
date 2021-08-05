@@ -35,13 +35,14 @@
 .divider{
   margin-top: 6px;
   margin-bottom: 16px;
-  border-bottom: 1px solid var(--textPrimary);
+  border-bottom: 2px solid var(--gray4);
   width: 58%;
 }
 
 .cubeContainerHeadersWrapper{
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   padding: 5px 30px 5px 30px;
 }
 
