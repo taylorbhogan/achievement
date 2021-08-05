@@ -43,6 +43,12 @@
 .header{
   margin-bottom: 10px;
   min-height: 2rem;
+  width: 110%;
+}
+.nameHeader{
+  margin-bottom: 10px;
+  min-height: 2rem;
+  width: 130%;
 }
 
 .left{
@@ -65,7 +71,7 @@
 }
 
 .target{
-  width: 40%;
+  width: 80%;
 }
 
 .bottom{

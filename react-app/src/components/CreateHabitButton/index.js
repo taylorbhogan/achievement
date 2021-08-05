@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Modal } from '../../context/Modal'
 
 import CreateHabitForm from '../CreateHabitForm'
+import styles from './CreateHabitButton.module.css'
 
 function CreateHabitButton() {
   const [ showNewHabitForm, setShowNewHabitForm ] = useState(false)
@@ -10,6 +11,7 @@ function CreateHabitButton() {
   return (
     <div>
       <button
+        className={styles.button}
         onClick={() => setShowNewHabitForm(true)}
       >Add a Habit</button>
       {showNewHabitForm && (

@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
+import { FaEllipsisV } from 'react-icons/fa'
+import { IconContext } from "react-icons";
 import { getHabits } from "../../store/habit"
 import HabitDashWelcome from "../HabitDashWelcome"
+import HabitDashMenu from "../HabitDashMenu";
 import HabitDashCard from "../HabitDashCard"
-import CreateHabitButton from "../CreateHabitButton"
+// import CreateHabitButton from "../CreateHabitButton"
 import LoadingContent from "../LoadingContent"
 import styles from './HabitDash.module.css'
 
@@ -16,6 +19,7 @@ function HabitDash() {
 
   const [ habits, setHabits ] = useState([])
   const [ isLoaded, setIsLoaded ] = useState(false)
+  const [ showMenu, setShowMenu ] = useState(false)
 
   useEffect(() => {
     dispatch(getHabits(user.id))
@@ -55,9 +59,20 @@ function HabitDash() {
   return (
     <div className={styles.container}>
       <HabitDashWelcome />
-      <div className={styles.makeMeRight}>
-        <CreateHabitButton />
+      <div className={styles.menu}>
+        <button
+          onClick={() => setShowMenu(!showMenu)}
+          className={styles.menuButton}>
+          <IconContext.Provider value={{ className: "react-icons" }}>
+            <FaEllipsisV size={16} color={'#FFF'}/>
+          </IconContext.Provider>
+        </button>
+        {showMenu && <HabitDashMenu />}
       </div>
+      <div className={styles.divider}></div>
+      {/* <div className={styles.makeMeRight}>
+        <CreateHabitButton />
+      </div> */}
       <div className={styles.dashCardContainer}>
         <div className={styles.cubeContainerHeadersWrapper}>
           <div className={styles.name}></div>

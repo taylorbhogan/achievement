@@ -1,0 +1,16 @@
+.button{
+  margin: none;
+  padding: 20px;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.button:hover{
+  background-color: var(--gray1);
+
+}
