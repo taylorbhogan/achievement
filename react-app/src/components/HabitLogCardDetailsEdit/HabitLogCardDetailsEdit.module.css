@@ -1,5 +1,6 @@
 .container{
   background-color: var(--backgroundTertiary);
+  border-radius: var(--formBorderRadius) var(--formBorderRadius) 0 0;
   padding: 6px 30px 30px 30px;
   min-height: 100px;
   display: flex;

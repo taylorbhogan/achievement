@@ -7,7 +7,7 @@
 }
 
 .makeMeRight{
-  padding-left: 70%;
+  padding-right: 70%;
 }
 
 .dashCardContainer{
@@ -15,6 +15,28 @@
   /* box-shadow: var(--containerBoxShadow); */
   /* background-color: var(--backgroundSecondary); */
 
+}
+
+.menu{
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.menuButton{
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  /* position: relative; */
+}
+
+.divider{
+  margin-top: 6px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--textPrimary);
+  width: 58%;
 }
 
 .cubeContainerHeadersWrapper{

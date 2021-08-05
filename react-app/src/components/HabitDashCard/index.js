@@ -37,6 +37,15 @@ const HabitDashCard = ({ habit, isLoaded }) => {
   }
   // console.log('habit.week-------------------->',habit.name,habit.week);
 
+  let nameStyle
+  if (habit.target_prog >= habit.target) {
+    nameStyle = {
+      color: `hsl(${habit.color}, 100%, 50%)`,
+    }
+  } else {
+    nameStyle = null
+  }
+
   return (
     <div
       className={styles.container}
@@ -45,7 +54,7 @@ const HabitDashCard = ({ habit, isLoaded }) => {
       // onMouseLeave={() => setIsShown(false)}
       >
       <div className={styles.bar}>
-        <div className={styles.name}>{habit.name}</div>
+        <div style={nameStyle} className={styles.name}>{habit.name}</div>
         <div className={styles.cubeContainer}>
           {/* <HabitCube color={habit.color} wasAccomplished={habit.week['0']}/>
           <HabitCube color={habit.color} wasAccomplished={habit.week['1']}/>
@@ -96,7 +105,7 @@ const HabitDashCard = ({ habit, isLoaded }) => {
             wasAccomplished={habit.week['6']}
             />
         </div>
-        <div className={styles.target}>
+        <div style={nameStyle} className={styles.target}>
         {habit.target_prog}/{habit.target}
         </div>
       </div>

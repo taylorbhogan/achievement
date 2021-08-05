@@ -58,6 +58,7 @@ function CreateHabitForm({ setShowNewHabitForm }) {
             <div onClick={() => setShowNewHabitForm(false)} className={styles.close}><CloseButton /></div>
             <FormErrors errors={errors} />
             <div className={styles.name}>
+            <div className={styles.nameHeader}>What would you like to add to your life?</div>
               <InputField
                 name='name'
                 type='text'

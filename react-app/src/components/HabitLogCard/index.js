@@ -94,13 +94,13 @@ const HabitLogCard = ({ habit, isLoaded }) => {
             />}
           </div>
           <div className={styles.cubeContainer}>
+            {/* <HabitCube />
             <HabitCube />
             <HabitCube />
             <HabitCube />
             <HabitCube />
             <HabitCube />
-            <HabitCube />
-            <HabitCube />
+            <HabitCube /> */}
             {/* <CreateAchievementButton /> */}
           </div>
         </div>

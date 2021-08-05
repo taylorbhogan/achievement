@@ -8,6 +8,7 @@ import AchievementEdit from "../AchievementEdit"
 import CloseButton from "../../parts/CloseButton"
 import DeleteConfirmationButton from "../../parts/DeleteConfirmationButton"
 import DeleteConfirmation from "../../parts/DeleteConfirmation"
+import InputField from '../../parts/InputField'
 
 import styles from './AchievementLogCard.module.css'
 
@@ -77,10 +78,20 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
       <div className={styles.contents}>
         <div className={styles.nameWrapper}>
           {achievement.habit_name}</div>
-        <div className={styles.dateContainer}>
-          <div>{formattedDate(achievement.created_at)}</div>
-          <div>{formattedTime(achievement.created_at)}</div>
-        </div>
+        {isEditable
+          ?
+          <div className={styles.dateContainer}>
+            <form>
+              <div>{formattedDate(achievement.created_at)}</div>
+              <div>{formattedTime(achievement.created_at)}</div>
+            </form>
+          </div>
+          :
+          <div className={styles.dateContainer}>
+            <div>{formattedDate(achievement.created_at)}</div>
+            <div>{formattedTime(achievement.created_at)}</div>
+          </div>
+          }
         <div className={styles.buttonDiv}>
           <EditButton setIsEditable={setIsEditable} />
           <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
