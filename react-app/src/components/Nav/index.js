@@ -10,7 +10,6 @@ import styles from './Nav.module.css'
 const Nav = () => {
   const user = useSelector(state => state.session.user)
   const location = useLocation()
-  console.log('location---------->', location);
 
   return (
     <div className={styles.navbarWrapper}>

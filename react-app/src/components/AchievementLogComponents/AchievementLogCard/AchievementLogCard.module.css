@@ -48,3 +48,7 @@ background-color: var(--gray3);
   position: relative;
 
 }
+
+.actionButton{
+  width: 80px;
+}

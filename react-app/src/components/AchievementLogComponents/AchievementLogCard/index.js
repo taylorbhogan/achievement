@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 
 import LoadingContent from "../../LoadingContent"
@@ -19,12 +19,11 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   const [isEditable, setIsEditable] = useState(false)
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
   const [createdAt, setCreatedAt] = useState(achievement.created_at)
-  console.log('createdAt----------------------------->',createdAt);
   const dispatch = useDispatch()
   // const user = useSelector(state => state.session.user)
 
   // const [isEditable, setIsEditable] = useState(false)
-  // const [name, setName] = useState(habit.name)
+  const [name, setName] = useState(achievement.habit_name)
   // const [blurb, setBlurb] = useState(habit.blurb)
   // const [stellarBlurb, setStellarBlurb] = useState(habit.stellar_blurb)
   // const [target, setTarget] = useState(habit.target)
@@ -35,6 +34,10 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
     setShowDeleteConfirmation(false)
     await dispatch(deleteAchievement(achievement.id))
   }
+
+  useEffect(() => {
+    setName(achievement.habit_name)
+  },[achievement.habit_name])
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault()
@@ -92,12 +95,16 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
     }
   }
 
+  const formatInputDate = (achieveCreateDate) => {
+    const jsDate = new Date(achieveCreateDate)
+    return jsDate.toISOString().slice(0,16)
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.contents}>
         <div className={styles.nameWrapper}>
-          {achievement.habit_name}</div>
+          {name}</div>
         <div>Added:</div>
         {isEditable
           ?
@@ -110,10 +117,13 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
                 name='name'
                 type='datetime-local'
                 // placeholder='Pushups'
-                value={createdAt}
+                // value={createdAt}
+                value={formatInputDate(achievement.created_at)}
                 onChange={(e) => setCreatedAt(e.target.value)}
               />
-              <ActionButton buttonText='Save'/>
+              <div className={styles.actionButton}>
+                <ActionButton buttonText='Save'/>
+              </div>
             </form>
           </div>
           :
