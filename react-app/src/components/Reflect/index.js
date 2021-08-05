@@ -30,9 +30,9 @@ const Reflect = () => {
 
   return (
     <div>
-      <div className={styles.hello}>Hello from Reflect</div>
+      <div className={styles.hello}>How green is your garden?</div>
       <div className={styles.container}>
-        <div>
+        {/* <div>
           <form onSubmit={handleSubmit}>
             <select
               onChange={(e) => setTimeframe(e.target.value)}
@@ -46,7 +46,7 @@ const Reflect = () => {
             </select>
             <button>Submit</button>
           </form>
-        </div>
+        </div> */}
         {reduxReflections.length > 0 &&
           reduxReflections.map((reflection, idx) => (
             <ReflectionBucket
