@@ -32,9 +32,9 @@ const HabitDashCard = ({ habit, isLoaded }) => {
   //   dispatch(deleteHabit(habit.id))
   // }
 
-  if (!isLoaded){
-    return <LoadingContent />
-  }
+  // if (!isLoaded){
+  //   return <LoadingContent />
+  // }
   // console.log('habit.week-------------------->',habit.name,habit.week);
 
   let nameStyle
