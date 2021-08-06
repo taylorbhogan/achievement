@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAchievements } from "../../../store/achievement"
+import { getHabits } from "../../../store/habit"
 import LoadingContent from "../../LoadingContent"
 import NoHabits from "../../parts/NoHabits"
 import AchievementLogCard from "../AchievementLogCard"
@@ -16,7 +17,11 @@ const AchievementLog = () => {
   // const reduxAchievementsSorted = useSelector(state => Object.values(state.achievements.achievements).sort((first, second) => Date(second.created_at) - Date(first.created_at)))
   // console.log('reduxAchievementsSorted',reduxAchievementsSorted);
   const reduxHabits = useSelector(state => Object.values(state.habits.habits))
+  const user = useSelector(state => state.session.user)
 
+  useEffect(() => {
+    dispatch(getHabits(user.id))
+  },[user.id, dispatch])
 
       // IRINA SORT
   const reduxAchievements = useSelector(state => Object.values(state.achievements.achievements).sort((first, second) => {
@@ -27,7 +32,7 @@ const AchievementLog = () => {
   // NO SORTING
   // const reduxAchievements = useSelector(state => Object.values(state.achievements.achievements))
       // console.log('reduxAchievements---------->', reduxAchievements);
-  const user = useSelector(state => state.session.user)
+  // const user = useSelector(state => state.session.user)
 
   useEffect(() => {
     dispatch(getAchievements(user.id))
@@ -54,7 +59,7 @@ const AchievementLog = () => {
     <div className={styles.container}>
       <div className={styles.header}>Everything you've achieved.</div>
       <div className={styles.achievementContainer}>
-      {reduxHabits.length === 0 &&
+      {(reduxHabits.length === 0 || (reduxHabits.length > 0 && reduxAchievements.length === 0)) &&
           <NoHabits />
         }
         {reduxAchievements.length > 0 && reduxAchievements.filter(achievement => achievement.habit !== 'DELETED').map((achievement, idx) => {

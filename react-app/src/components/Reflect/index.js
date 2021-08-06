@@ -51,6 +51,7 @@ const Reflect = () => {
           <form onSubmit={handleSubmit}>
             <select
               onChange={(e) => setTimeframe(e.target.value)}
+              className={styles.select}
               >
               <option value='all'>view your progress since you added each habit</option>
               <option value='week'>view your progress in the last week</option>

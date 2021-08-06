@@ -1,5 +1,5 @@
 .hello{
-  padding: 100px 0px;
+  padding: 100px 0px 40px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,4 +14,23 @@
 
 .smaller{
   width: 80%;
+}
+
+.select{
+  /* appearance: none; */
+  background-color: var(--green1);
+  color: var(--gray2);
+  height: 3.3rem;
+  /* line-height: 3rem; */
+  font-size: 1.1rem;
+  padding: 0 30px;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.5) ;
+  border-radius: 4px;
+  background-image: linear-gradient(to top, var(--green1), var(--green3) 33%);
+  margin-bottom: 30px;
+}
+.select:hover{
+  background-color: var(--green3);
+  background-image: none;
 }
