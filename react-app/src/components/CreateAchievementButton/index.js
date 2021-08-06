@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createAchievement } from "../../store/achievement"
-import { getHabits } from "../../store/habit"
+import { getHabits, unloadHabits } from "../../store/habit"
 
 import styles from './CreateAchievementButton.module.css'
 
@@ -14,6 +14,12 @@ const CreateAchievementButton = ({habit, setErrors, wasAccomplished, id}) => {
   useEffect(() => {
     dispatch(getHabits(user.id))
   },[isChecked, dispatch, user.id])
+
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(unloadHabits())
+  //   }
+  // }, [dispatch])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
