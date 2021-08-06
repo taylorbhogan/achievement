@@ -29,6 +29,15 @@ class Habit(db.Model):
 
         return {n: helper(n) for n in range((datetime.utcnow() + timedelta(days=1) - self.created_at).days)}
 
+    def check_all_in_last_year(self):
+        def helper(n):
+            for a in self.achievements:
+                if a.created_at > datetime.combine(self.created_at + timedelta(days=n),time.min) and a.created_at < datetime.combine(self.created_at + timedelta(days=n+1), time.min):
+                    return True
+            return False
+
+        return {n: helper(n) for n in range(365)}
+
     def check_all_in_last_week(self):
         def helper(n):
             for a in self.achievements:
@@ -77,5 +86,6 @@ class Habit(db.Model):
             'color_id': self.color_id,
             'achievements': [a.to_dict() for a in self.achievements],
             'target_prog': self.count_achievements_in_last_week(),
-            'week': self.check_all_in_last_week()
+            'week': self.check_all_in_last_week(),
+            'year': self.check_all_in_last_year(),
         }

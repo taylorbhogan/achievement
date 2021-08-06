@@ -20,7 +20,7 @@ const Colors = ({setHue}) => {
   },[dispatch])
 
   const handleColorChange = (color) => {
-    console.log(color.hsl);
+    // console.log(color.hsl);
     setColor(color)
     setHue(color.hsl.h)
   }

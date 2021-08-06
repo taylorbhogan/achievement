@@ -26,7 +26,7 @@ function EditHabitForm({ habit, setShowEditHabitForm }) {
       stellar_blurb: stellarBlurb,
       target: +target,
     }
-    console.log('------updatedHabit', updatedHabit);
+    // console.log('------updatedHabit', updatedHabit);
 
 
 

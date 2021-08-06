@@ -1,9 +1,9 @@
 import HabitCube from '../../HabitCube'
-import styles from './ReflectionBucket.module.css'
+import styles from './ReflectionBucketYear.module.css'
 
-const ReflectionBucket = ({reflection, habitName}) => {
+const ReflectionBucketYear = ({reflection, habitName}) => {
   // console.log('reflection---->',reflection);
-  const trueFalses = Object.values(reflection[0])
+  const trueFalses = Object.values(reflection)
 
   return (
     <div className={styles.container}>
@@ -22,4 +22,4 @@ const ReflectionBucket = ({reflection, habitName}) => {
   )
 }
 
-export default ReflectionBucket
+export default ReflectionBucketYear

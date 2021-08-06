@@ -12,7 +12,7 @@ const setWeeksReflections = (weeksReflections) => ({
 })
 
 export const getReflections = (userId) => async (dispatch) => {
-  console.log('------------------------------hit the reflect store');
+  // console.log('------------------------------hit the reflect store');
   try {
     const res = await fetch(`api/habits/users/${userId}/reflection/created`)
     if (!res.ok) throw res;
@@ -25,7 +25,7 @@ export const getReflections = (userId) => async (dispatch) => {
   }
 }
 export const getWeeksReflections = (userId) => async (dispatch) => {
-  console.log('------------------------------hit the reflect store');
+  // console.log('------------------------------hit the reflect store');
   try {
     const res = await fetch(`api/habits/users/${userId}/reflection/week`)
     if (!res.ok) throw res;

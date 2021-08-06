@@ -32,7 +32,7 @@ export const createColor = (color) => async (dispatch) => {
       },
       body: JSON.stringify(color)
     });
-    console.log(res);
+    // console.log(res);
     if (!res.ok) throw res;
     const data = await res.json();
     if (!data.errors) {
