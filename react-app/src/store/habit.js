@@ -1,5 +1,6 @@
 const SET_HABIT = 'habits/SET_HABIT'
 const SET_HABITS = 'habits/SET_HABITS'
+const UNLOAD_HABITS = 'habits/UNLOAD_HABITS'
 
 const setHabit = (habit) => ({
   type: SET_HABIT,
@@ -9,6 +10,10 @@ const setHabit = (habit) => ({
 const setHabits = (habits) => ({
   type: SET_HABITS,
   habits
+})
+
+export const unloadHabits = () => ({
+  type: UNLOAD_HABITS
 })
 
 
@@ -110,6 +115,13 @@ export default function reducer(state = initialState, action) {
     case SET_HABIT:
       // console.log('hit me twice----------');
       return { ...state, habits: { ...state.habits, [action.habit.id]: action.habit}}
+    case UNLOAD_HABITS:
+      return {
+        ...initialState,
+          habits: {
+            ...initialState.habits
+          }
+      }
     default:
       return state;
   }

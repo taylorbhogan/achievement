@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { FaEllipsisV } from 'react-icons/fa'
 import { IconContext } from "react-icons";
-import { getHabits } from "../../store/habit"
+import { getHabits, unloadHabits } from "../../store/habit"
 import HabitDashWelcome from "../HabitDashWelcome"
 import HabitDashMenu from "../HabitDashMenu";
 import HabitDashCard from "../HabitDashCard"
@@ -15,23 +15,27 @@ import styles from './HabitDash.module.css'
 function HabitDash() {
   const dispatch = useDispatch()
 
-  const reduxHabits = useSelector(state => state.habits.habits)
+  const reduxHabits = useSelector(state => Object.values(state.habits.habits))
   const user = useSelector(state => state.session.user)
+  const userId = user.id
 
-  const [ habits, setHabits ] = useState([])
-  const [ isLoaded, setIsLoaded ] = useState(false)
+  // const [ habits, setHabits ] = useState([])
+  // const [ isLoaded, setIsLoaded ] = useState(false)
   const [ showMenu, setShowMenu ] = useState(false)
 
   useEffect(() => {
-    dispatch(getHabits(user.id))
-  }, [dispatch, user.id])
-
-  useEffect(() => {
-    if (Object.keys(reduxHabits).length > 0) {
-      setIsLoaded(true)
-      setHabits(Object.values(reduxHabits))
+    dispatch(getHabits(userId))
+    return () => {
+      dispatch(unloadHabits())
     }
-  }, [reduxHabits])
+  }, [dispatch, userId])
+
+  // useEffect(() => {
+  //   if (Object.keys(reduxHabits).length > 0) {
+  //     setIsLoaded(true)
+  //     setHabits(Object.values(reduxHabits))
+  //   }
+  // }, [reduxHabits])
 
 
   // useEffect(() => {
@@ -105,14 +109,14 @@ function HabitDash() {
           <div className={styles.target}></div>
         </div>
         {/* {habits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => ( */}
-        {habits.length === 0 &&
+        {reduxHabits.length === 0 &&
           <NoHabits />
         }
-        {habits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => (
+        {reduxHabits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => (
           <HabitDashCard
             key={idx}
             habit={habit}
-            isLoaded={isLoaded}
+            // isLoaded={isLoaded}
           /> ))}
       </div>
     </div>
