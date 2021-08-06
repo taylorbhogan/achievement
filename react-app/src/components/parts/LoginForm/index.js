@@ -65,7 +65,7 @@ const LoginForm = () => {
         <div className={styles.linkContainer}>
           <div>
             <span>Or </span>
-            <span><Link to='/sign-up'>sign up</Link></span>
+            <span><Link to='/signup'>sign up</Link></span>
             <span> if you're new.</span>
           </div>
           <div className={styles.lastLine}>

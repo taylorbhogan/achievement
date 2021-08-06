@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAchievements } from "../../../store/achievement"
 import LoadingContent from "../../LoadingContent"
+import NoHabits from "../../parts/NoHabits"
 import AchievementLogCard from "../AchievementLogCard"
 import styles from './AchievementLog.module.css'
 
@@ -14,6 +15,7 @@ const AchievementLog = () => {
   // console.log('reduxAchievements', reduxAchievements);
   // const reduxAchievementsSorted = useSelector(state => Object.values(state.achievements.achievements).sort((first, second) => Date(second.created_at) - Date(first.created_at)))
   // console.log('reduxAchievementsSorted',reduxAchievementsSorted);
+  const reduxHabits = useSelector(state => Object.values(state.habits.habits))
 
 
       // IRINA SORT
@@ -52,6 +54,9 @@ const AchievementLog = () => {
     <div className={styles.container}>
       <div className={styles.header}>Everything you've achieved.</div>
       <div className={styles.achievementContainer}>
+      {reduxHabits.length === 0 &&
+          <NoHabits />
+        }
         {reduxAchievements.length > 0 && reduxAchievements.filter(achievement => achievement.habit !== 'DELETED').map((achievement, idx) => {
             return <AchievementLogCard
               key={idx}

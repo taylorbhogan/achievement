@@ -9,6 +9,7 @@ import HabitDashMenu from "../HabitDashMenu";
 import HabitDashCard from "../HabitDashCard"
 // import CreateHabitButton from "../CreateHabitButton"
 import LoadingContent from "../LoadingContent"
+import NoHabits from "../parts/NoHabits";
 import styles from './HabitDash.module.css'
 
 function HabitDash() {
@@ -52,16 +53,32 @@ function HabitDash() {
     return `${thisDay.slice(-2)} ${thisDay.slice(0,-2)}`
   }
 
-  if (!isLoaded){
-    return <LoadingContent />
+  const openMenu = () => {
+    setShowMenu(!showMenu)
   }
+
+  // useEffect(() => {
+  //   if (!showMenu) return;
+  //   const closeMenu = () => {
+
+  //     setShowMenu(false)
+  //   }
+  //   document.addEventListener('click',closeMenu)
+
+
+  //   return () => document.removeEventListener('click',closeMenu)
+  // }, [showMenu])
+
+  // if (!isLoaded){
+  //   return <LoadingContent />
+  // }
 
   return (
     <div className={styles.container}>
       <HabitDashWelcome />
       <div className={styles.menu}>
         <button
-          onClick={() => setShowMenu(!showMenu)}
+          onClick={openMenu}
           className={styles.menuButton}>
           <IconContext.Provider value={{ className: "react-icons" }}>
             <FaEllipsisV size={16} color={'#FFF'}/>
@@ -88,6 +105,9 @@ function HabitDash() {
           <div className={styles.target}></div>
         </div>
         {/* {habits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => ( */}
+        {habits.length === 0 &&
+          <NoHabits />
+        }
         {habits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => (
           <HabitDashCard
             key={idx}

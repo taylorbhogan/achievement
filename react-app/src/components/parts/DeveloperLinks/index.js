@@ -17,7 +17,7 @@ const DeveloperLinks = () => {
       className={styles.container}>
       {openForBusiness ? (
         <div className={styles.openContainer}>
-          <div className={styles.header}>Developer Links</div>
+          <div className={styles.header}>@taylorbhogan</div>
           <div className={styles.linkContainer}>
             <a href='https://github.com/taylorbhogan'>
               <FaGithub style={style}/>
@@ -31,7 +31,7 @@ const DeveloperLinks = () => {
           </div>
         </div>
       ) : (
-          <div>Developer Links</div>
+          <div>developed by @taylorbhogan</div>
       )}
     </div>
   )

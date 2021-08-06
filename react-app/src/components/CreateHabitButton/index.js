@@ -3,15 +3,60 @@ import { useState } from 'react'
 import { Modal } from '../../context/Modal'
 
 import CreateHabitForm from '../CreateHabitForm'
-import styles from './CreateHabitButton.module.css'
+// import styles from './CreateHabitButton.module.css'
 
-function CreateHabitButton() {
+function CreateHabitButton({componentStyle}) {
   const [ showNewHabitForm, setShowNewHabitForm ] = useState(false)
+  const [ hovered, setHovered ] = useState(false)
+
+  const hover = () => {
+    setHovered(!hovered)
+  }
+
+  let style;
+  if (componentStyle === 'green') {
+    style = {
+      background: 'none',
+      backgroundColor: 'var(--green2)',
+      border: 'none',
+      borderRadius: 'var(--buttonBorderRadius2)',
+      padding: '.8rem 1.5rem .8rem 1.5rem',
+      cursor: 'pointer',
+    }
+    if (hovered){
+      style = {
+        ...style,
+        backgroundColor: 'var(--green3)',
+      }
+    }
+  } else if (componentStyle === 'gray'){
+    style = {
+      margin: 'none',
+      padding: '20px',
+      background: 'none',
+      backgroundColor: 'var(--gray2)',
+      border: 'none',
+      font: 'inherit',
+      color: 'inherit',
+      cursor: 'pointer',
+      width: '100%',
+      textAlign: 'left',
+    }
+    if (hovered){
+      style = {
+        ...style,
+        backgroundColor: 'var(--gray1)',
+      }
+    }
+  }
 
   return (
     <div>
       <button
-        className={styles.button}
+        onMouseEnter={hover}
+        onMouseLeave={hover}
+        style={style}
+        // className={styles.button}
         onClick={() => setShowNewHabitForm(true)}
       >Add a Habit</button>
       {showNewHabitForm && (
