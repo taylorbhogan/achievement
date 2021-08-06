@@ -14,7 +14,10 @@ const Nav = () => {
   return (
     <div className={styles.navbarWrapper}>
       <nav className={styles.navbar}>
-        {location.pathname === '/reflect' || location.pathname === '/splash'
+        {location.pathname === '/reflect' ||
+         location.pathname === '/splash' ||
+         location.pathname === '/signup' ||
+         location.pathname === '/login'
           ?
           <div className={styles.invisibleReflect} />
           :

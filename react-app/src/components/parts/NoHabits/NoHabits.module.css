@@ -1,0 +1,15 @@
+.container{
+  background-color: var(--gray3);
+  border-radius: var(--formBorderRadius);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 60px auto 0 auto;
+  height: 120px;
+  width: 95%;
+}
+
+.text{
+  margin-right: 30px;
+}

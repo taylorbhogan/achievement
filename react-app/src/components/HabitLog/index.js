@@ -4,6 +4,7 @@ import { getHabits } from "../../store/habit"
 import LoadingContent from "../LoadingContent"
 import HabitLogCard from "../HabitLogCard"
 import CreateHabitButton from "../CreateHabitButton"
+import NoHabits from "../parts/NoHabits"
 import styles from './HabitLog.module.css'
 
 const HabitLog = () => {
@@ -13,7 +14,7 @@ const HabitLog = () => {
   const user = useSelector(state => state.session.user)
 
   // const [ habits, setHabits ] = useState([])
-  const [ isLoaded, setIsLoaded ] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     dispatch(getHabits(user.id))
@@ -35,16 +36,21 @@ const HabitLog = () => {
   return (
     <div className={styles.container}>
       <div className={styles.welcome}>Clean house here.</div>
-      <div className={styles.makeMeRight}>
-        <CreateHabitButton />
-      </div>
+      {reduxHabits.length !== 0 &&
+        <div className={styles.makeMeRight}>
+          <CreateHabitButton componentStyle={'gray'} />
+        </div>}
       <div className={styles.habitContainer}>
-      {reduxHabits && reduxHabits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => {
+        {reduxHabits.length === 0 &&
+          <NoHabits />
+        }
+        {reduxHabits && reduxHabits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => {
           return <HabitLogCard
             key={idx}
             habit={habit}
             isLoaded={isLoaded}
-          /> })}
+          />
+        })}
       </div>
     </div>
   )

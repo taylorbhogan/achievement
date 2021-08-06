@@ -49,7 +49,7 @@ const Splash = () => {
         <div className={styles.signUp}>
           <div className={styles.try}>Would you like to check it out?</div>
           <div>
-            <span><Link className={styles.link} to='/sign-up'>Sign up here</Link></span>
+            <span><Link className={styles.link} to='/signup'>Sign up here</Link></span>
             <span> or </span>
             <button
              onClick={demoLogin}

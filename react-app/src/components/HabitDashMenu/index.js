@@ -5,7 +5,7 @@ import styles from './HabitDashMenu.module.css'
 const HabitDashMenu = () => {
   return (
     <div className={styles.container}>
-      <CreateHabitButton />
+      <CreateHabitButton componentStyle={'gray'}/>
      <NavLink to='/achievements' exact={true} activeClassName={styles.active} className={styles.navLink}>
         <div className={styles.linkDiv}>Achievement Log</div>
       </NavLink>

@@ -24,7 +24,7 @@ const NavPublic = () => {
         </NavLink>
       </button>
       <button className={styles.button}>
-        <NavLink to='/sign-up' exact={true} activeClassName='active' className={styles.link}>
+        <NavLink to='/signup' exact={true} activeClassName='active' className={styles.link}>
           Sign Up
         </NavLink>
       </button>

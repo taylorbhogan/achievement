@@ -1,4 +1,4 @@
-.button{
+/* .button{
   margin: none;
   padding: 20px;
   background: none;
@@ -8,9 +8,9 @@
   cursor: pointer;
   width: 100%;
   text-align: left;
-}
+} */
 
-.button:hover{
+/* .button:hover{
   background-color: var(--gray1);
 
-}
+} */
