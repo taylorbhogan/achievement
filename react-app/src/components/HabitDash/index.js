@@ -23,10 +23,15 @@ function HabitDash() {
   // const [ isLoaded, setIsLoaded ] = useState(false)
   const [ showMenu, setShowMenu ] = useState(false)
 
+
+  // const unloadTest = () => dispatch(unloadHabits())
+  // window.unloadTest = unloadTest
+
+
   useEffect(() => {
     dispatch(getHabits(userId))
     return () => {
-      console.log('I am in the RETURN useEffect HabitDash component--------------------');
+      // console.log('I am in the RETURN useEffect HabitDash component--------------------');
 
       dispatch(unloadHabits())
     }
@@ -38,7 +43,7 @@ function HabitDash() {
   //     setHabits(Object.values(reduxHabits))
   //   }
   // }, [reduxHabits])
-  console.log('I am in the HabitDash component--------------------');
+  // console.log('I am in the HabitDash component--------------------');
 
   // useEffect(() => {
   //   if (!user.id) {
