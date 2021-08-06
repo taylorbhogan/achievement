@@ -61,7 +61,7 @@ export const createHabit = (habit) => async (dispatch) => {
 
 export const editHabit = (habit) => async (dispatch) => {
   try {
-    console.log('inside the PUT thunk');
+    // console.log('inside the PUT thunk');
   const res = await fetch (`api/habits/${habit.id}`,{
     method: 'PUT',
     headers: {
@@ -89,7 +89,7 @@ export const deleteHabit = (habitId) => async (dispatch) => {
     if (!res.ok) throw res;
     const data = await res.json();
     if (!data.errors) {
-      console.log('---------inside of deleteHabit in store--------',data);
+      // console.log('---------inside of deleteHabit in store--------',data);
       dispatch(setHabit(data));
     }
     return data;
@@ -108,7 +108,7 @@ export default function reducer(state = initialState, action) {
     case SET_HABITS:
       return { ...state, habits: { ...state.habits, ...action.habits} }
     case SET_HABIT:
-      console.log('hit me twice----------');
+      // console.log('hit me twice----------');
       return { ...state, habits: { ...state.habits, [action.habit.id]: action.habit}}
     default:
       return state;

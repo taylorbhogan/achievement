@@ -31,7 +31,7 @@ const HabitLogCard = ({ habit, isLoaded }) => {
 
 
   const handleDelete = () => {
-    console.log('--------------inside of handleDelete');
+    // console.log('--------------inside of handleDelete');
     setShowDeleteConfirmation(false)
 
     dispatch(deleteHabit(habit.id))
@@ -43,7 +43,7 @@ const HabitLogCard = ({ habit, isLoaded }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('------------->id',e.target.id);
+    // console.log('------------->id',e.target.id);
     if (e.currentTarget.id === 'deleteConfirmationButton'){
       dispatch(deleteHabit(habit.id))
     } else{

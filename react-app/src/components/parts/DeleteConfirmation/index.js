@@ -2,7 +2,7 @@ import CloseButton from '../CloseButton'
 import DeleteButton from '../DeleteButton'
 
 const DeleteConfirmation = ({closeDeleteConfirmation, handleDelete, componentLocation}) => {
-  console.log(componentLocation);
+  // console.log(componentLocation);
 let styles;
   if (componentLocation === 'achievementLog'){
     styles = {

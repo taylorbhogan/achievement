@@ -42,7 +42,7 @@ export const createAchievement = (achievement) => async (dispatch) => {
       },
       body: JSON.stringify(achievement)
     });
-    console.log(res);
+    // console.log(res);
     if (!res.ok) throw res;
     const data = await res.json();
     if (!data.errors) {
@@ -63,7 +63,7 @@ export const editAchievement = (achievement) => async (dispatch) => {
       },
       body: JSON.stringify(achievement)
     });
-    console.log(res);
+    // console.log(res);
     if (!res.ok) throw res;
     const data = await res.json();
     if (!data.errors) {
