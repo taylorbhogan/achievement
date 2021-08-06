@@ -26,6 +26,8 @@ function HabitDash() {
   useEffect(() => {
     dispatch(getHabits(userId))
     return () => {
+      console.log('I am in the RETURN useEffect HabitDash component--------------------');
+
       dispatch(unloadHabits())
     }
   }, [dispatch, userId])
@@ -36,7 +38,7 @@ function HabitDash() {
   //     setHabits(Object.values(reduxHabits))
   //   }
   // }, [reduxHabits])
-
+  console.log('I am in the HabitDash component--------------------');
 
   // useEffect(() => {
   //   if (!user.id) {

@@ -111,7 +111,12 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_HABITS:
-      return { ...state, habits: { ...state.habits, ...action.habits} }
+      return { ...state,
+        habits: {
+          //  ...state.habits,
+           ...action.habits
+          }
+        }
     case SET_HABIT:
       // console.log('hit me twice----------');
       return { ...state, habits: { ...state.habits, [action.habit.id]: action.habit}}
