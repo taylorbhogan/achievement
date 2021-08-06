@@ -68,13 +68,13 @@ const LoginForm = () => {
             <span><Link to='/signup'>sign up</Link></span>
             <span> if you're new.</span>
           </div>
+        </div>
+      </form>
           <div className={styles.lastLine}>
             <span>Or </span>
             <button
               onClick={demoLogin}
               className={styles.demoButton}>try Achievement as a demo user.</button></div>
-        </div>
-      </form>
     </div>
   );
 };
