@@ -1,6 +1,7 @@
 import styles from './InputField.module.css'
 
 const InputField = ({ name, type, placeholder, value, onChange, setFunction }) => {
+  // console.log('inputfield');
   if (type === 'textarea'){
     return (
         <div>
@@ -15,7 +16,24 @@ const InputField = ({ name, type, placeholder, value, onChange, setFunction }) =
             />
         </div>
     )
-  }
+  } else if (type === 'datetime-local'){
+    const today = new Date()
+    const max = today.toISOString().split('.')[0]
+    // console.log('---------max----------',max);
+    return (
+      <div>
+        <input
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          className={styles.textInput}
+          max={max}
+          />
+      </div>
+  )
+  } else{
 
   return (
     <div>
@@ -29,7 +47,7 @@ const InputField = ({ name, type, placeholder, value, onChange, setFunction }) =
         className={styles.textInput}
       />
     </div>
-  )
+  )}
 }
 
 export default InputField

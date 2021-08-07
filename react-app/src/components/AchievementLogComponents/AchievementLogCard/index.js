@@ -16,9 +16,40 @@ import { editAchievement } from "../../../store/achievement"
 import styles from './AchievementLogCard.module.css'
 
 const AchievementLogCard = ({ achievement, isLoaded }) => {
+
+
+  const formatInputDate = (achieveCreateDate) => {
+    const jsDate = new Date(achieveCreateDate)
+
+    const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(jsDate);
+    const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(jsDate);
+    const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(jsDate);
+    // const hour = new Intl.DateTimeFormat('en', { hour: '2-digit' }).format(jsDate);
+    const hour = new Intl.DateTimeFormat('en', { hour: '2-digit' }).format(jsDate).slice(0,2);
+    let minute = new Intl.DateTimeFormat('en', { minute: '2-digit' }).format(jsDate);
+    if (minute.length === 1) {
+      minute = '0' + minute
+    }
+
+    return `${year}-${month}-${day}T${hour}:${minute}`
+  }
+
+  const formatOutputDate = (createdAt) => {
+    const jsDate = new Date(createdAt)
+    // return new Date(jsDate)
+    return jsDate
+    // const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(jsDate);
+    // const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(jsDate);
+    // const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(jsDate);
+    // const hour = new Intl.DateTimeFormat('en', { hour: '2-digit' }).format(jsDate).slice(0,2);
+    // const minute = new Intl.DateTimeFormat('en', { minute: '2-digit' }).format(jsDate);
+
+    // return `${year}-${month}-${day}T${hour}:${minute}`
+  }
+
   const [isEditable, setIsEditable] = useState(false)
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
-  const [createdAt, setCreatedAt] = useState(achievement.created_at)
+  const [createdAt, setCreatedAt] = useState(formatInputDate(achievement.created_at))
   const dispatch = useDispatch()
   // const user = useSelector(state => state.session.user)
 
@@ -84,11 +115,13 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('--------------',createdAt);
+    console.log('--------------',formatOutputDate(createdAt));
     const updatedAchievement = {
       id: achievement.id,
       habit_id: achievement.habit_id,
       is_stellar: false,
-      created_at: createdAt
+      created_at: formatOutputDate(createdAt)
     }
     const dbAchievement = await dispatch(editAchievement(updatedAchievement))
     if (dbAchievement.errors) {
@@ -96,18 +129,6 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
     } else {
       closeForm()
     }
-  }
-
-  const formatInputDate = (achieveCreateDate) => {
-    const jsDate = new Date(achieveCreateDate)
-
-    const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(jsDate);
-    const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(jsDate);
-    const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(jsDate);
-    const hour = new Intl.DateTimeFormat('en', { hour: '2-digit' }).format(jsDate).slice(0,2);
-    const minute = new Intl.DateTimeFormat('en', { minute: '2-digit' }).format(jsDate);
-
-    return `${year}-${month}-${day}T${hour}:${minute}`
   }
 
   return (
@@ -128,7 +149,7 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
                 type='datetime-local'
                 // placeholder='Pushups'
                 // value={createdAt}
-                value={formatInputDate(achievement.created_at)}
+                value={createdAt}
                 onChange={(e) => setCreatedAt(e.target.value)}
               />
               <div className={styles.actionButton}>
