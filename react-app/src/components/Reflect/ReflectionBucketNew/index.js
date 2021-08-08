@@ -9,7 +9,7 @@ const ReflectionBucketNew = ({habit}) => {
     <div className={styles.container}>
       {habit.name}
       <div className={styles.mapBucket}>
-        {trueFalses.reverse().map((wasAccomplished, idx) => (
+        {trueFalses.map((wasAccomplished, idx) => (
           <HabitCube
             wasAccomplished={wasAccomplished}
             color={habit.color}
