@@ -1,7 +1,7 @@
 const SET_ACHIEVEMENT = 'achievements/SET_ACHIEVEMENT'
 const REMOVE_ACHIEVEMENT = 'achievements/REMOVE_ACHIEVEMENT'
 const SET_ACHIEVEMENTS = 'achievements/SET_ACHIEVEMENTS'
-
+const UNLOAD_ACHIEVEMENTS = 'achievements/UNLOAD_ACHIEVEMENTS'
 
 
 const setAchievement = (achievement) => ({
@@ -18,6 +18,10 @@ const removeAchievement = (achievementId) => ({
 const setAchievements = (achievements) => ({
   type: SET_ACHIEVEMENTS,
   achievements
+})
+
+export const unloadAchievements = () => ({
+  type: UNLOAD_ACHIEVEMENTS
 })
 
 export const getAchievements = (userId) => async (dispatch) => {
@@ -101,13 +105,23 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_ACHIEVEMENTS:
-      return { ...state, achievements: { ...state.achievements, ...action.achievements}}
+      return { ...state,
+        achievements: {
+          // ...state.achievements,
+          ...action.achievements}}
     case SET_ACHIEVEMENT:
       return { ...state, achievements: { ...state.achievements, [action.achievement.id]: action.achievement } }
     case REMOVE_ACHIEVEMENT:
       const newState = { ...state, achievements: { ...state.achievements } }
       delete newState.achievements[action.achievementId]
       return { ...newState }
+    case UNLOAD_ACHIEVEMENTS:
+      return {
+        ...initialState,
+        achievements: {
+          ...initialState.achievements
+        }
+      }
     default:
       return state;
   }

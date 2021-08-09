@@ -1,5 +1,6 @@
 const SET_REFLECTIONS = 'reflections/SET_REFLECTIONS'
 const SET_WEEKS_REFLECTIONS = 'reflections/SET_WEEKS_REFLECTIONS'
+const UNLOAD_REFLECTIONS = 'reflections/UNLOAD_REFLECTIONS'
 
 const setReflections = (reflections) => ({
   type: SET_REFLECTIONS,
@@ -9,6 +10,10 @@ const setReflections = (reflections) => ({
 const setWeeksReflections = (weeksReflections) => ({
   type: SET_WEEKS_REFLECTIONS,
   weeksReflections
+})
+
+export const unloadReflections = () =>({
+  type: UNLOAD_REFLECTIONS
 })
 
 export const getReflections = (userId) => async (dispatch) => {
@@ -65,6 +70,16 @@ export default function reducer(state = initialState, action) {
         weeksReflections: {
           ...state.weeksReflections,
           ...action.weeksReflections
+        }
+      }
+    case UNLOAD_REFLECTIONS:
+      return {
+        ...initialState,
+        reflections: {
+          ...initialState.reflections,
+        },
+        weeksReflections: {
+          ...initialState.weeksReflections,
         }
       }
     default:

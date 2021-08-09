@@ -115,8 +115,8 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('--------------',createdAt);
-    console.log('--------------',formatOutputDate(createdAt));
+    // console.log('--------------',createdAt);
+    // console.log('--------------',formatOutputDate(createdAt));
     const updatedAchievement = {
       id: achievement.id,
       habit_id: achievement.habit_id,
@@ -170,11 +170,14 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
             <EditButton setIsEditable={setIsEditable} />}
           <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
           <div className={styles.deleteConfDiv}>
+            <div className={styles.deleteConfInnerDiv}>
             {showDeleteConfirmation &&
               <DeleteConfirmation
                 handleDelete={handleDelete}
                 closeDeleteConfirmation={closeDeleteConfirmation}
                 componentLocation={'achievementLog'} />}
+
+            </div>
 
           </div>
         </div>

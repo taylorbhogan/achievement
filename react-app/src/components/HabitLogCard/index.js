@@ -43,7 +43,7 @@ const HabitLogCard = ({ habit, isLoaded }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // console.log('------------->id',e.target.id);
+    setErrors([])
     if (e.currentTarget.id === 'deleteConfirmationButton'){
       dispatch(deleteHabit(habit.id))
     } else{
@@ -120,7 +120,7 @@ const HabitLogCard = ({ habit, isLoaded }) => {
           setTarget={setTarget}/>}
       </form>
       <div className={styles.buttonDiv}>
-        <EditButton setIsEditable={setIsEditable}/>
+        {!isEditable && <EditButton setIsEditable={setIsEditable}/>}
         <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)}/>
         {showDeleteConfirmation &&
             <DeleteConfirmation

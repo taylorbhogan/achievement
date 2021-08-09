@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getReflections, getWeeksReflections } from '../../store/reflect'
-import { getHabits } from '../../store/habit'
+import { getReflections, getWeeksReflections, unloadReflections } from '../../store/reflect'
+import { getHabits, unloadHabits } from '../../store/habit'
 import ReflectionBucket from './ReflectionBucket'
 import ReflectionBucketYear from './ReflectionBucketYear'
 import ReflectionBucketWeek from './ReflectionBucketWeek'
@@ -34,12 +34,21 @@ const Reflect = () => {
 
   useEffect(() => {
     dispatch(getReflections(user.id))
+    return () => {
+      dispatch(unloadReflections())
+    }
   }, [dispatch, user.id])
   useEffect(() => {
     dispatch(getHabits(user.id))
+    return () => {
+      dispatch(unloadHabits())
+    }
   }, [dispatch, user.id])
   useEffect(() => {
     dispatch(getWeeksReflections(user.id))
+    return () => {
+      dispatch(unloadReflections())
+    }
   }, [dispatch, user.id])
 
 

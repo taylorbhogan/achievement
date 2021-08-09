@@ -49,6 +49,12 @@ background-color: var(--gray3);
 
 }
 
+.deleteConfInnerDiv{
+  position: absolute;
+  top: 10px;
+  left: -60px;
+}
+
 .actionButton{
   width: 80px;
 }
