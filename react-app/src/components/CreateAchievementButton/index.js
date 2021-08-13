@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createAchievement } from "../../store/achievement"
-import { getHabits, unloadHabits } from "../../store/habit"
+import { getHabits, unloadHabits, getHabit } from "../../store/habit"
 
 import styles from './CreateAchievementButton.module.css'
 
 const CreateAchievementButton = ({habit, setErrors, wasAccomplished, id}) => {
-  const [isChecked, setIsChecked] = useState(false)
+  // const [isChecked, setIsChecked] = useState(false)
   const dispatch = useDispatch()
 
-  const user = useSelector(state => state.session.user)
+  // const user = useSelector(state => state.session.user)
 
-  useEffect(() => {
-    dispatch(getHabits(user.id))
-  },[isChecked, dispatch, user.id])
+  // useEffect(() => {
+  //   dispatch(getHabits(user.id))
+  // },[isChecked, dispatch, user.id])
+  // useEffect(() => {
+  //   dispatch(getHabit(habit.id))
+  // },[isChecked, dispatch, habit.id])
+
+  // if (isChecked) dispatch(getHabit(habit.id))
 
   // useEffect(() => {
   //   return () => {
@@ -48,7 +53,8 @@ const CreateAchievementButton = ({habit, setErrors, wasAccomplished, id}) => {
     if (dbAchievement.errors) {
       setErrors(dbAchievement.errors)
     } else {
-      setIsChecked(!isChecked)
+      // setIsChecked(!isChecked)
+      dispatch(getHabit(habit.id))
     }
   }
 

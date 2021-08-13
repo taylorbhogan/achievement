@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch } from "react-redux"
 
-import LoadingContent from "../../LoadingContent"
+// import LoadingContent from "../../LoadingContent"
 import EditButton from "../../parts/EditButton"
 import { deleteAchievement } from "../../../store/achievement"
-import AchievementEdit from "../AchievementEdit"
+// import AchievementEdit from "../AchievementEdit"
 import CloseButton from "../../parts/CloseButton"
 import DeleteConfirmationButton from "../../parts/DeleteConfirmationButton"
 import DeleteConfirmation from "../../parts/DeleteConfirmation"
