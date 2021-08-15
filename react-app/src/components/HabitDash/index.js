@@ -8,7 +8,7 @@ import HabitDashWelcome from "../HabitDashWelcome"
 import HabitDashMenu from "../HabitDashMenu";
 import HabitDashCard from "../HabitDashCard"
 // import CreateHabitButton from "../CreateHabitButton"
-import LoadingContent from "../LoadingContent"
+// import LoadingContent from "../LoadingContent"
 import NoHabits from "../parts/NoHabits";
 import styles from './HabitDash.module.css'
 
@@ -83,6 +83,10 @@ function HabitDash() {
   // if (!isLoaded){
   //   return <LoadingContent />
   // }
+  // console.log('--------------------->',getToday(4));
+  // console.log('--------------------->',getToday(4).length);
+  // console.log('--------------------->',getToday(3));
+  // console.log('--------------------->',getToday(3).length);
 
   return (
     <div className={styles.container}>
