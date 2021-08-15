@@ -54,7 +54,8 @@
 }
 
 .cubeContainerHeader{
-  width: 40px;
+  /* width: 40px; */
+  width: 45px;
   height: 13px;
   text-align: center;
 }
