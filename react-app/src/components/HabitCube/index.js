@@ -14,7 +14,7 @@ const HabitCube = ({ wasAccomplished, color }) => {
     borderRadius: 'var(--dashCubeBorderRadius)',
     backgroundColor: 'gray',
     margin: '5px',
-    cursor: 'pointer',
+    // cursor: 'pointer',
   }
 
   return (
