@@ -1,7 +1,7 @@
 from app.models import achievement
 from app.models.achievement import Achievement
 from .db import db
-from datetime import date, datetime, timedelta, time
+from datetime import datetime, timedelta, time
 
 class Habit(db.Model):
     __tablename__ = 'habits'
