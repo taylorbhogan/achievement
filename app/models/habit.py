@@ -1,7 +1,7 @@
 from app.models import achievement
 from app.models.achievement import Achievement
 from .db import db
-from datetime import datetime, timedelta, time
+from datetime import date, datetime, timedelta, time
 
 class Habit(db.Model):
     __tablename__ = 'habits'
@@ -59,10 +59,24 @@ class Habit(db.Model):
 
         return {n: helper(n) for n in range(7)}
 
+    # def check_for_this_many_days(self, numDays):
+    #     def helper(n):
+    #         for a in self.achievements:
+    #             # print('self.name',self.name,'n',n,'a.id',a.id,'aCreate',a.created_at,'low',datetime.combine(datetime.utcnow() + timedelta(days=n-6),time.min),'high',datetime.combine(datetime.utcnow() + timedelta(days=n-5), time.min))
+    #             if a.created_at > datetime.combine(datetime.utcnow() + timedelta(days=n-6),time.min) and a.created_at < datetime.combine(datetime.utcnow() + timedelta(days=n-5), time.min):
+    #                 return True
+    #         return False
+
+    #     return {n: helper(n) for n in range(numDays)}
+
     def count_achievements_in_last_week(self):
         count = 0
         for a in self.achievements:
             if a.created_at > datetime.combine(datetime.now() - timedelta(days=7),time.min) and a.created_at < datetime.now():
+                # print('---------------now-------->',datetime.now())
+                # print('---------------utcnow-------->',datetime.utcnow())
+                # print('---------------low-------->',datetime.combine(datetime.now() - timedelta(days=7),time.min))
+                # print('---------------high-------->',datetime.now())
                 count += 1
         return count
     # def count_achievements_in_last_week(self):
