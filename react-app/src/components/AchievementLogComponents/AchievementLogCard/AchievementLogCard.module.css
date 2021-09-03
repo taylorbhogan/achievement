@@ -19,15 +19,14 @@ background-color: var(--gray3);
 }
 
 .nameWrapper{
-  padding-right: 30px;
-  width: 30%;
+  width: 20%;
 }
 .dateContainer{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 27%;
+  /* width: 27%; */
 }
 .edit{
   background-color: brown;
@@ -57,4 +56,13 @@ background-color: var(--gray3);
 
 .actionButton{
   width: 80px;
+  margin-left: 10px;
+}
+
+.achieved{
+  padding-right: 10px;
+}
+.at{
+  padding-right: 6px;
+  padding-left: 6px;
 }
