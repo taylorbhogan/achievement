@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getColors } from '../../store/color'
-import LoadingContent from '../LoadingContent'
+// import LoadingContent from '../LoadingContent'
 import styles from './Colors.module.css'
 import InputField from '../parts/InputField'
 import { SwatchesPicker } from 'react-color'
