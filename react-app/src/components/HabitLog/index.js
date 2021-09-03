@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getHabits } from "../../store/habit"
-import LoadingContent from "../LoadingContent"
+import LoadingContent from "../parts/LoadingContent"
 import HabitLogCard from "../HabitLogCard"
 import CreateHabitButton from "../CreateHabitButton"
 import NoHabits from "../parts/NoHabits"
@@ -42,7 +42,7 @@ const HabitLog = () => {
         </div>}
       <div className={styles.habitContainer}>
         {reduxHabits.length === 0 &&
-          <NoHabits />
+          <LoadingContent />
         }
         {reduxHabits && reduxHabits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => {
           return <HabitLogCard
