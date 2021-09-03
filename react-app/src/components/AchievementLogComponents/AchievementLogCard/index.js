@@ -136,10 +136,10 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
       <div className={styles.contents}>
         <div className={styles.nameWrapper}>
           {achievement.habit}</div>
-        <div>Achieved:</div>
         {isEditable
           ?
           <div className={styles.dateContainer}>
+            <div className={styles.achieved}>Achieved:</div>
             <form className={styles.form} onSubmit={handleSubmit}>
               {/* <div>{formattedDate(achievement.created_at)}</div>
               <div>{formattedTime(achievement.created_at)}</div> */}
@@ -159,7 +159,9 @@ const AchievementLogCard = ({ achievement, isLoaded }) => {
           </div>
           :
           <div className={styles.dateContainer}>
+            <div className={styles.achieved}>Achieved:</div>
             <div>{formattedDate(achievement.created_at)}</div>
+            <div className={styles.at}>at</div>
             <div>{formattedTime(achievement.created_at)}</div>
           </div>
           }
