@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAchievements } from "../../../store/achievement"
 import { getHabits } from "../../../store/habit"
-import LoadingContent from "../../LoadingContent"
+import LoadingContent from "../../parts/LoadingContent"
 import NoHabits from "../../parts/NoHabits"
 import AchievementLogCard from "../AchievementLogCard"
 import styles from './AchievementLog.module.css'
@@ -60,7 +60,7 @@ const AchievementLog = () => {
       <div className={styles.header}>Everything you've achieved.</div>
       <div className={styles.achievementContainer}>
       {(reduxHabits.length === 0 || (reduxHabits.length > 0 && reduxAchievements.length === 0)) &&
-          <NoHabits />
+          <LoadingContent />
         }
         {reduxAchievements.length > 0 && reduxAchievements.filter(achievement => achievement.habit !== 'DELETED').map((achievement, idx) => {
             return <AchievementLogCard

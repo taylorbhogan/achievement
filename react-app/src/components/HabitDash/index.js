@@ -7,6 +7,7 @@ import { getHabits, unloadHabits } from "../../store/habit"
 import HabitDashWelcome from "../HabitDashWelcome"
 import HabitDashMenu from "../HabitDashMenu";
 import HabitDashCard from "../HabitDashCard"
+import LoadingContent from "../parts/LoadingContent";
 // import CreateHabitButton from "../CreateHabitButton"
 // import LoadingContent from "../LoadingContent"
 import NoHabits from "../parts/NoHabits";
@@ -121,7 +122,7 @@ function HabitDash() {
         </div>
         {/* {habits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => ( */}
         {reduxHabits.length === 0 &&
-          <NoHabits />
+          <LoadingContent />
         }
         {reduxHabits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => (
           <HabitDashCard
