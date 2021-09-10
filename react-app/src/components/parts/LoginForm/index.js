@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 import InputField from '../InputField';
 import ActionButton from '../ActionButton';
@@ -65,7 +65,7 @@ const LoginForm = () => {
         <div className={styles.linkContainer}>
           <div>
             <span>Or </span>
-            <span><Link to='/signup'>sign up</Link></span>
+            <span><NavLink className={styles.link} to='/signup'>sign up</NavLink></span>
             <span> if you're new.</span>
           </div>
         </div>

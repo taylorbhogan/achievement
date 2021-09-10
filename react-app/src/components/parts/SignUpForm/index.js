@@ -102,7 +102,7 @@ const SignUpForm = () => {
         <div className={styles.linkContainer}>
           <div>Already have an account?</div>
           <div className={styles.lastLine}>
-            <span><Link to='/login' exact={true} activeClassName='active'>Log in</Link></span>
+            <span><Link to='/login' exact={true} activeClassName='active' className={styles.link}>Log in</Link></span>
             <span> instead.</span>
           </div>
         </div>
