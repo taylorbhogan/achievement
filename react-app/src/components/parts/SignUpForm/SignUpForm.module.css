@@ -33,3 +33,12 @@
 .lastLine{
   margin-top: 6px;
 }
+
+.link{
+  color: var(--textPrimary);
+  text-decoration: underline;
+}
+
+.link:hover{
+  color: rgb(228, 61, 250);
+}

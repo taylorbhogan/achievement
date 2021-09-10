@@ -18,3 +18,10 @@
   color: var(--textPrimary);
   text-decoration: underline;
 }
+
+.link:hover{
+  color: var(--purple1);
+}
+.button:hover{
+  color: var(--purple1);
+}
