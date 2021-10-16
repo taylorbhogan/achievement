@@ -3,32 +3,3 @@
   height: var(--dashCubeDimension);
   margin: 0px 10px;
 }
-
-.achieveCubeChecked{
-  border: none;
-  background-color: gold;
-  color: none;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-.achieveCube{
-  border: none;
-  background-color: #CCC;
-  color: none;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-
-.button:hover{
-  box-shadow: 0 2px 4px 0 rgba(223, 2, 2, 0.2)
-}
-.button:hover .button::before{
-  background-color: white;
-  position: absolute;
-  top: 100px;
-  left: 100px;
-}

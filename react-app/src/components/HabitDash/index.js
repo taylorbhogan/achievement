@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-
 import { FaEllipsisV } from 'react-icons/fa'
 import { IconContext } from "react-icons";
 import { getHabits, unloadHabits } from "../../store/habit"
+import LoadingContent from "../parts/LoadingContent";
 import HabitDashWelcome from "../HabitDashWelcome"
 import HabitDashMenu from "../HabitDashMenu";
 import HabitDashCard from "../HabitDashCard"
-import LoadingContent from "../parts/LoadingContent";
 import styles from './HabitDash.module.css'
 
 function HabitDash() {
