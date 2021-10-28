@@ -3,7 +3,8 @@
   margin: 10px 0;
   border: 1px solid var(--gray3);
   border-radius: 8px;
-  padding: 15px 15px;
+  /* padding: 15px 15px; */
+  padding: 20px 15px;
 }
 .container:hover{
 background-color: var(--gray3);
