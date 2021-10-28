@@ -17,7 +17,7 @@ const DeveloperLinks = () => {
       className={styles.container}>
       {openForBusiness ? (
         <div className={styles.openContainer}>
-          <div className={styles.header}>@taylorbhogan</div>
+          <a href='https://taylorbhogan.dev/' rel='noopener noreferrer' target='_blank' className={styles.header}>@taylorbhogan</a>
           <div className={styles.linkContainer}>
             <a href='https://github.com/taylorbhogan'>
               <FaGithub style={style}/>
