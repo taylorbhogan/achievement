@@ -1,9 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-// import LoadingContent from "../LoadingContent"
-import HabitCube from "../HabitCube"
-import CreateAchievementButton from "../CreateAchievementButton"
 import HabitLogCardDetails from "../HabitLogCardDetails"
 import InputField from "../parts/InputField"
 import FormErrors from "../parts/FormErrors"
@@ -31,7 +28,6 @@ const HabitLogCard = ({ habit }) => {
 
 
   const handleDelete = () => {
-    // console.log('--------------inside of handleDelete');
     setShowDeleteConfirmation(false)
 
     dispatch(deleteHabit(habit.id))
@@ -44,90 +40,94 @@ const HabitLogCard = ({ habit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setErrors([])
-    if (e.currentTarget.id === 'deleteConfirmationButton'){
+    if (e.currentTarget.id === 'deleteConfirmationButton') {
       dispatch(deleteHabit(habit.id))
-    } else{
-
-    const updatedHabit = {
-      id: habit.id,
-      user_id: user.id,
-      name,
-      blurb,
-      stellar_blurb: stellarBlurb,
-      target: +target,
-      color_id: 1
-    }
-
-    const dbHabit = await dispatch(editHabit(updatedHabit))
-    if (dbHabit.errors) {
-      setErrors(dbHabit.errors)
     } else {
-      setIsEditable(false)
-    }}
+
+      const updatedHabit = {
+        id: habit.id,
+        user_id: user.id,
+        name,
+        blurb,
+        stellar_blurb: stellarBlurb,
+        target: +target,
+        color_id: 1
+      }
+
+      const dbHabit = await dispatch(editHabit(updatedHabit))
+      if (dbHabit.errors) {
+        setErrors(dbHabit.errors)
+      } else {
+        setIsEditable(false)
+      }
+    }
   }
 
   const closeDeleteConfirmation = () => {
     setShowDeleteConfirmation(false)
   }
 
-  // if (!isLoaded){
-  //   return <LoadingContent />
-  // }
-
   return (
     <div
       className={styles.container}
       id={habit.id}
-      >
-      <form onSubmit={handleSubmit}>
-      <FormErrors errors={errors} />
-        <div className={styles.bar}>
-          <div className={styles.nameWrapper}>
-            {!isEditable && <div className={styles.name}>{habit.name}</div>}
-            {isEditable &&
-              <InputField
-              name='name'
-              type='text'
-              placeholder='Pushups'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />}
+    >
+      {isEditable ? (
+        <>
+          <form onSubmit={handleSubmit}>
+            <FormErrors errors={errors} />
+            <div className={styles.bar}>
+              <div className={styles.nameWrapper}>
+                <InputField
+                  name='name'
+                  type='text'
+                  placeholder='Pushups'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+            </div>
+            <HabitLogCardDetailsEdit
+              habit={habit}
+              closeForm={closeForm}
+              blurb={blurb}
+              setBlurb={setBlurb}
+              stellarBlurb={stellarBlurb}
+              setStellarBlurb={setStellarBlurb}
+              target={target}
+              setTarget={setTarget} />
+          </form>
+          <div className={styles.buttonDiv}>
+            <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
+            {showDeleteConfirmation &&
+              <DeleteConfirmation
+                handleDelete={handleDelete}
+                closeDeleteConfirmation={closeDeleteConfirmation}
+                componentLocation={'habitLog'} />}
           </div>
-          <div className={styles.cubeContainer}>
-            {/* <HabitCube />
-            <HabitCube />
-            <HabitCube />
-            <HabitCube />
-            <HabitCube />
-            <HabitCube />
-            <HabitCube /> */}
-            {/* <CreateAchievementButton /> */}
+        </>
+      ) : (
+        <>
+          <div className={styles.bar}>
+            <div className={styles.nameWrapper}>
+              <div className={styles.name}>{habit.name}</div>
+            </div>
+            <div className={styles.buttonDiv}>
+              <EditButton setIsEditable={setIsEditable} />
+              <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
+              {showDeleteConfirmation &&
+                <DeleteConfirmation
+                  handleDelete={handleDelete}
+                  closeDeleteConfirmation={closeDeleteConfirmation}
+                  componentLocation={'habitLog'} />}
+            </div>
           </div>
-        </div>
-        {!isEditable && <HabitLogCardDetails
-          habit={habit}
-          setIsEditable={setIsEditable}
-          />}
-        {isEditable && <HabitLogCardDetailsEdit
-          // handleDelete={handleDelete}
-          habit={habit}
-          closeForm={closeForm}
-          blurb={blurb}
-          setBlurb={setBlurb}
-          stellarBlurb={stellarBlurb}
-          setStellarBlurb={setStellarBlurb}
-          target={target}
-          setTarget={setTarget}/>}
-      </form>
-      <div className={styles.buttonDiv}>
-        {!isEditable && <EditButton setIsEditable={setIsEditable}/>}
-        <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)}/>
-        {showDeleteConfirmation &&
-            <DeleteConfirmation
-              handleDelete={handleDelete}
-              closeDeleteConfirmation={closeDeleteConfirmation}
-              componentLocation={'habitLog'} />}
-      </div>
+          <HabitLogCardDetails
+            habit={habit}
+            setIsEditable={setIsEditable}
+          />
+        </>
+      )}
     </div>
   )
 }

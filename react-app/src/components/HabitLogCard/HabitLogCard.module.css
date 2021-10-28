@@ -26,7 +26,7 @@
 .buttonDiv{
   display: flex;
   justify-content: flex-end;
-  background-color: var(--backgroundTertiary);
+  /* background-color: var(--backgroundTertiary); */
   border-radius: 0 0 var(--formBorderRadius) var(--formBorderRadius);
   padding: 0 20px 20px 0;
   position: relative;
