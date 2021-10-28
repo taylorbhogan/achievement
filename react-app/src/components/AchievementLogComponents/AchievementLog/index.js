@@ -45,7 +45,7 @@ const AchievementLog = () => {
               return <AchievementLogCard
                 key={idx}
                 achievement={achievement}
-                isLoaded={isLoaded}
+                // isLoaded={isLoaded}
               />
             })}
           </div>
