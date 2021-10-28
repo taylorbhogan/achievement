@@ -13,9 +13,10 @@
 }
 
 .linkContainer{
+  margin-top: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
 }
 .header{
-  margin-bottom: 8px;
+  color: white;
 }

@@ -1,14 +1,19 @@
 import { useDispatch } from "react-redux"
 import { createAchievement } from "../../store/achievement"
 import { getHabit } from "../../store/habit"
+import useSound from 'use-sound';
+import clickSfx from '../../sounds/click.mp3';
 
 import styles from './CreateAchievementButton.module.css'
 
 const CreateAchievementButton = ({ habit, setErrors, wasAccomplished, id }) => {
   const dispatch = useDispatch()
 
+  const [playClick] = useSound(clickSfx)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    playClick()
     let createdAt = new Date()
     if (id === 5) {
       createdAt.setDate(createdAt.getDate() - 1)
