@@ -17,7 +17,7 @@ import { editHabit } from "../../store/habit"
 
 import styles from './HabitLogCard.module.css'
 
-const HabitLogCard = ({ habit, isLoaded }) => {
+const HabitLogCard = ({ habit }) => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
