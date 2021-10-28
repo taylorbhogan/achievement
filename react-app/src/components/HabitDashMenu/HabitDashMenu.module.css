@@ -22,3 +22,17 @@
 .linkDiv:hover{
   background-color: var(--gray1);
 }
+
+.menu{
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.menuButton{
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+}
