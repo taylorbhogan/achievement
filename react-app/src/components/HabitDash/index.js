@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { FaEllipsisV } from 'react-icons/fa'
-import { IconContext } from "react-icons";
 import { getHabits, unloadHabits } from "../../store/habit"
 import LoadingContent from "../parts/LoadingContent";
 import HabitDashWelcome from "../HabitDashWelcome"
@@ -16,8 +14,6 @@ function HabitDash() {
   const user = useSelector(state => state.session.user)
   const userId = user.id
 
-  const [ showMenu, setShowMenu ] = useState(false)
-
   useEffect(() => {
     dispatch(getHabits(userId))
     return () => {
@@ -30,28 +26,15 @@ function HabitDash() {
     const date = new Date()
     const thatDay = new Intl.DateTimeFormat('en-US', { weekday: 'short', day: 'numeric' }).format(date - (daysAgo * 86400000))
     const thisDay = thatDay.slice(0, -1).toLocaleLowerCase()
-    return `${thisDay.slice(-2)} ${thisDay.slice(0,-2)}`
+    return `${thisDay.slice(-2)} ${thisDay.slice(0, -2)}`
   }
 
-  const openMenu = () => {
-    setShowMenu(!showMenu)
-  }
 
   return (
     <div className={styles.container}>
       <HabitDashWelcome />
-      <div className={styles.menu}>
-        <button
-          onClick={openMenu}
-          className={styles.menuButton}>
-          <IconContext.Provider value={{ className: "react-icons" }}>
-            <FaEllipsisV size={16} color={'#FFF'}/>
-          </IconContext.Provider>
-        </button>
-        {showMenu && <HabitDashMenu />}
-      </div>
+      <HabitDashMenu />
       <div className={styles.divider}></div>
-
       <div className={styles.dashCardContainer}>
         <div className={styles.cubeContainerHeadersWrapper}>
           <div className={styles.name}></div>
