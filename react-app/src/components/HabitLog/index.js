@@ -49,4 +49,4 @@ const HabitLog = () => {
   )
 }
 
-export default HabitLog
+export default HabitLog;
