@@ -3,3 +3,50 @@
   height: var(--dashCubeDimension);
   margin: 0px 10px;
 }
+
+.button{
+  position: relative;
+}
+
+/* set local vars, position, & hide the tooltip */
+.button::before,
+.button::after {
+  --tooltipColor: var(--gray2);
+  --tooltipArrowSize: 9px;
+  --scale: 0;
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(var(--translateY, 0)) scale(var(--scale));
+  transition: 150ms;
+}
+
+/*reveal the tooltip on hover  */
+.button:hover::before,
+.button:hover::after {
+  --scale: 1
+}
+
+/* tooltip content */
+.button::before {
+  transform-origin: top center;
+  --translateY: calc(var(--tooltipArrowSize) + .8rem);
+  content: 'Mark Achieved';
+  color: white;
+  font-weight: 500;
+  font-size: .7rem;
+  text-align: center;
+  width: max-content;
+  background-color: var(--tooltipColor);
+  border-radius: var(--dashCubeBorderRadius);
+  padding: .4rem .5rem;
+  z-index: 1;
+}
+
+/* tooltip arrow */
+.button::after{
+  transform-origin: bottom center;
+  content: '';
+  border: var(--tooltipArrowSize) solid transparent;
+  border-bottom-color: var(--tooltipColor);
+}
