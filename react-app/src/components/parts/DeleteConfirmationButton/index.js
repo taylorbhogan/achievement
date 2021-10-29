@@ -22,6 +22,10 @@ const DeleteConfirmationButton = ({ handleDelete }) => {
     }
   })
 
+  const toggleConfirmation = () => {
+    setShowDeleteConfirmation(!showDeleteConfirmation)
+  }
+
   const deleteHandler = () => {
     setShowDeleteConfirmation(false)
     handleDelete()
@@ -31,7 +35,7 @@ const DeleteConfirmationButton = ({ handleDelete }) => {
     <div ref={menuRef}>
       <button
         className={styles.button}
-        onClick={() => setShowDeleteConfirmation(true)}
+        onClick={toggleConfirmation}
         id='deleteConfirmationButton'
       >
         <IconContext.Provider value={{ className: "react-icons" }}>

@@ -8,6 +8,7 @@ import HabitLogCardDetailsEdit from "../HabitLogCardDetailsEdit"
 import DeleteConfirmationButton from "../parts/DeleteConfirmationButton"
 import EditButton from "../parts/EditButton"
 import CloseButton from "../parts/CloseButton"
+import ActionButton from "../parts/ActionButton"
 
 import { deleteHabit } from "../../store/habit"
 import { editHabit } from "../../store/habit"
@@ -76,7 +77,10 @@ const HabitLogCard = ({ habit }) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <CloseButton closeForm={closeForm} />
+            <div className={styles.buttonDiv}>
+              <ActionButton buttonText={'save changes'} />
+              <CloseButton closeForm={closeForm} />
+            </div>
           </div>
           <HabitLogCardDetailsEdit
             habit={habit}
