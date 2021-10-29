@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux"
 import { createAchievement } from "../../store/achievement"
 import { getHabit } from "../../store/habit"
@@ -7,14 +8,22 @@ import clickSfx from '../../sounds/click.mp3';
 import styles from './CreateAchievementButton.module.css'
 
 const CreateAchievementButton = ({ habit, setErrors, wasAccomplished, id }) => {
+  const [triggered, setTriggered] = useState(false)
   const dispatch = useDispatch()
 
   const [playClick] = useSound(clickSfx)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setTriggered(true)
+
+    setTimeout(() => {
+      setTriggered(false)
+    }, 520);
+
     playClick()
     let createdAt = new Date()
+
     if (id === 5) {
       createdAt.setDate(createdAt.getDate() - 1)
     } else if (id === 4) {
@@ -42,34 +51,20 @@ const CreateAchievementButton = ({ habit, setErrors, wasAccomplished, id }) => {
     }
   }
 
-  const jsStylesActive = {
-    margin: '0',
-    padding: '0',
-    // margin: '5px',
-    border: 'none',
-    width: 'var(--dashCubeDimension)',
-    height: 'var(--dashCubeDimension)',
-    borderRadius: 'var(--dashCubeBorderRadius)',
-    backgroundColor: `hsl(${habit.color}, 100%, 50%)`,
-    cursor: 'pointer',
-  }
-  const jsStylesInactive = {
-    margin: '0',
-    padding: '0',
-    // margin: '5px',
-    border: 'none',
-    width: 'var(--dashCubeDimension)',
-    height: 'var(--dashCubeDimension)',
-    borderRadius: 'var(--dashCubeBorderRadius)',
-    backgroundColor: 'gray',
-    cursor: 'pointer',
-  }
-
-
   return (
-    <form onSubmit={handleSubmit} className={styles.cubeWrapper}>
-        <button className={styles.button} style={wasAccomplished ? jsStylesActive : jsStylesInactive}></button>
-        <div className={styles.circle}></div>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <button
+        className={styles.button}
+        style={
+          wasAccomplished ?
+            { backgroundColor: `hsl(${habit.color}, 100%, 50%)` }
+            :
+            { backgroundColor: 'gray' }
+        }
+      ></button>
+      <div
+        style={triggered ? { transform: 'scale(1)' } : null}
+        className={styles.circle}></div>
     </form>
   )
 }

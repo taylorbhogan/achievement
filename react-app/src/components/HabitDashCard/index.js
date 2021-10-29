@@ -7,16 +7,16 @@ const HabitDashCard = ({ habit }) => {
   const [errors, setErrors] = useState([])
 
   const nameStyle = {
-      color: `hsl(${habit.color}, 100%, 50%)`,
-    }
+    color: `hsl(${habit.color}, 100%, 50%)`,
+  }
 
   return (
-    <div
-      className={styles.container}
-      id={habit.id}
-    >
+    <>
       <div className={styles.bar}>
-        <div style={habit.target_prog >= habit.target ? nameStyle : null} className={styles.name}>{habit.name}</div>
+        <div
+          style={habit.target_prog >= habit.target ? nameStyle : null}
+          className={styles.name}
+        >{habit.name}</div>
         <div className={styles.cubeContainer}>
           <CreateAchievementButton
             habit={habit}
@@ -66,7 +66,7 @@ const HabitDashCard = ({ habit }) => {
         </div>
       </div>
       <FormErrors errors={errors} />
-    </div>
+    </>
   )
 }
 
