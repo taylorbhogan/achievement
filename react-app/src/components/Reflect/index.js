@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getReflections, getWeeksReflections, unloadReflections } from '../../store/reflect'
 import { getHabits, unloadHabits } from '../../store/habit'
 import ReflectionBucket from './ReflectionBucket'
-import ReflectionBucketNew from './ReflectionBucketNew'
 import NoHabits from '../parts/NoHabits'
 import LoadingContent from '../parts/LoadingContent'
 
@@ -23,8 +22,8 @@ const Reflect = () => {
     yearArray.push(habit.year)
   })
 
-  const reduxReflections = useSelector(state => Object.values(state.reflections.reflections))
-  const reduxReflectionKeys = useSelector(state => Object.keys(state.reflections.reflections))
+  // const reduxReflections = useSelector(state => Object.values(state.reflections.reflections))
+  // const reduxReflectionKeys = useSelector(state => Object.keys(state.reflections.reflections))
 
 
   const handleSubmit = async (e) => {
@@ -78,18 +77,9 @@ const Reflect = () => {
                 </select>
               </form>
             </div>
-            {/* {timeframe === 'all' && reduxReflections.length > 0 &&
-              reduxReflections.map((reflection, idx) => (
-                <ReflectionBucket
-                  habitName={reduxReflectionKeys[idx]}
-                  reflection={reflection}
-                  key={idx}
-                />
-              ))
-            } */}
             {timeframe === 'all' &&
               habits.map((habit, idx) => (
-                <ReflectionBucketNew
+                <ReflectionBucket
                   key={idx}
                   achievementMap={habit.birth}
                   habit={habit}
@@ -98,7 +88,7 @@ const Reflect = () => {
             }
             {timeframe === 'year' &&
               habits.map((habit, idx) => (
-                <ReflectionBucketNew
+                <ReflectionBucket
                   key={idx}
                   achievementMap={habit.year}
                   habit={habit}
@@ -107,7 +97,7 @@ const Reflect = () => {
             }
             {timeframe === 'week' &&
               habits.map((habit, idx) => (
-                <ReflectionBucketNew
+                <ReflectionBucket
                   key={idx}
                   achievementMap={habit.week}
                   habit={habit}
