@@ -78,7 +78,7 @@ const HabitLogCard = ({ habit }) => {
               onChange={(e) => setName(e.target.value)}
             />
             <div className={styles.buttonDiv}>
-              <ActionButton buttonText={'save changes'} />
+              <ActionButton buttonText={'save changes'} isShort={true}/>
               <CloseButton closeForm={closeForm} />
             </div>
           </div>

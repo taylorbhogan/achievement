@@ -106,7 +106,7 @@ const AchievementLogCard = ({ achievement }) => {
                 onChange={(e) => setCreatedAt(e.target.value)}
               />
               <div className={styles.actionButton}>
-                <ActionButton buttonText='Save' />
+                <ActionButton buttonText='Save' isShort={true}/>
               </div>
             </form>
           </div>
