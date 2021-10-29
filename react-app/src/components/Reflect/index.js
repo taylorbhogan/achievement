@@ -94,35 +94,21 @@ const Reflect = () => {
             {timeframe === 'year' && habits.length > 0 &&
               habits.map((habit, idx) => (
                 <ReflectionBucketNew
-                  // habitName={reduxReflectionKeys[idx]}
-                  // reflection={reflection}
                   key={idx}
-                  // idx={idx}
+                  iterable={habit.year}
                   habit={habit}
                 />
               ))
             }
             {timeframe === 'week' && habits.length > 0 &&
               habits.map((habit, idx) => (
-                <ReflectionBucketWeek
-                  // habitName={reduxReflectionKeys[idx]}
-                  // reflection={reflection}
+                <ReflectionBucketNew
                   key={idx}
-                  // idx={idx}
+                  iterable={habit.week}
                   habit={habit}
                 />
               ))
             }
-            {/* {timeframe === 'year' && habits.length > 0 &&
-          yearArray.map((reflection, idx) => (
-            <ReflectionBucketYear
-              habitName={reduxReflectionKeys[idx]}
-              reflection={reflection}
-              key={idx}
-              idx={idx}
-            />
-          ))
-        } */}
           </div>
         </div>
       ) : (
