@@ -25,6 +25,9 @@
   justify-content: space-between;
   align-items: center;
   width: var(--cubeContainerWidth);
+  padding: 0;
+  /* MVP AWARD vVv */
+  line-height: 0;
 }
 
 .target{

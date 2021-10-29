@@ -69,6 +69,7 @@ const CreateAchievementButton = ({ habit, setErrors, wasAccomplished, id }) => {
   return (
     <form onSubmit={handleSubmit} className={styles.cubeWrapper}>
         <button className={styles.button} style={wasAccomplished ? jsStylesActive : jsStylesInactive}></button>
+        <div className={styles.circle}></div>
     </form>
   )
 }
