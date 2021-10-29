@@ -1,12 +1,33 @@
 .cubeWrapper{
-  width: var(--dashCubeDimension);
-  height: var(--dashCubeDimension);
+
   margin: 0px 10px;
+  padding: 0;
+  position: relative;
+  max-height: 20px;
 }
 
 .button{
   position: relative;
 }
+
+/* .circle{
+  --scale: 1;
+  transform: scale(var(--scale));
+  transition: 150ms;
+  width: calc(var(--dashCubeDimension) * 2);
+  height: calc(var(--dashCubeDimension) * 2);
+  border-radius: calc(var(--dashCubeDimension));
+  background-color: green;
+  position: absolute;
+  top: calc(var(--dashCubeDimension) / 2 * -1);
+  left: calc(var(--dashCubeDimension) / 2 * -1);
+  z-index: -1;
+}
+
+.button:active .circle{
+  --scale: 1;
+  transform: scale(var(--scale));
+} */
 
 /* set local vars, position, & hide the tooltip */
 .button::before,
