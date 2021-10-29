@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getReflections, getWeeksReflections, unloadReflections } from '../../store/reflect'
 import { getHabits, unloadHabits } from '../../store/habit'
 import ReflectionBucket from './ReflectionBucket'
-// import ReflectionBucketYear from './ReflectionBucketYear'
-import ReflectionBucketWeek from './ReflectionBucketWeek'
 import ReflectionBucketNew from './ReflectionBucketNew'
 import NoHabits from '../parts/NoHabits'
 import LoadingContent from '../parts/LoadingContent'
@@ -65,7 +63,7 @@ const Reflect = () => {
   return (
     isLoaded ? (
       habits.length > 0 ? (
-        <div>
+        <>
           <div className={styles.hello}>How green is your garden?</div>
           <div className={styles.container}>
             <div>
@@ -77,12 +75,10 @@ const Reflect = () => {
                   <option value='all'>view your progress since you added each habit</option>
                   <option value='week'>view your progress in the last week</option>
                   <option value='year'>view your progress in the last year</option>
-                  {/* <option value='other'>other</option> */}
                 </select>
-                {/* <button>Submit</button> */}
               </form>
             </div>
-            {timeframe === 'all' && reduxReflections.length > 0 &&
+            {/* {timeframe === 'all' && reduxReflections.length > 0 &&
               reduxReflections.map((reflection, idx) => (
                 <ReflectionBucket
                   habitName={reduxReflectionKeys[idx]}
@@ -90,27 +86,37 @@ const Reflect = () => {
                   key={idx}
                 />
               ))
+            } */}
+            {timeframe === 'all' && reduxReflections.length > 0 &&
+              reduxReflections.map((reflection, idx) => (
+                <ReflectionBucketNew
+                  key={idx}
+                  achievementMap={Object.values(reflection[0])}
+                  // habitName={reduxReflectionKeys[idx]}
+                  // reflection={reflection}
+                />
+              ))
             }
-            {timeframe === 'year' && habits.length > 0 &&
+            {timeframe === 'year' &&
               habits.map((habit, idx) => (
                 <ReflectionBucketNew
                   key={idx}
-                  iterable={habit.year}
+                  achievementMap={habit.year}
                   habit={habit}
                 />
               ))
             }
-            {timeframe === 'week' && habits.length > 0 &&
+            {timeframe === 'week' &&
               habits.map((habit, idx) => (
                 <ReflectionBucketNew
                   key={idx}
-                  iterable={habit.week}
+                  achievementMap={habit.week}
                   habit={habit}
                 />
               ))
             }
           </div>
-        </div>
+        </>
       ) : (
         <NoHabits />
       )

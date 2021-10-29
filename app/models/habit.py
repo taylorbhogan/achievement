@@ -119,4 +119,5 @@ class Habit(db.Model):
             'target_prog': self.count_achievements_in_last_week(),
             'week': self.check_all_in_last_week(),
             'year': self.check_all_in_last_year(),
+            'birth': self.check_all_from_create_date()
         }
