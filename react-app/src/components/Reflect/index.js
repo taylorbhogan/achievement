@@ -63,7 +63,7 @@ const Reflect = () => {
   return (
     isLoaded ? (
       habits.length > 0 ? (
-        <div>
+        <>
           <div className={styles.hello}>How green is your garden?</div>
           <div className={styles.container}>
             <div>
@@ -78,12 +78,22 @@ const Reflect = () => {
                 </select>
               </form>
             </div>
-            {timeframe === 'all' && reduxReflections.length > 0 &&
+            {/* {timeframe === 'all' && reduxReflections.length > 0 &&
               reduxReflections.map((reflection, idx) => (
                 <ReflectionBucket
                   habitName={reduxReflectionKeys[idx]}
                   reflection={reflection}
                   key={idx}
+                />
+              ))
+            } */}
+            {timeframe === 'all' && reduxReflections.length > 0 &&
+              reduxReflections.map((reflection, idx) => (
+                <ReflectionBucketNew
+                  key={idx}
+                  achievementMap={Object.values(reflection[0])}
+                  // habitName={reduxReflectionKeys[idx]}
+                  // reflection={reflection}
                 />
               ))
             }
@@ -106,7 +116,7 @@ const Reflect = () => {
               ))
             }
           </div>
-        </div>
+        </>
       ) : (
         <NoHabits />
       )

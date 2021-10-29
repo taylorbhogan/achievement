@@ -5,12 +5,12 @@ const ReflectionBucketNew = ({ habit, achievementMap }) => {
 
   return (
     <div className={styles.container}>
-      {habit.name}
+      {habit?.name ? habit.name : 'hey'}
       <div className={styles.mapBucket}>
         {Object.values(achievementMap).map((wasAccomplished, idx) => (
           <HabitCube
             wasAccomplished={wasAccomplished}
-            color={habit.color}
+            color={habit?.color}
             key={idx}
           />
         ))}
