@@ -13,10 +13,6 @@
   margin-bottom: 300px;
 }
 
-.smaller{
-  width: 80%;
-}
-
 .select{
   /* appearance: none; */
   background-color: var(--green1);
