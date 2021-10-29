@@ -18,7 +18,7 @@ function HabitDash() {
 
   useEffect(() => {
     const fetchHabits = async () => {
-      dispatch(getHabits(userId))
+      await dispatch(getHabits(userId))
       setIsLoaded(true)
     }
     fetchHabits()
