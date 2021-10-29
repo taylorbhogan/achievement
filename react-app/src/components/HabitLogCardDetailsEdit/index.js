@@ -50,11 +50,6 @@ const HabitLogCardDetailsEdit = ({
           </div>
         </div>
       </div>
-      <div className={styles.bottom}>
-        <div className={styles.buttonContainer}>
-          <ActionButton buttonText={'save changes'} />
-        </div>
-      </div>
     </div>
   )
 }

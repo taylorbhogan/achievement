@@ -19,12 +19,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.bottom{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-top: 40px;
-}
+
 .header{
   margin-bottom: 10px;
 }
@@ -36,26 +31,14 @@
 .center{
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   width: 40%;
-
 }
 .right{
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   width: 20%;
-
 }
 
 .target{
   width: 40%;
-}
-
-.buttonContainer{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 25%;
 }
