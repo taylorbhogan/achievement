@@ -1,12 +1,26 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { FaTrashAlt } from 'react-icons/fa'
 import { IconContext } from "react-icons";
-import CloseButton from "../CloseButton";
 import DeleteButton from "../DeleteButton";
 import styles from './DeleteConfirmationButton.module.css'
 
 const DeleteConfirmationButton = ({ handleDelete }) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
+  const menuRef = useRef()
+
+  useEffect(() => {
+    const handler = e => {
+      if (!menuRef.current.contains(e.target)) {
+        setShowDeleteConfirmation(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handler)
+
+    return () => {
+      document.removeEventListener('mousedown', handler)
+    }
+  })
 
   const deleteHandler = () => {
     setShowDeleteConfirmation(false)
@@ -14,7 +28,7 @@ const DeleteConfirmationButton = ({ handleDelete }) => {
   }
 
   return (
-    <>
+    <div ref={menuRef}>
       <button
         className={styles.button}
         onClick={() => setShowDeleteConfirmation(true)}
@@ -29,14 +43,12 @@ const DeleteConfirmationButton = ({ handleDelete }) => {
           <div className={styles.top}>
             <div>
               <div>Deleting is permanent.</div>
-              {/* <div>permanent.</div> */}
             </div>
-            {/* <CloseButton closeForm={() => setShowDeleteConfirmation(false)} /> */}
           </div>
           <DeleteButton handleDelete={deleteHandler} />
         </div>
       }
-    </>
+    </div>
   )
 }
 
