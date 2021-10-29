@@ -6,18 +6,22 @@ import ReflectionBucket from './ReflectionBucket'
 // import ReflectionBucketYear from './ReflectionBucketYear'
 import ReflectionBucketWeek from './ReflectionBucketWeek'
 import ReflectionBucketNew from './ReflectionBucketNew'
-import styles from './Reflect.module.css'
 import NoHabits from '../parts/NoHabits'
+import LoadingContent from '../parts/LoadingContent'
+
+import styles from './Reflect.module.css'
 
 const Reflect = () => {
+  const [isLoaded, setIsLoaded] = useState(false)
   const [timeframe, setTimeframe] = useState('all')
   const dispatch = useDispatch()
 
   const user = useSelector(state => state.session.user)
-  const reduxHabits = useSelector(state => Object.values(state.habits.habits))
+  const allHabits = useSelector(state => Object.values(state.habits.habits))
+  const habits = allHabits.filter(habit => habit.name !== 'DELETED')
 
   const yearArray = [];
-  reduxHabits.forEach(habit => {
+  habits.forEach(habit => {
     yearArray.push(habit.year)
   })
 
@@ -38,12 +42,18 @@ const Reflect = () => {
       dispatch(unloadReflections())
     }
   }, [dispatch, user.id])
+
   useEffect(() => {
-    dispatch(getHabits(user.id))
+    const fetchHabits = async () => {
+      await dispatch(getHabits(user.id))
+      setIsLoaded(true)
+    }
+    fetchHabits()
     return () => {
       dispatch(unloadHabits())
     }
   }, [dispatch, user.id])
+
   useEffect(() => {
     dispatch(getWeeksReflections(user.id))
     return () => {
@@ -53,71 +63,60 @@ const Reflect = () => {
 
 
   return (
-    <div>
-      <div className={styles.hello}>How green is your garden?</div>
-      <div className={styles.container}>
+    isLoaded ? (
+      habits.length > 0 ? (
         <div>
-          <form onSubmit={handleSubmit}>
-            <select
-              onChange={(e) => setTimeframe(e.target.value)}
-              className={styles.select}
-              >
-              <option value='all'>view your progress since you added each habit</option>
-              <option value='week'>view your progress in the last week</option>
-              <option value='year'>view your progress in the last year</option>
-              {/* <option value='other'>other</option> */}
-            </select>
-            {/* <button>Submit</button> */}
-          </form>
-        </div>
-        {reduxHabits.length === 0 &&
-          <div className={styles.smaller}>
-            <NoHabits />
+          <div className={styles.hello}>How green is your garden?</div>
+          <div className={styles.container}>
+            <div>
+              <form onSubmit={handleSubmit}>
+                <select
+                  onChange={(e) => setTimeframe(e.target.value)}
+                  className={styles.select}
+                >
+                  <option value='all'>view your progress since you added each habit</option>
+                  <option value='week'>view your progress in the last week</option>
+                  <option value='year'>view your progress in the last year</option>
+                  {/* <option value='other'>other</option> */}
+                </select>
+                {/* <button>Submit</button> */}
+              </form>
+            </div>
+            {timeframe === 'all' && reduxReflections.length > 0 &&
+              reduxReflections.map((reflection, idx) => (
+                <ReflectionBucket
+                  habitName={reduxReflectionKeys[idx]}
+                  reflection={reflection}
+                  key={idx}
+                />
+              ))
+            }
+            {timeframe === 'year' && habits.length > 0 &&
+              habits.map((habit, idx) => (
+                <ReflectionBucketNew
+                  key={idx}
+                  iterable={habit.year}
+                  habit={habit}
+                />
+              ))
+            }
+            {timeframe === 'week' && habits.length > 0 &&
+              habits.map((habit, idx) => (
+                <ReflectionBucketNew
+                  key={idx}
+                  iterable={habit.week}
+                  habit={habit}
+                />
+              ))
+            }
           </div>
-        }
-        {timeframe === 'all' && reduxReflections.length > 0 &&
-          reduxReflections.map((reflection, idx) => (
-            <ReflectionBucket
-              habitName={reduxReflectionKeys[idx]}
-              reflection={reflection}
-              key={idx}
-            />
-          ))
-        }
-        {timeframe === 'year' && reduxHabits.length > 0 &&
-          reduxHabits.map((habit, idx) => (
-            <ReflectionBucketNew
-              // habitName={reduxReflectionKeys[idx]}
-              // reflection={reflection}
-              key={idx}
-              // idx={idx}
-              habit={habit}
-            />
-          ))
-        }
-        {timeframe === 'week' && reduxHabits.length > 0 &&
-          reduxHabits.map((habit, idx) => (
-            <ReflectionBucketWeek
-              // habitName={reduxReflectionKeys[idx]}
-              // reflection={reflection}
-              key={idx}
-              // idx={idx}
-              habit={habit}
-            />
-          ))
-        }
-        {/* {timeframe === 'year' && reduxHabits.length > 0 &&
-          yearArray.map((reflection, idx) => (
-            <ReflectionBucketYear
-              habitName={reduxReflectionKeys[idx]}
-              reflection={reflection}
-              key={idx}
-              idx={idx}
-            />
-          ))
-        } */}
-      </div>
-    </div>
+        </div>
+      ) : (
+        <NoHabits />
+      )
+    ) : (
+      <LoadingContent />
+    )
   )
 }
 

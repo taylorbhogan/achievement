@@ -1,9 +1,8 @@
 import HabitCube from '../../HabitCube'
 import styles from './ReflectionBucketNew.module.css'
 
-const ReflectionBucketNew = ({habit}) => {
-  // console.log('reflection---->',reflection);
-  const trueFalses = Object.values(habit.year)
+const ReflectionBucketNew = ({ habit, iterable }) => {
+  const trueFalses = Object.values(iterable)
 
   return (
     <div className={styles.container}>
@@ -14,9 +13,8 @@ const ReflectionBucketNew = ({habit}) => {
             wasAccomplished={wasAccomplished}
             color={habit.color}
             key={idx}
-            />
+          />
         ))}
-
       </div>
     </div>
   )
