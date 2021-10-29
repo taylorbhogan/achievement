@@ -1,13 +1,10 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 
-// import LoadingContent from "../../LoadingContent"
 import EditButton from "../../parts/EditButton"
 import { deleteAchievement } from "../../../store/achievement"
-// import AchievementEdit from "../AchievementEdit"
 import CloseButton from "../../parts/CloseButton"
 import DeleteConfirmationButton from "../../parts/DeleteConfirmationButton"
-import DeleteConfirmation from "../../parts/DeleteConfirmation"
 import InputField from '../../parts/InputField'
 import ActionButton from "../../parts/ActionButton"
 import FormErrors from "../../parts/FormErrors"
@@ -25,7 +22,7 @@ const AchievementLogCard = ({ achievement }) => {
     const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(jsDate);
     const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(jsDate);
     // const hour = new Intl.DateTimeFormat('en', { hour: '2-digit' }).format(jsDate);
-    const hour = new Intl.DateTimeFormat('en', { hour: '2-digit' }).format(jsDate).slice(0,2);
+    const hour = new Intl.DateTimeFormat('en', { hour: '2-digit' }).format(jsDate).slice(0, 2);
     let minute = new Intl.DateTimeFormat('en', { minute: '2-digit' }).format(jsDate);
     if (minute.length === 1) {
       minute = '0' + minute
@@ -47,55 +44,18 @@ const AchievementLogCard = ({ achievement }) => {
     // return `${year}-${month}-${day}T${hour}:${minute}`
   }
 
+  const [errors, setErrors] = useState([])
   const [isEditable, setIsEditable] = useState(false)
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
   const [createdAt, setCreatedAt] = useState(formatInputDate(achievement.created_at))
   const dispatch = useDispatch()
-  // const user = useSelector(state => state.session.user)
-
-  // const [isEditable, setIsEditable] = useState(false)
-  // const [name, setName] = useState(achievement.habit_name)
-  // const [blurb, setBlurb] = useState(habit.blurb)
-  // const [stellarBlurb, setStellarBlurb] = useState(habit.stellar_blurb)
-  // const [target, setTarget] = useState(habit.target)
-  const [errors, setErrors] = useState([])
-
 
   const handleDelete = async () => {
-    setShowDeleteConfirmation(false)
     await dispatch(deleteAchievement(achievement.id))
   }
 
-  // useEffect(() => {
-  //   setName(achievement.habit_name)
-  // },[achievement.habit_name])
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   const updatedHabit = {
-  //     id: habit.id,
-  //     user_id: user.id,
-  //     name,
-  //     blurb,
-  //     stellar_blurb: stellarBlurb,
-  //     target: +target,
-  //     color_id: 1
-  //   }
-
-  //   const dbHabit = await dispatch(editHabit(updatedHabit))
-  //   if (dbHabit.errors) {
-  //     setErrors(dbHabit.errors)
-  //   } else {
-  //     setIsEditable(false)
-  //   }
-  // }
-
-  // if (!isLoaded){
-  //   return <LoadingContent />
-  // }
   const formattedDate = (date) => {
     const jsDate = new Date(date)
-    if (jsDate > new Date().setHours(0,0,0,0) ) {
+    if (jsDate > new Date().setHours(0, 0, 0, 0)) {
       return 'Today'
     }
     const formattedDate = new Intl.DateTimeFormat('en-US', { weekday: 'short', month: 'long', day: 'numeric' }).format(jsDate)
@@ -110,13 +70,10 @@ const AchievementLogCard = ({ achievement }) => {
   const closeForm = () => {
     setIsEditable(false)
   }
-  const closeDeleteConfirmation = () => {
-    setShowDeleteConfirmation(false)
-  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // console.log('--------------',createdAt);
-    // console.log('--------------',formatOutputDate(createdAt));
+
     const updatedAchievement = {
       id: achievement.id,
       habit_id: achievement.habit_id,
@@ -141,19 +98,15 @@ const AchievementLogCard = ({ achievement }) => {
           <div className={styles.dateContainer}>
             <div className={styles.achieved}>Achieved:</div>
             <form className={styles.form} onSubmit={handleSubmit}>
-              {/* <div>{formattedDate(achievement.created_at)}</div>
-              <div>{formattedTime(achievement.created_at)}</div> */}
               <FormErrors errors={errors} />
               <InputField
                 name='name'
                 type='datetime-local'
-                // placeholder='Pushups'
-                // value={createdAt}
                 value={createdAt}
                 onChange={(e) => setCreatedAt(e.target.value)}
               />
               <div className={styles.actionButton}>
-                <ActionButton buttonText='Save'/>
+                <ActionButton buttonText='Save' />
               </div>
             </form>
           </div>
@@ -164,31 +117,15 @@ const AchievementLogCard = ({ achievement }) => {
             <div className={styles.at}>at</div>
             <div>{formattedTime(achievement.created_at)}</div>
           </div>
-          }
+        }
         <div className={styles.buttonDiv}>
           {isEditable ?
             <CloseButton closeForm={closeForm} />
-          :
+            :
             <EditButton setIsEditable={setIsEditable} />}
-          <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
-          <div className={styles.deleteConfDiv}>
-            <div className={styles.deleteConfInnerDiv}>
-            {showDeleteConfirmation &&
-              <DeleteConfirmation
-                handleDelete={handleDelete}
-                closeDeleteConfirmation={closeDeleteConfirmation}
-                componentLocation={'achievementLog'} />}
-
-            </div>
-
-          </div>
+          <DeleteConfirmationButton handleDelete={handleDelete} />
         </div>
       </div>
-      {/* {(isEditable &&
-        <div className={styles.edit}>
-          <div className={styles.close}><CloseButton closeForm={closeForm} /></div>
-          <AchievementEdit />
-        </div>)} */}
     </div>
   )
 }

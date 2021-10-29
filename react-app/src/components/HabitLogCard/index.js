@@ -6,7 +6,6 @@ import InputField from "../parts/InputField"
 import FormErrors from "../parts/FormErrors"
 import HabitLogCardDetailsEdit from "../HabitLogCardDetailsEdit"
 import DeleteConfirmationButton from "../parts/DeleteConfirmationButton"
-import DeleteConfirmation from "../parts/DeleteConfirmation"
 import EditButton from "../parts/EditButton"
 import CloseButton from "../parts/CloseButton"
 
@@ -19,7 +18,6 @@ const HabitLogCard = ({ habit }) => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
   const [isEditable, setIsEditable] = useState(false)
   const [name, setName] = useState(habit.name)
   const [blurb, setBlurb] = useState(habit.blurb)
@@ -29,8 +27,6 @@ const HabitLogCard = ({ habit }) => {
 
 
   const handleDelete = () => {
-    setShowDeleteConfirmation(false)
-
     dispatch(deleteHabit(habit.id))
   }
 
@@ -62,10 +58,6 @@ const HabitLogCard = ({ habit }) => {
         setIsEditable(false)
       }
     }
-  }
-
-  const closeDeleteConfirmation = () => {
-    setShowDeleteConfirmation(false)
   }
 
   return (
@@ -101,15 +93,7 @@ const HabitLogCard = ({ habit }) => {
             <div className={styles.name}>{habit.name}</div>
             <div className={styles.buttonDiv}>
               <EditButton setIsEditable={setIsEditable} />
-              <DeleteConfirmationButton
-              handleDelete={handleDelete}
-              // showConfirmationFunction={() => setShowDeleteConfirmation(true)}
-              />
-              {/* {showDeleteConfirmation &&
-                <DeleteConfirmation
-                  handleDelete={handleDelete}
-                  closeDeleteConfirmation={closeDeleteConfirmation}
-                  componentLocation={'habitLog'} />} */}
+              <DeleteConfirmationButton handleDelete={handleDelete} />
             </div>
           </div>
           <HabitLogCardDetails
