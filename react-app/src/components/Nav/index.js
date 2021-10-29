@@ -22,9 +22,9 @@ const Nav = () => {
           <div className={styles.invisibleReflect} />
           :
           <NavLink to='/reflect' exact={true} className={`${styles.reflectLink} ${styles.child}`} activeClassName='active'>
-            {/* <div className={styles.reflect}>
+            <div className={styles.reflect}>
               <div className={styles.reflectText}>...reflect</div>
-            </div> */}
+            </div>
           </NavLink>}
         <NavLink to='/' exact={true} className={`${styles.logoLink} ${styles.child}`} activeClassName='active'>
           <div className={styles.logo}>Achievement.</div>
