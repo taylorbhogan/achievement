@@ -36,7 +36,6 @@ const HabitLog = () => {
               return <HabitLogCard
                 key={idx}
                 habit={habit}
-                // isLoaded={isLoaded}
               />
             })}
           </div>
@@ -50,4 +49,4 @@ const HabitLog = () => {
   )
 }
 
-export default HabitLog
+export default HabitLog;

@@ -21,13 +21,9 @@
   padding: var(--inputPadding);
   width: var(--inputWidth);
   box-sizing: var(--inputBoxSizing);
-  /* margin-top: 1.3rem; */
 }
 .buttonDiv{
   display: flex;
-  justify-content: flex-end;
-  background-color: var(--backgroundTertiary);
   border-radius: 0 0 var(--formBorderRadius) var(--formBorderRadius);
-  padding: 0 20px 20px 0;
   position: relative;
 }

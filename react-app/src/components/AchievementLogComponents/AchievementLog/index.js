@@ -9,12 +9,12 @@ import AchievementLogCard from "../AchievementLogCard"
 import styles from './AchievementLog.module.css'
 
 const AchievementLog = () => {
-  const [isLoaded, setIsLoaded] = useState(false)
-
   const dispatch = useDispatch()
 
   const habits = useSelector(state => Object.values(state.habits.habits))
   const user = useSelector(state => state.session.user)
+
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     dispatch(getHabits(user.id))
@@ -25,7 +25,6 @@ const AchievementLog = () => {
     if (new Date(first.created_at) < new Date(second.created_at)) return 1
     return 0
   }))
-
 
   useEffect(() => {
     const fetchAchievements = async () => {
@@ -45,7 +44,6 @@ const AchievementLog = () => {
               return <AchievementLogCard
                 key={idx}
                 achievement={achievement}
-                // isLoaded={isLoaded}
               />
             })}
           </div>
@@ -60,4 +58,4 @@ const AchievementLog = () => {
     <LoadingContent />
   )
 }
-export default AchievementLog
+export default AchievementLog;

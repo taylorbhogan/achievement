@@ -3,7 +3,7 @@
 .container{
   background-color: var(--backgroundTertiary);
   border-radius: var(--formBorderRadius) var(--formBorderRadius) 0 0;
-  padding: 6px 30px 30px 30px;
+  padding: 30px;
   min-height: 100px;
   display: flex;
   flex-direction: column;
@@ -14,11 +14,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-
-.close{
-  height: var(--closeHeight);
-  margin-bottom: 5px;
 }
 
 .info{

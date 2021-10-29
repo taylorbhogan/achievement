@@ -15,7 +15,7 @@ import { editAchievement } from "../../../store/achievement"
 
 import styles from './AchievementLogCard.module.css'
 
-const AchievementLogCard = ({ achievement, isLoaded }) => {
+const AchievementLogCard = ({ achievement }) => {
 
 
   const formatInputDate = (achieveCreateDate) => {
