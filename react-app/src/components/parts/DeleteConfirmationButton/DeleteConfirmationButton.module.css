@@ -5,3 +5,25 @@
   height: 100%;
 
 }
+
+.div{
+  position: absolute;
+  top: -29px;
+  left: 140%;
+  min-width: 135px;
+  font-size: 13px;
+  padding: 10px;
+  background-color: var(--gray3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: var(--borderRadiusMenu);
+}
+
+.top{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}

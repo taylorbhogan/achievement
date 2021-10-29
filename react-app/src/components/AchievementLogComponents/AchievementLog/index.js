@@ -35,7 +35,7 @@ const AchievementLog = () => {
   }, [dispatch, user.id])
 
   return isLoaded ? (
-    habits.length > 0 ? (
+    habits.filter(habit => habit.name !== 'DELETED').length > 0 ? (
       achievements.length > 0 ? (
         <div className={styles.container}>
           <div className={styles.header}>Everything you've achieved.</div>

@@ -25,7 +25,7 @@ const HabitLog = () => {
 
   return (
     isLoaded ? (
-      habits.length > 0 ? (
+      habits.filter(habit => habit.name !== 'DELETED').length > 0 ? (
         <div className={styles.container}>
           <div className={styles.welcome}>Clean house here.</div>
           <div className={styles.makeMeRight}>

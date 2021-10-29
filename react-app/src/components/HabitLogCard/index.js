@@ -6,7 +6,6 @@ import InputField from "../parts/InputField"
 import FormErrors from "../parts/FormErrors"
 import HabitLogCardDetailsEdit from "../HabitLogCardDetailsEdit"
 import DeleteConfirmationButton from "../parts/DeleteConfirmationButton"
-import DeleteConfirmation from "../parts/DeleteConfirmation"
 import EditButton from "../parts/EditButton"
 import CloseButton from "../parts/CloseButton"
 
@@ -19,7 +18,6 @@ const HabitLogCard = ({ habit }) => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
   const [isEditable, setIsEditable] = useState(false)
   const [name, setName] = useState(habit.name)
   const [blurb, setBlurb] = useState(habit.blurb)
@@ -29,8 +27,6 @@ const HabitLogCard = ({ habit }) => {
 
 
   const handleDelete = () => {
-    setShowDeleteConfirmation(false)
-
     dispatch(deleteHabit(habit.id))
   }
 
@@ -64,10 +60,6 @@ const HabitLogCard = ({ habit }) => {
     }
   }
 
-  const closeDeleteConfirmation = () => {
-    setShowDeleteConfirmation(false)
-  }
-
   return (
     <div
       className={styles.container}
@@ -77,15 +69,13 @@ const HabitLogCard = ({ habit }) => {
         <form onSubmit={handleSubmit}>
           <FormErrors errors={errors} />
           <div className={styles.bar}>
-            <div className={styles.nameWrapper}>
-              <InputField
-                name='name'
-                type='text'
-                placeholder='Pushups'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
+            <InputField
+              name='name'
+              type='text'
+              placeholder='Pushups'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
             <CloseButton closeForm={closeForm} />
           </div>
           <HabitLogCardDetailsEdit
@@ -100,17 +90,10 @@ const HabitLogCard = ({ habit }) => {
       ) : (
         <>
           <div className={styles.bar}>
-            <div className={styles.nameWrapper}>
-              <div className={styles.name}>{habit.name}</div>
-            </div>
+            <div className={styles.name}>{habit.name}</div>
             <div className={styles.buttonDiv}>
               <EditButton setIsEditable={setIsEditable} />
-              <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
-              {showDeleteConfirmation &&
-                <DeleteConfirmation
-                  handleDelete={handleDelete}
-                  closeDeleteConfirmation={closeDeleteConfirmation}
-                  componentLocation={'habitLog'} />}
+              <DeleteConfirmationButton handleDelete={handleDelete} />
             </div>
           </div>
           <HabitLogCardDetails
