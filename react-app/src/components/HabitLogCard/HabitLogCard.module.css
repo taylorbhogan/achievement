@@ -12,10 +12,6 @@
   width: var(--cubeContainerWidth);
 }
 
-.nameWrapper{
-  padding-right: 30px;
-  width: 30%;
-}
 .name{
   line-height: var(--inputLineHeight);
   padding: var(--inputPadding);

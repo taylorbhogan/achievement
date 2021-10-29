@@ -77,15 +77,13 @@ const HabitLogCard = ({ habit }) => {
         <form onSubmit={handleSubmit}>
           <FormErrors errors={errors} />
           <div className={styles.bar}>
-            <div className={styles.nameWrapper}>
-              <InputField
-                name='name'
-                type='text'
-                placeholder='Pushups'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
+            <InputField
+              name='name'
+              type='text'
+              placeholder='Pushups'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
             <CloseButton closeForm={closeForm} />
           </div>
           <HabitLogCardDetailsEdit
@@ -100,9 +98,7 @@ const HabitLogCard = ({ habit }) => {
       ) : (
         <>
           <div className={styles.bar}>
-            <div className={styles.nameWrapper}>
-              <div className={styles.name}>{habit.name}</div>
-            </div>
+            <div className={styles.name}>{habit.name}</div>
             <div className={styles.buttonDiv}>
               <EditButton setIsEditable={setIsEditable} />
               <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
