@@ -90,7 +90,6 @@ const HabitLogCard = ({ habit }) => {
           </div>
           <HabitLogCardDetailsEdit
             habit={habit}
-            closeForm={closeForm}
             blurb={blurb}
             setBlurb={setBlurb}
             stellarBlurb={stellarBlurb}

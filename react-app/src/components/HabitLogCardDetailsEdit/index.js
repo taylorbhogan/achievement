@@ -1,15 +1,10 @@
-import DeleteConfirmationButton from '../parts/DeleteConfirmationButton'
 import InputField from '../parts/InputField'
 import ActionButton from '../parts/ActionButton'
-import CloseButton from '../parts/CloseButton'
 
 import styles from './HabitLogCardDetailsEdit.module.css'
 
 
 const HabitLogCardDetailsEdit = ({
-  habit,
-  handleDelete,
-  closeForm,
   blurb,
   setBlurb,
   stellarBlurb,
@@ -57,7 +52,6 @@ const HabitLogCardDetailsEdit = ({
       </div>
       <div className={styles.bottom}>
         <div className={styles.buttonContainer}>
-          {/* <DeleteConfirmationButton showConfirmationFunction={handleDelete}/> */}
           <ActionButton buttonText={'save changes'} />
         </div>
       </div>

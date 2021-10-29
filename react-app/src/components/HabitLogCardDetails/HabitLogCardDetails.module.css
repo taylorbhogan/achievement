@@ -16,11 +16,6 @@
   justify-content: flex-start;
 }
 
-/* .close{
-  height: var(--closeHeight);
-  margin-bottom: 5px;
-} */
-
 .info{
   display: flex;
   flex-direction: row;
