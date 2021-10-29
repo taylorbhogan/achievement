@@ -91,7 +91,7 @@ const Reflect = () => {
               habits.map((habit, idx) => (
                 <ReflectionBucketNew
                   key={idx}
-                  iterable={habit.year}
+                  achievementMap={habit.year}
                   habit={habit}
                 />
               ))
@@ -100,7 +100,7 @@ const Reflect = () => {
               habits.map((habit, idx) => (
                 <ReflectionBucketNew
                   key={idx}
-                  iterable={habit.week}
+                  achievementMap={habit.week}
                   habit={habit}
                 />
               ))

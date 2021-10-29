@@ -1,14 +1,13 @@
 import HabitCube from '../../HabitCube'
 import styles from './ReflectionBucketNew.module.css'
 
-const ReflectionBucketNew = ({ habit, iterable }) => {
-  const trueFalses = Object.values(iterable)
+const ReflectionBucketNew = ({ habit, achievementMap }) => {
 
   return (
     <div className={styles.container}>
       {habit.name}
       <div className={styles.mapBucket}>
-        {trueFalses.map((wasAccomplished, idx) => (
+        {Object.values(achievementMap).map((wasAccomplished, idx) => (
           <HabitCube
             wasAccomplished={wasAccomplished}
             color={habit.color}
