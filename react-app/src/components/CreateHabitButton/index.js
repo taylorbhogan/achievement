@@ -5,9 +5,14 @@ import { Modal } from '../../context/Modal'
 import CreateHabitForm from '../CreateHabitForm'
 // import styles from './CreateHabitButton.module.css'
 
-function CreateHabitButton({componentStyle}) {
+function CreateHabitButton({componentStyle, toggleMenu}) {
   const [ showNewHabitForm, setShowNewHabitForm ] = useState(false)
   const [ hovered, setHovered ] = useState(false)
+
+const handleClick = () => {
+//  toggleMenu()
+  setShowNewHabitForm(true)
+}
 
   const hover = () => {
     setHovered(!hovered)
@@ -57,7 +62,7 @@ function CreateHabitButton({componentStyle}) {
         onMouseLeave={hover}
         style={style}
         // className={styles.button}
-        onClick={() => setShowNewHabitForm(true)}
+        onClick={handleClick}
       >Add a Habit</button>
       {showNewHabitForm && (
         <Modal onClose={() => setShowNewHabitForm(false)}>
