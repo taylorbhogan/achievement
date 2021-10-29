@@ -8,6 +8,7 @@ import HabitLogCardDetailsEdit from "../HabitLogCardDetailsEdit"
 import DeleteConfirmationButton from "../parts/DeleteConfirmationButton"
 import DeleteConfirmation from "../parts/DeleteConfirmation"
 import EditButton from "../parts/EditButton"
+import CloseButton from "../parts/CloseButton"
 
 import { deleteHabit } from "../../store/habit"
 import { editHabit } from "../../store/habit"
@@ -73,39 +74,30 @@ const HabitLogCard = ({ habit }) => {
       id={habit.id}
     >
       {isEditable ? (
-        <>
-          <form onSubmit={handleSubmit}>
-            <FormErrors errors={errors} />
-            <div className={styles.bar}>
-              <div className={styles.nameWrapper}>
-                <InputField
-                  name='name'
-                  type='text'
-                  placeholder='Pushups'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
+        <form onSubmit={handleSubmit}>
+          <FormErrors errors={errors} />
+          <div className={styles.bar}>
+            <div className={styles.nameWrapper}>
+              <InputField
+                name='name'
+                type='text'
+                placeholder='Pushups'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
-            <HabitLogCardDetailsEdit
-              habit={habit}
-              closeForm={closeForm}
-              blurb={blurb}
-              setBlurb={setBlurb}
-              stellarBlurb={stellarBlurb}
-              setStellarBlurb={setStellarBlurb}
-              target={target}
-              setTarget={setTarget} />
-          </form>
-          <div className={styles.buttonDiv}>
-            <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
-            {showDeleteConfirmation &&
-              <DeleteConfirmation
-                handleDelete={handleDelete}
-                closeDeleteConfirmation={closeDeleteConfirmation}
-                componentLocation={'habitLog'} />}
+            <CloseButton closeForm={closeForm} />
           </div>
-        </>
+          <HabitLogCardDetailsEdit
+            habit={habit}
+            closeForm={closeForm}
+            blurb={blurb}
+            setBlurb={setBlurb}
+            stellarBlurb={stellarBlurb}
+            setStellarBlurb={setStellarBlurb}
+            target={target}
+            setTarget={setTarget} />
+        </form>
       ) : (
         <>
           <div className={styles.bar}>

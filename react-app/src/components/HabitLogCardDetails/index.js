@@ -6,7 +6,7 @@ const HabitLogCardDetails = ({ habit, setIsEditable }) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <div className={styles.close} />
+        {/* <div className={styles.close} /> */}
         <div className={styles.info}>
           <div className={styles.left}>
             <div className={styles.header}>Achievement:</div>
