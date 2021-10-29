@@ -12,7 +12,8 @@ function HabitDash() {
   const dispatch = useDispatch()
   const [isLoaded, setIsLoaded] = useState(false)
 
-  const reduxHabits = useSelector(state => Object.values(state.habits.habits))
+  const allHabits = useSelector(state => Object.values(state.habits.habits))
+  const habits = allHabits.filter(habit => habit.name !== 'DELETED')
   const user = useSelector(state => state.session.user)
   const userId = user.id
 
@@ -38,32 +39,35 @@ function HabitDash() {
 
   return (
     isLoaded ? (
-      <div className={styles.container}>
-        <HabitDashWelcome />
-        <HabitDashMenu />
-        <div className={styles.divider}></div>
-        <div className={styles.dashCardContainer}>
-          <div className={styles.cubeContainerHeadersWrapper}>
-            <div className={styles.name}></div>
-            <div className={styles.cubeContainerHeadersCopyCubeContainer}>
-              <div className={styles.cubeContainerHeader}>{getToday(6)}</div>
-              <div className={styles.cubeContainerHeader}>{getToday(5)}</div>
-              <div className={styles.cubeContainerHeader}>{getToday(4)}</div>
-              <div className={styles.cubeContainerHeader}>{getToday(3)}</div>
-              <div className={styles.cubeContainerHeader}>{getToday(2)}</div>
-              <div className={styles.cubeContainerHeader}>{getToday(1)}</div>
-              <div className={styles.cubeContainerHeader}>{getToday(0)}</div>
+      habits.length > 0 ? (
+        <div className={styles.container}>
+          <HabitDashWelcome />
+          <HabitDashMenu />
+          <div className={styles.divider}></div>
+          <div className={styles.dashCardContainer}>
+            <div className={styles.cubeContainerHeadersWrapper}>
+              <div className={styles.name}></div>
+              <div className={styles.cubeContainerHeadersCopyCubeContainer}>
+                <div className={styles.cubeContainerHeader}>{getToday(6)}</div>
+                <div className={styles.cubeContainerHeader}>{getToday(5)}</div>
+                <div className={styles.cubeContainerHeader}>{getToday(4)}</div>
+                <div className={styles.cubeContainerHeader}>{getToday(3)}</div>
+                <div className={styles.cubeContainerHeader}>{getToday(2)}</div>
+                <div className={styles.cubeContainerHeader}>{getToday(1)}</div>
+                <div className={styles.cubeContainerHeader}>{getToday(0)}</div>
+              </div>
+              <div className={styles.target}></div>
             </div>
-            <div className={styles.target}></div>
+            {habits.map((habit, idx) => (
+              <HabitDashCard
+                key={idx}
+                habit={habit}
+              />))}
           </div>
-          {reduxHabits.filter(habit => habit.name !== 'DELETED').length === 0 && <NoHabits />}
-          {reduxHabits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => (
-            <HabitDashCard
-              key={idx}
-              habit={habit}
-            />))}
         </div>
-      </div>
+      ) : (
+        <NoHabits />
+      )
     ) : (
       <LoadingContent />
     )
