@@ -23,6 +23,7 @@ const CreateAchievementButton = ({ habit, setErrors, wasAccomplished, id }) => {
 
     playClick()
     let createdAt = new Date()
+
     if (id === 5) {
       createdAt.setDate(createdAt.getDate() - 1)
     } else if (id === 4) {
@@ -51,17 +52,18 @@ const CreateAchievementButton = ({ habit, setErrors, wasAccomplished, id }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={styles.cubeWrapper}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <button
         className={styles.button}
         style={
           wasAccomplished ?
-          {backgroundColor: `hsl(${habit.color}, 100%, 50%)`} :
-          {backgroundColor: 'gray'}
+            { backgroundColor: `hsl(${habit.color}, 100%, 50%)` }
+            :
+            { backgroundColor: 'gray' }
         }
       ></button>
       <div
-        style={triggered ? {transform: 'scale(1)'} : null}
+        style={triggered ? { transform: 'scale(1)' } : null}
         className={styles.circle}></div>
     </form>
   )
