@@ -101,12 +101,15 @@ const HabitLogCard = ({ habit }) => {
             <div className={styles.name}>{habit.name}</div>
             <div className={styles.buttonDiv}>
               <EditButton setIsEditable={setIsEditable} />
-              <DeleteConfirmationButton showConfirmationFunction={() => setShowDeleteConfirmation(true)} />
-              {showDeleteConfirmation &&
+              <DeleteConfirmationButton
+              handleDelete={handleDelete}
+              // showConfirmationFunction={() => setShowDeleteConfirmation(true)}
+              />
+              {/* {showDeleteConfirmation &&
                 <DeleteConfirmation
                   handleDelete={handleDelete}
                   closeDeleteConfirmation={closeDeleteConfirmation}
-                  componentLocation={'habitLog'} />}
+                  componentLocation={'habitLog'} />} */}
             </div>
           </div>
           <HabitLogCardDetails
