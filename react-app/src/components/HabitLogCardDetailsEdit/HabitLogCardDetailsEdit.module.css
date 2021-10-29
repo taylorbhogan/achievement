@@ -4,18 +4,6 @@
   padding: 30px;
   min-height: 100px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.top{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.info{
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
