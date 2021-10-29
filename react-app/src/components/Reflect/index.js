@@ -87,13 +87,12 @@ const Reflect = () => {
                 />
               ))
             } */}
-            {timeframe === 'all' && reduxReflections.length > 0 &&
-              reduxReflections.map((reflection, idx) => (
+            {timeframe === 'all' &&
+              habits.map((habit, idx) => (
                 <ReflectionBucketNew
                   key={idx}
-                  achievementMap={Object.values(reflection[0])}
-                  // habitName={reduxReflectionKeys[idx]}
-                  // reflection={reflection}
+                  achievementMap={habit.birth}
+                  habit={habit}
                 />
               ))
             }
