@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getHabits } from "../../store/habit"
 import LoadingContent from "../parts/LoadingContent"
 import HabitLogCard from "../HabitLogCard"
-import CreateHabitButton from "../CreateHabitButton"
+import HabitCreateButton from "../HabitCreateButton"
 import NoHabits from "../parts/NoHabits"
 import styles from './HabitLog.module.css'
 
@@ -29,7 +29,7 @@ const HabitLog = () => {
         <div className={styles.container}>
           <div className={styles.welcome}>Clean house here.</div>
           <div className={styles.makeMeRight}>
-            <CreateHabitButton componentStyle={'gray'} />
+            <HabitCreateButton componentStyle={'gray'} />
           </div>
           <div className={styles.habitContainer}>
             {habits && habits.filter(habit => habit.name !== 'DELETED').map((habit, idx) => {

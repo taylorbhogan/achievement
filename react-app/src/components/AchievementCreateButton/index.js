@@ -5,9 +5,9 @@ import { getHabit } from "../../store/habit"
 import useSound from 'use-sound';
 import clickSfx from '../../sounds/click.mp3';
 
-import styles from './CreateAchievementButton.module.css'
+import styles from './AchievementCreateButton.module.css'
 
-const CreateAchievementButton = ({ habit, setErrors, wasAccomplished, id }) => {
+const AchievementCreateButton = ({ habit, setErrors, wasAccomplished, id }) => {
   const [triggered, setTriggered] = useState(false)
   const dispatch = useDispatch()
 
@@ -69,4 +69,4 @@ const CreateAchievementButton = ({ habit, setErrors, wasAccomplished, id }) => {
   )
 }
 
-export default CreateAchievementButton
+export default AchievementCreateButton
