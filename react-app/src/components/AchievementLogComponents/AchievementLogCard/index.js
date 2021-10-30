@@ -14,7 +14,7 @@ import styles from './AchievementLogCard.module.css'
 
 const AchievementLogCard = ({ achievement }) => {
 
-  
+
   const formatInputDate = (achieveCreateDate) => {
     const jsDate = new Date(achieveCreateDate)
 
@@ -80,7 +80,9 @@ const AchievementLogCard = ({ achievement }) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div
+      style={isEditable ? { padding: '10px 15px' } : null}
+      className={styles.container}>
       <div className={styles.name}>{achievement.habit}</div>
       {isEditable ?
         <form className={styles.dateContainer} onSubmit={handleSubmit}>
