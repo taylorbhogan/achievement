@@ -14,7 +14,7 @@ import styles from './AchievementLogCard.module.css'
 
 const AchievementLogCard = ({ achievement }) => {
 
-
+  
   const formatInputDate = (achieveCreateDate) => {
     const jsDate = new Date(achieveCreateDate)
 
@@ -27,21 +27,12 @@ const AchievementLogCard = ({ achievement }) => {
     if (minute.length === 1) {
       minute = '0' + minute
     }
-
     return `${year}-${month}-${day}T${hour}:${minute}`
   }
 
   const formatOutputDate = (createdAt) => {
     const jsDate = new Date(createdAt)
-    // return new Date(jsDate)
     return jsDate
-    // const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(jsDate);
-    // const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(jsDate);
-    // const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(jsDate);
-    // const hour = new Intl.DateTimeFormat('en', { hour: '2-digit' }).format(jsDate).slice(0,2);
-    // const minute = new Intl.DateTimeFormat('en', { minute: '2-digit' }).format(jsDate);
-
-    // return `${year}-${month}-${day}T${hour}:${minute}`
   }
 
   const [errors, setErrors] = useState([])
@@ -90,41 +81,30 @@ const AchievementLogCard = ({ achievement }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.contents}>
-        <div className={styles.nameWrapper}>
-          {achievement.habit}</div>
-        {isEditable
-          ?
-          <div className={styles.dateContainer}>
-            <div className={styles.achieved}>Achieved:</div>
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <FormErrors errors={errors} />
-              <InputField
-                name='name'
-                type='datetime-local'
-                value={createdAt}
-                onChange={(e) => setCreatedAt(e.target.value)}
-              />
-              <div className={styles.actionButton}>
-                <ActionButton buttonText='Save' isShort={true}/>
-              </div>
-            </form>
-          </div>
-          :
-          <div className={styles.dateContainer}>
-            <div className={styles.achieved}>Achieved:</div>
-            <div>{formattedDate(achievement.created_at)}</div>
-            <div className={styles.at}>at</div>
-            <div>{formattedTime(achievement.created_at)}</div>
-          </div>
-        }
-        <div className={styles.buttonDiv}>
-          {isEditable ?
-            <CloseButton closeForm={closeForm} />
-            :
-            <EditButton setIsEditable={setIsEditable} />}
-          <DeleteConfirmationButton handleDelete={handleDelete} />
+      <div className={styles.name}>{achievement.habit}</div>
+      {isEditable ?
+        <form className={styles.dateContainer} onSubmit={handleSubmit}>
+          <FormErrors errors={errors} />
+          <div className={styles.achieved}>Achieved:</div>
+          <InputField
+            name='name'
+            type='datetime-local'
+            value={createdAt}
+            onChange={(e) => setCreatedAt(e.target.value)}
+          />
+          <ActionButton buttonText='Save' isShort={true} />
+        </form>
+        :
+        <div className={styles.dateContainer}>
+          <div>Achieved: {formattedDate(achievement.created_at)} at {formattedTime(achievement.created_at)}</div>
         </div>
+      }
+      <div className={styles.buttonDiv}>
+        {isEditable ?
+          <CloseButton closeForm={closeForm} />
+          :
+          <EditButton setIsEditable={setIsEditable} />}
+        <DeleteConfirmationButton handleDelete={handleDelete} />
       </div>
     </div>
   )
