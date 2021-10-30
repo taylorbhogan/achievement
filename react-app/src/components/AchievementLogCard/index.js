@@ -1,14 +1,13 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 
-import EditButton from "../../parts/EditButton"
-import { deleteAchievement } from "../../../store/achievement"
-import CloseButton from "../../parts/CloseButton"
-import DeleteConfirmationButton from "../../parts/DeleteConfirmationButton"
-import InputField from '../../parts/InputField'
-import ActionButton from "../../parts/ActionButton"
-import FormErrors from "../../parts/FormErrors"
-import { editAchievement } from "../../../store/achievement"
+import { deleteAchievement, editAchievement } from "../../store/achievement"
+import CloseButton from "../parts/CloseButton"
+import EditButton from "../parts/EditButton"
+import DeleteConfirmationButton from "../parts/DeleteConfirmationButton"
+import InputField from "../parts/InputField"
+import ActionButton from "../parts/ActionButton"
+import FormErrors from "../parts/FormErrors"
 
 import styles from './AchievementLogCard.module.css'
 

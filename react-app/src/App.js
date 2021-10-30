@@ -8,11 +8,11 @@ import ProtectedRoute from './components/parts/ProtectedRoute';
 import User from './components/User';
 import Home from './components/Home';
 import Reflect from './components/Reflect';
-import AchievementLog from './components/AchievementLogComponents/AchievementLog'
+import AchievementLog from './components/AchievementLog'
 import HabitLog from './components/HabitLog';
 import DeveloperLinks from './components/parts/DeveloperLinks';
 import PageNotFound from './components/parts/PageNotFound'
-import Splash from './components/parts/Splash';
+import Splash from './components/Splash'
 import { authenticate } from './store/session';
 
 function App() {
