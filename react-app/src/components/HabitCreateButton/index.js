@@ -2,10 +2,10 @@ import { useState } from 'react'
 
 import { Modal } from '../../context/Modal'
 
-import CreateHabitForm from '../CreateHabitForm'
-// import styles from './CreateHabitButton.module.css'
+import HabitCreateForm from '../HabitCreateForm'
+// import styles from './HabitCreateButton.module.css'
 
-function CreateHabitButton({componentStyle, toggleMenu}) {
+function HabitCreateButton({componentStyle, toggleMenu}) {
   const [ showNewHabitForm, setShowNewHabitForm ] = useState(false)
   const [ hovered, setHovered ] = useState(false)
 
@@ -66,11 +66,11 @@ const handleClick = () => {
       >Add a Habit</button>
       {showNewHabitForm && (
         <Modal onClose={() => setShowNewHabitForm(false)}>
-          <CreateHabitForm setShowNewHabitForm={setShowNewHabitForm} />
+          <HabitCreateForm setShowNewHabitForm={setShowNewHabitForm} />
         </Modal>
       )}
     </div>
   )
 }
 
-export default CreateHabitButton
+export default HabitCreateButton

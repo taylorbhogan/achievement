@@ -1,11 +1,11 @@
-import CreateHabitButton from '../../CreateHabitButton'
+import HabitCreateButton from '../../HabitCreateButton'
 import styles from './NoHabits.module.css'
 
 const NoHabits = () => {
   return (
     <div className={styles.container}>
       <div className={styles.text}>Are you ready to build accountability?</div>
-      <CreateHabitButton componentStyle={'green'}/>
+      <HabitCreateButton componentStyle={'green'}/>
     </div>
 
   )

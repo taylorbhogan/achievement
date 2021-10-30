@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import ActionButton from '../parts/ActionButton'
 import FormErrors from '../parts/FormErrors'
 import InputField from '../parts/InputField'
-import styles from './EditHabitForm.module.css'
+import styles from './HabitEditForm.module.css'
 import { editHabit } from '../../store/habit'
 
-function EditHabitForm({ habit, setShowEditHabitForm }) {
+function HabitEditForm({ habit, setShowHabitEditForm }) {
   const [name, setName] = useState(habit.name)
   const [blurb, setBlurb] = useState(habit.blurb)
   const [stellarBlurb, setStellarBlurb] = useState(habit.stellar_blurb)
@@ -34,15 +34,15 @@ function EditHabitForm({ habit, setShowEditHabitForm }) {
     if (dbHabit.errors) {
       setErrors(dbHabit.errors)
     } else {
-      setShowEditHabitForm(false)
+      setShowHabitEditForm(false)
     }
   }
 
   return (
     <div className={styles.container}>
-      <div>Hello from EditHabitForm</div>
+      <div>Hello from HabitEditForm</div>
       <button
-        onClick={() => setShowEditHabitForm(false)}
+        onClick={() => setShowHabitEditForm(false)}
       >Close</button>
       <form
         onSubmit={handleSubmit}
@@ -94,4 +94,4 @@ function EditHabitForm({ habit, setShowEditHabitForm }) {
   )
 }
 
-export default EditHabitForm
+export default HabitEditForm

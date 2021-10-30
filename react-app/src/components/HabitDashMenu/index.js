@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import CreateHabitButton from '../CreateHabitButton'
+import HabitCreateButton from '../HabitCreateButton'
 import { NavLink } from 'react-router-dom'
 import { FaEllipsisV } from 'react-icons/fa'
 import { IconContext } from "react-icons";
@@ -41,7 +41,7 @@ const HabitDashMenu = () => {
       <div
         style={showMenu ? { transform: 'scale(1)' } : { transform: 'scale(0)' }}
         className={styles.container}>
-        <CreateHabitButton componentStyle={'gray'} toggleMenu={toggleMenu} />
+        <HabitCreateButton componentStyle={'gray'} toggleMenu={toggleMenu} />
         <NavLink to='/habits' exact={true} activeClassName={styles.active} className={styles.navLink}>
           <div className={styles.linkDiv}>Edit Habits</div>
         </NavLink>

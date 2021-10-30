@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import ActionButton from '../parts/ActionButton'
 import FormErrors from '../parts/FormErrors'
 import InputField from '../parts/InputField'
-import styles from './CreateHabitForm.module.css'
+import styles from './HabitCreateForm.module.css'
 import { createHabit } from '../../store/habit'
 import { createColor } from '../../store/color'
 import CloseButton from '../parts/CloseButton'
 import Colors from '../Colors'
 
 
-function CreateHabitForm({ setShowNewHabitForm }) {
+function HabitCreateForm({ setShowNewHabitForm }) {
   const [name, setName] = useState('')
   const [blurb, setBlurb] = useState('')
   const [stellarBlurb, setStellarBlurb] = useState('')
@@ -115,4 +115,4 @@ function CreateHabitForm({ setShowNewHabitForm }) {
   )
 }
 
-export default CreateHabitForm
+export default HabitCreateForm

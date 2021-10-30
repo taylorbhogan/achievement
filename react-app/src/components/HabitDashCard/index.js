@@ -1,5 +1,5 @@
 import { useState } from "react"
-import CreateAchievementButton from "../CreateAchievementButton"
+import AchievementCreateButton from "../AchievementCreateButton"
 import FormErrors from "../parts/FormErrors"
 import styles from './HabitDashCard.module.css'
 
@@ -18,43 +18,43 @@ const HabitDashCard = ({ habit }) => {
           className={styles.name}
         >{habit.name}</div>
         <div className={styles.cubeContainer}>
-          <CreateAchievementButton
+          <AchievementCreateButton
             habit={habit}
             setErrors={setErrors}
             id={0}
             wasAccomplished={habit.week['0']}
           />
-          <CreateAchievementButton
+          <AchievementCreateButton
             habit={habit}
             setErrors={setErrors}
             id={1}
             wasAccomplished={habit.week['1']}
           />
-          <CreateAchievementButton
+          <AchievementCreateButton
             habit={habit}
             setErrors={setErrors}
             id={2}
             wasAccomplished={habit.week['2']}
           />
-          <CreateAchievementButton
+          <AchievementCreateButton
             habit={habit}
             setErrors={setErrors}
             id={3}
             wasAccomplished={habit.week['3']}
           />
-          <CreateAchievementButton
+          <AchievementCreateButton
             habit={habit}
             setErrors={setErrors}
             id={4}
             wasAccomplished={habit.week['4']}
           />
-          <CreateAchievementButton
+          <AchievementCreateButton
             habit={habit}
             setErrors={setErrors}
             id={5}
             wasAccomplished={habit.week['5']}
           />
-          <CreateAchievementButton
+          <AchievementCreateButton
             habit={habit}
             setErrors={setErrors}
             id={6}
