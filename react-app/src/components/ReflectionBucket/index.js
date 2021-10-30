@@ -1,4 +1,4 @@
-import HabitCube from '../../HabitCube'
+import HabitCube from '../HabitCube'
 import styles from './ReflectionBucket.module.css'
 
 const ReflectionBucket = ({ habit, achievementMap }) => {
