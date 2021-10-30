@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getHabits, unloadHabits } from '../../store/habit'
-import ReflectionBucket from './ReflectionBucket'
+import ReflectionBucket from '../ReflectionBucket'
 import NoHabits from '../parts/NoHabits'
 import LoadingContent from '../parts/LoadingContent'
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import NavPublic from '../parts/NavPublic';
+import NavPublic from '../NavPublic'
 
 import DropdownOpenButton from './DropdownOpenButton';
 import styles from './Nav.module.css'

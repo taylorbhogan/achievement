@@ -5,15 +5,14 @@ import LoginForm from './components/parts/LoginForm';
 import SignUpForm from './components/parts/SignUpForm';
 import Nav from './components/Nav';
 import ProtectedRoute from './components/parts/ProtectedRoute';
-import UsersList from './components/UsersList';
 import User from './components/User';
 import Home from './components/Home';
 import Reflect from './components/Reflect';
-import AchievementLog from './components/AchievementLogComponents/AchievementLog'
+import AchievementLog from './components/AchievementLog'
 import HabitLog from './components/HabitLog';
 import DeveloperLinks from './components/parts/DeveloperLinks';
 import PageNotFound from './components/parts/PageNotFound'
-import Splash from './components/parts/Splash';
+import Splash from './components/Splash'
 import { authenticate } from './store/session';
 
 function App() {
@@ -21,7 +20,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -54,9 +53,6 @@ function App() {
         <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>

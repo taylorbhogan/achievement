@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAchievements } from "../../../store/achievement"
-import { getHabits } from "../../../store/habit"
-import LoadingContent from "../../parts/LoadingContent"
-import NoHabits from '../../parts/NoHabits'
-import NoAchievements from '../../parts/NoAchievements'
+import { getAchievements } from "../../store/achievement"
+import { getHabits } from "../../store/habit"
+import LoadingContent from "../parts/LoadingContent"
+import NoHabits from '../parts/NoHabits'
+import NoAchievements from '../parts/NoAchievements'
 import AchievementLogCard from "../AchievementLogCard"
 import styles from './AchievementLog.module.css'
 
