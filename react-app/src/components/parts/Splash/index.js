@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { login } from '../../../store/session';
+import FormErrors from '../FormErrors';
 import styles from './Splash.module.css'
 
 
@@ -52,11 +53,12 @@ const Splash = () => {
             <span><Link className={styles.link} to='/signup'>Sign up here</Link></span>
             <span> or </span>
             <button
-             onClick={demoLogin}
-             className={styles.demoButton}
+              onClick={demoLogin}
+              className={styles.demoButton}
             > try it out </button>
             <span> as a demo user.</span>
           </div>
+          <FormErrors errors={errors}/>
         </div>
       </div>
     </div>
