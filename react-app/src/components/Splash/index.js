@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { login } from '../../../store/session';
-import FormErrors from '../FormErrors';
+import { login } from '../../store/session';
+import FormErrors from '../parts/FormErrors';
 import styles from './Splash.module.css'
 
 

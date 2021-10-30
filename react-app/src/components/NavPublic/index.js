@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { login } from '../../../store/session'
+import { login } from '../../store/session'
 import styles from './NavPublic.module.css'
 
 const NavPublic = () => {
